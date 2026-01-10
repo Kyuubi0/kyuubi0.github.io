@@ -77,7 +77,11 @@
 
         /* --- İÇERİK ALANI --- */
         .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; }
+        
+        /* ÖNEMLİ: Sayfaların varsayılan olarak gizli olması için */
         .page { display: none; padding: 100px 80px; animation: entry 0.8s ease; }
+        
+        /* Sadece 'active' class'ı alan sayfa görünür */
         .page.active { display: block; }
         
         @keyframes entry { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
@@ -89,14 +93,13 @@
 
         /* --- CV PAGE STYLES --- */
         .cv-container {
-            display: flex; flex-direction: column; position: relative; padding-bottom: 80px;
+            /* padding-bottom: 80px; */
         }
         .cv-section-title {
             color: var(--accent-1); font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;
         }
-        /* Butonun sağ alta sabitlenmesi için stil */
         .download-btn-container {
-            display: flex; justify-content: flex-end; margin-top: 20px;
+            display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 50px;
         }
         .download-btn {
             display: inline-flex; align-items: center; gap: 10px;
@@ -287,7 +290,7 @@
                     <span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">Sep 2023 - Present</span>
                     <h3 style="margin: 5px 0;">IT Intern - Federal Mogul Powertrain</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        [span_1](start_span)IT Support, PC setup, and SAP ABAP Development (ALV, SE16N, MM03)[span_1](end_span).
+                        [span_0](start_span)IT Support, PC setup, and SAP ABAP Development (ALV, SE16N, MM03).[span_0](end_span)
                     </p>
                 </li>
                 <li style="margin-bottom: 40px; position: relative;">
@@ -295,7 +298,7 @@
                     <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Apr 2024 - May 2025</span>
                     <h3 style="margin: 5px 0;">Art Director / Tech Artist - Mystopia</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        [span_2](start_span)Concept art for 200+ assets, VFX, and optimization for Opera GX Games[span_2](end_span).
+                        [span_1](start_span)Concept art for 200+ assets, VFX, and optimization for Opera GX Games.[span_1](end_span)
                     </p>
                 </li>
                 <li style="margin-bottom: 40px; position: relative;">
@@ -303,18 +306,18 @@
                     <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Apr 2023 - Sep 2023</span>
                     <h3 style="margin: 5px 0;">3D Artist Intern - Funverse Games</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        [span_3](start_span)Environment art (rocks, crystals, buildings) for 'Hit & Boom' MOBA game[span_3](end_span).
+                        [span_2](start_span)Environment art (rocks, crystals, buildings) for 'Hit & Boom' MOBA game.[span_2](end_span)
                     </p>
                 </li>
             </ul>
 
             <div class="cv-section-title">Education</div>
             <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                 <li style="margin-bottom: 20px; position: relative;">
+                <li style="margin-bottom: 20px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-1); border-radius: 50%;"></div>
                     <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Yıldız Technical University</span>
                     <h3 style="margin: 5px 0;">Mathematical Engineering</h3>
-                    [span_4](start_span)<p style="opacity: 0.8; font-size: 0.95rem;">Bachelor's Degree - 4th Year[span_4](end_span).</p>
+                    [span_3](start_span)<p style="opacity: 0.8; font-size: 0.95rem;">Bachelor's Degree - 4th Year.[span_3](end_span)</p>
                 </li>
             </ul>
 
