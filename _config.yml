@@ -13,3 +13,6 @@ nav_enabled: true
 plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
+
+  sass:
+  style: compressed

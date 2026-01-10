@@ -1,0 +1,69 @@
+---
+---
+
+// ==========================================
+// 1. TEMA AYARLARI (ÖNCE BURASI OKUNUR)
+// ==========================================
+
+// --- GENEL AYARLAR ---
+$nav-width: 220px;       // Sol menü genişliği (Senin istediğin dar yapı)
+$nav-width-md: 220px;
+
+// --- AÇIK TEMA (Light Mode) -> BEYAZ & SARI ---
+// Not: Saf sarı beyaz üstünde okunmaz, o yüzden "Bal Sarısı/Turuncu" tonu kullandım.
+$light-background: #ffffff;      // Arka plan bembeyaz
+$light-text: #222222;            // Yazılar koyu gri (Okunabilirlik için)
+$light-primary: #f39c12;         // Linkler ve Butonlar: Tilki Sarısı 🦊
+$light-secondary: #e67e22;       // İkincil renkler
+
+// --- KOYU TEMA (Dark Mode) -> SİYAH & MOR ---
+$dark-background: #050505;       // Arka plan: Zifiri Siyah
+$dark-text: #eeeeee;             // Yazılar: Kırık Beyaz
+$dark-primary: #9b59b6;          // Linkler: Ametist Moru 🔮
+$dark-secondary: #8e44ad;        // Hover (üzerine gelince) rengi
+
+// ==========================================
+// 2. TEMAYI YÜKLE (MOTORU ÇALIŞTIR)
+// ==========================================
+@import "just-the-docs/modules";
+@import "just-the-docs/layout";
+@import "just-the-docs/components";
+
+// ==========================================
+// 3. ÖZEL MÜDAHALELER (İNCE AYARLAR)
+// ==========================================
+
+// --- Sol Menü (Sidebar) Ayarları ---
+.side-bar {
+    // Koyu modda sol menüyü tam siyah yapalım, hafif ayrısın diye sağa çizgi
+    @include mq(md) {
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
+    }
+}
+
+// Dark Modda Sol Menü Rengi (Tam Siyah)
+@media (prefers-color-scheme: dark) {
+    .side-bar {
+        background-color: #000000 !important;
+    }
+    // Arama kutusu rengini uyumlu yap
+    .search-input {
+        background-color: #1a1a1a;
+        border-color: #9b59b6; // Mor çerçeve
+        color: white;
+    }
+}
+
+// Light Modda Sol Menü (Hafif Gri/Beyaz)
+@media (prefers-color-scheme: light) {
+    .side-bar {
+        background-color: #fcfcfc !important;
+        border-right: 1px solid #eee;
+    }
+}
+
+// --- Sağ Üst Linkler (Aux Links) ---
+.site-header .aux-nav .list-item {
+    font-weight: bold;
+    // Renkleri yukarıdaki primary değişkenlerden otomatik alır
+}
