@@ -1,16 +1,19 @@
 ---
 ---
-
-// Hata payını sıfıra indirmek için her şeyi temizledik.
-// Sadece temel genişlik ayarı kalsın.
-
 :root {
-  --nav-width: 220px !important;
+  /* Açık Tema: Beyaz & Altın Sarısı */
+  --body-background-color: #ffffff;
+  --link-color: #FFD700; 
+  --header-bg-color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    --body-background-color: #000000 !important;
-    --link-color: #9b59b6 !important;
+  :root {
+    /* Koyu Tema: Siyah & Mor */
+    --body-background-color: #000000;
+    --link-color: #9b59b6;
+    --header-bg-color: #000000;
   }
 }
+
+/* Buraya ilerleyen aşamada desenlerin CSS kodlarını ekleyeceğiz */
