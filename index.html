@@ -379,10 +379,31 @@
                 </div>
             </div>
         </div>
-
+        
         <div id="art" class="page">
             <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Visual <span class="highlight">Grimoire.</span></h1>
             <p style="opacity: 0.6; margin-bottom: 60px;">Concept art, character design, and environmental storytelling.</p>
+            
+            <h2 class="section-title"><i class="fa-solid fa-cube"></i> 3D Sculpts & Renders</h2>
+            <div class="project-grid">
+
+                <div class="glass-card" onclick="openModal('Where the Fire Sleeps', 'wtfs01.jpg, wtfs02.jpg, wtfs03.jpg, wtfs04.jpg, wtfs05.jpg, wtfs06.jpg, wtfs07.jpg, wtfs08.jpg, wtfs09.jpg, wtfs10.jpg, wtfs11.jpg, wtfs12.jpg', 'Camping scene creating.', 'Tool: Blender, Adobe Substance 3D Painter, Photoshop', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="wtfs01.jpg" alt="3D Scene"></div>
+                    <div class="project-info">
+                        <h3>Where the Fire Sleeps</h3>
+                        <p>Blender Scene (12 Images)</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Sci-Fi Helmet', 'sculpt2.jpg', 'Hard surface modeling study.', 'Tool: Blender', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="sculpt2.jpg" alt="Helmet"></div>
+                    <div class="project-info">
+                        <h3>Sci-Fi Helmet</h3>
+                        <p>Hard Surface</p>
+                    </div>
+                </div>
+
+            </div>
 
             <h2 class="section-title"><i class="fa-solid fa-pen-nib"></i> Concept Art</h2>
             <div class="project-grid">
@@ -405,26 +426,6 @@
 
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-cube"></i> 3D Sculpts & Renders</h2>
-            <div class="project-grid">
-
-                <div class="glass-card" onclick="openModal('Ancient Relic', 'sculpt1.jpg', 'High-poly sculpting and texturing practice.', 'Tool: ZBrush & Substance', 'https://www.artstation.com/uftsimge')">
-                    <div class="project-image"><img src="sculpt1.jpg" alt="Sculpt"></div>
-                    <div class="project-info">
-                        <h3>Ancient Relic</h3>
-                        <p>ZBrush Sculpt</p>
-                    </div>
-                </div>
-
-                <div class="glass-card" onclick="openModal('Sci-Fi Helmet', 'sculpt2.jpg', 'Hard surface modeling study.', 'Tool: Blender', 'https://www.artstation.com/uftsimge')">
-                    <div class="project-image"><img src="sculpt2.jpg" alt="Helmet"></div>
-                    <div class="project-info">
-                        <h3>Sci-Fi Helmet</h3>
-                        <p>Hard Surface</p>
-                    </div>
-                </div>
-
-            </div>
 
             <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> VFX & Shaders</h2>
             <div class="project-grid">
@@ -485,7 +486,13 @@
         <div class="modal-content glass-card">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <div class="modal-body">
-                <div class="modal-image-area"><img id="modal-img" src=""></div>
+
+                <div class="modal-image-area">
+                    <img id="modal-img" src="" style="width: 100%; border-radius: 12px; margin-bottom: 15px;">
+
+                    <div id="modal-gallery" class="gallery-grid"></div>
+                </div>
+
                 <div class="modal-text-area">
                     <h2 id="modal-title"></h2>
                     <p id="modal-desc"></p>
