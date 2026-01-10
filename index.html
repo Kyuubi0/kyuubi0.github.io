@@ -83,17 +83,20 @@
         @keyframes entry { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
         h1 { font-family: var(--font-head); font-size: 5rem; font-weight: 700; line-height: 0.9; margin: 0 0 20px 0; letter-spacing: -3px; }
+        .highlight { color: var(--accent-2); } 
+        
         h2 { font-family: var(--font-head); color: var(--accent-2); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 30px; }
 
         /* --- CV PAGE STYLES --- */
         .cv-container {
-            display: flex; flex-direction: column; position: relative; padding-bottom: 60px;
+            display: flex; flex-direction: column; position: relative; padding-bottom: 80px;
         }
         .cv-section-title {
             color: var(--accent-1); font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;
         }
+        /* Butonun sağ alta sabitlenmesi için stil */
         .download-btn-container {
-            display: flex; justify-content: flex-end; margin-top: 30px;
+            display: flex; justify-content: flex-end; margin-top: 20px;
         }
         .download-btn {
             display: inline-flex; align-items: center; gap: 10px;
@@ -124,7 +127,7 @@
         }
         .lock-btn:hover { background: var(--accent-2); color: black; }
 
-        /* --- ÜST MENÜ & SOSYAL LİNKLER --- */
+        /* --- ÜST MENÜ --- */
         .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
         .social-links { display: flex; gap: 30px; align-items: center; }
         .social-links a { 
@@ -134,9 +137,8 @@
         }
         .social-links a:hover { opacity: 1; color: var(--accent-2); transform: translateY(-2px); }
 
-        /* --- CONTROLS (Theme & Lang) --- */
+        /* --- KONTROLLER --- */
         .controls-area { display: flex; gap: 15px; align-items: center; margin-top: 10px; }
-        
         .theme-switch { position: relative; width: 40px; height: 20px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; inset: 0; background: #111; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); transition: .4s; }
@@ -167,7 +169,6 @@
             content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
             border-width: 6px 6px 0; border-style: solid; border-color: white transparent transparent transparent;
         }
-        
         .duck-svg { 
             width: 60px; height: 60px; position: absolute; bottom: 0;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
@@ -243,7 +244,7 @@
 
     <main class="content">
         <div id="home" class="page active">
-            <h1 data-key="home_title">Simge Temel <br> <span style="color: var(--accent-2);">Creative Tech.</span></h1>
+            <h1 data-key="home_title">Simge Temel <br> <span class="highlight">Creative Tech.</span></h1>
             <p data-key="home_desc" style="max-width: 600px; line-height: 1.6; font-size: 1.1rem; opacity: 0.8;">
                 Matematik Mühendisliği öğrencisi, Oyun Geliştirici ve Siber Güvenlik meraklısı.
                 Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. "Kyuubi" adıyla dijital dünyada iz bırakıyorum.
@@ -281,34 +282,28 @@
             
             <div class="cv-section-title">Experience</div>
             <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-2); border-radius: 50%;"></div>
-                    [span_0](start_span)<span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">June 2025 - Present[span_0](end_span)</span>
+                    <span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">Sep 2023 - Present</span>
                     <h3 style="margin: 5px 0;">IT Intern - Federal Mogul Powertrain</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        [span_1](start_span)Hands-on IT support, PC setup, SAP ABAP Development (ALV reports, SE16N, MM03)[span_1](end_span). <br>
-                        [span_2](start_span)Focus on endpoint protection and vulnerability assessment[span_2](end_span).
+                        [span_1](start_span)IT Support, PC setup, and SAP ABAP Development (ALV, SE16N, MM03)[span_1](end_span).
                     </p>
                 </li>
-
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.5; border-radius: 50%;"></div>
-                    [span_3](start_span)<span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">April 2024 - May 2025[span_3](end_span)</span>
+                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Apr 2024 - May 2025</span>
                     <h3 style="margin: 5px 0;">Art Director / Tech Artist - Mystopia</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        Concept art for 200+ assets, thematic consistency. [span_4](start_span)Modeled and optimized 150+ 3D assets for low-end systems[span_4](end_span). <br>
-                        VFX and shaders development. [span_5](start_span)Contributed to 60,000+ players on Opera GX[span_5](end_span).
+                        [span_2](start_span)Concept art for 200+ assets, VFX, and optimization for Opera GX Games[span_2](end_span).
                     </p>
                 </li>
-
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.5; border-radius: 50%;"></div>
-                    [span_6](start_span)<span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">April 2023 - September 2023[span_6](end_span)</span>
+                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Apr 2023 - Sep 2023</span>
                     <h3 style="margin: 5px 0;">3D Artist Intern - Funverse Games</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;">
-                        [span_7](start_span)Created 100+ 3D environment assets (rocks, crystals, buildings) for MOBA game Hit & Boom[span_7](end_span). <br>
-                        [span_8](start_span)Applied sculpting, retopology, UV unwrapping, and Substance 3D Painter[span_8](end_span).
+                        [span_3](start_span)Environment art (rocks, crystals, buildings) for 'Hit & Boom' MOBA game[span_3](end_span).
                     </p>
                 </li>
             </ul>
@@ -319,45 +314,18 @@
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-1); border-radius: 50%;"></div>
                     <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Yıldız Technical University</span>
                     <h3 style="margin: 5px 0;">Mathematical Engineering</h3>
-                    [span_9](start_span)<p style="opacity: 0.8; font-size: 0.95rem;">Bachelor's Degree - 4th Year[span_9](end_span).</p>
-                </li>
-                <li style="margin-bottom: 20px; position: relative;">
-                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.3; border-radius: 50%;"></div>
-                    [span_10](start_span)<span style="opacity: 0.5; font-weight: bold; font-size: 0.9rem;">Sep 2022 - Sep 2023[span_10](end_span)</span>
-                    <h3 style="margin: 5px 0; opacity: 0.7;">Mechanical Engineering</h3>
-                    [span_11](start_span)<p style="opacity: 0.6; font-size: 0.95rem;">Bachelor's Degree (Transferred)[span_11](end_span).</p>
+                    [span_4](start_span)<p style="opacity: 0.8; font-size: 0.95rem;">Bachelor's Degree - 4th Year[span_4](end_span).</p>
                 </li>
             </ul>
 
-            <div class="cv-section-title">Organizations</div>
-             <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
-                <li style="margin-bottom: 20px; position: relative;">
-                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-2); border-radius: 50%;"></div>
-                    [span_12](start_span)<span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">SKYSEC Member - YTU SKYLAB[span_12](end_span)</span>
-                    <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">
-                        [span_13](start_span)Cybersecurity bootcamp, TryHackMe challenges, CTF competitions (exploitation, log analysis)[span_13](end_span).
-                    </p>
-                </li>
-                <li style="margin-bottom: 20px; position: relative;">
-                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); border-radius: 50%;"></div>
-                    [span_14](start_span)<span style="color: var(--text); font-weight: bold; font-size: 0.9rem;">Board Member - YTU DOGDOK[span_14](end_span)</span>
-                    <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">
-                        [span_15](start_span)Social media management, event organization (Digital Gaming Days 2024), Blender training support[span_15](end_span).
-                    </p>
-                </li>
-            </ul>
-
-            [span_16](start_span)<div class="cv-section-title">Technical Skills[span_16](end_span)</div>
+            <div class="cv-section-title">Technical Skills</div>
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
                 <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">C# (Unity)</span>
                 <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">C / C++</span>
                 <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">ABAP</span>
                 <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">Python</span>
-                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">Matlab</span>
                 <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Burp Suite</span>
                 <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Wireshark</span>
-                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Nmap</span>
-                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Metasploit</span>
             </div>
 
             <div class="download-btn-container">
@@ -401,10 +369,8 @@
     </div>
 
     <script>
-        // --- BLOG ŞİFRE KONTROLÜ ---
         function checkPass() {
             const pass = document.getElementById('blog-pass').value;
-            // Şifre: 1234
             if(pass === "1234") {
                 document.getElementById('blog-lock').style.display = 'none';
                 document.getElementById('blog-content').style.display = 'block';
@@ -415,11 +381,10 @@
             }
         }
 
-        // --- DİL VE DİĞER FONKSİYONLAR ---
         const langData = {
             tr: {
                 nav_home: "Ana Sayfa", nav_game: "Oyun Geliştirme", nav_cyber: "Siber Güvenlik", nav_cv: "Özgeçmiş", nav_blog: "Blog",
-                home_title: "Simge Temel <br> <span style='color: var(--accent-2);'>Creative Tech.</span>",
+                home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
                 home_desc: "Matematik Mühendisliği öğrencisi, Oyun Geliştirici ve Siber Güvenlik meraklısı. Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. 'Kyuubi' adıyla dijital dünyada iz bırakıyorum.",
                 game_title: "Oyun Geliştirme", game_desc: "Unity ve Unreal Engine ile geliştirdiğim projeler.",
                 project_1: "200+ Varlık, Low-poly optimizasyon.", project_2: "3D Çevre tasarımı ve asset üretimi.",
@@ -432,7 +397,7 @@
             },
             en: {
                 nav_home: "Home", nav_game: "Game Dev", nav_cyber: "Cyber Security", nav_cv: "Resume", nav_blog: "Blog",
-                home_title: "Simge Temel <br> <span style='color: var(--accent-2);'>Creative Tech.</span>",
+                home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
                 home_desc: "Mathematical Engineering student, Game Developer, and Cyber Security enthusiast. Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.",
                 game_title: "Game Development", game_desc: "Projects developed with Unity and Unreal Engine.",
                 project_1: "200+ Assets, Low-poly optimization.", project_2: "3D Environment design and asset production.",
