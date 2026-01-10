@@ -1,15 +1,15 @@
 ---
 ---
 
-// Sadece bu kalsın, hata riskini sıfıra indirelim
+// Hata payını sıfıra indirmek için her şeyi temizledik.
+// Sadece temel genişlik ayarı kalsın.
+
 :root {
   --nav-width: 220px !important;
-  --nav-width-md: 220px !important;
 }
 
-// Koyu Mod Mor
 @media (prefers-color-scheme: dark) {
-  :root {
+  body {
     --body-background-color: #000000 !important;
     --link-color: #9b59b6 !important;
   }

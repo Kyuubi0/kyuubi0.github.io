@@ -1,16 +1,20 @@
 remote_theme: just-the-docs/just-the-docs
 
+# Temel Bilgiler
 title: Kyuubi'nin Yeri
 url: "https://kyuubi0.github.io"
 baseurl: ""
 
-aux_links:
-  "TryHackMe": "https://tryhackme.com/p/kullaniciadin"
-  "LinkedIn": "https://linkedin.com/in/kullaniciadin"
-  "ArtStation": "https://artstation.com/kullaniciadin"
-  "GitHub": "https://github.com/kyuubi0"
-  "Itch.io": "https://kullaniciadin.itch.io"
-
+# Eklentileri bu şekilde listele
 plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
+  - jekyll-include-cache
+
+# SASS ayarı
+sass:
+  style: compressed
+
+# Navigasyon
+nav_enabled: true
+search_enabled: true
