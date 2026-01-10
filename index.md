@@ -1,18 +1,38 @@
----
-layout: default
-title: Ana Sayfa
-nav_order: 1
-description: "Kyuubi'nin kişisel web sitesi."
-permalink: /
----
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyuubi'nin Yeri</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="parallax-bg"></div>
 
-# Merhaba, Ben Kyuubi! 👋
+    <nav class="sidebar">
+        <h2>Kyuubi</h2>
+        <ul>
+            <li><a href="#">Ana Sayfa</a></li>
+            <li><a href="#">Game Dev</a></li>
+            <li><a href="#">Cybersecurity</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">CV</a></li>
+        </ul>
+    </nav>
 
-Kişisel web siteme hoş geldiniz. Burada projelerimi, aldığım notları ve teknoloji üzerine düşüncelerimi paylaşıyorum.
+    <header class="top-nav">
+        <div class="social-links">
+            <a href="#">TryHackMe</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+        </div>
+    </header>
 
-## Kategoriler
-- [Game Dev](./game-dev)
-- [Cybersecurity Writeups](./cybersecurity)
-- [Blog](./blogs)
+    <main class="content">
+        <h1>Merhaba, Ben Kyuubi! 👋</h1>
+        <p>Kendi yazdığım sistemle artık daha özgürüm.</p>
+    </main>
 
-[GitHub Profilim](https://github.com/kyuubi0){: .btn .btn-primary }
+    <script src="script.js"></script>
+</body>
+</html>
