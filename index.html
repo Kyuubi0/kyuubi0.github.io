@@ -240,6 +240,135 @@
             .social-links span { display: none; }
             .fox-container { display: none; } /* Mobilde tilkiyi gizle */
         }
+
+                /* --- GAME DEV PAGE ENHANCEMENTS --- */
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 1.5rem !important;
+            margin: 60px 0 30px 0 !important;
+            color: var(--accent-1) !important;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: none !important; /* Eski H2 çizgisini kaldırır */
+        }
+
+        .section-title i {
+            font-size: 1.2rem;
+            color: var(--accent-2);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+
+        .project-card {
+            padding: 0 !important;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.03) !important;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            background: rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .project-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.4s;
+        }
+
+        .project-card:hover .project-overlay { opacity: 1; }
+        .project-card:hover img { transform: scale(1.1); }
+
+        .project-info { padding: 20px; }
+        .project-info h3 {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            margin: 0 0 8px 0;
+            color: var(--accent-2);
+        }
+
+        .project-info p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.5;
+            margin: 0;
+        }
+
+        .project-overlay a {
+            width: 45px;
+            height: 45px;
+            background: var(--accent-2);
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        /* Scroll çubuğu güzelleştirme */
+        .content::-webkit-scrollbar { width: 5px; }
+        .content::-webkit-scrollbar-thumb { background: var(--glass); border-radius: 10px; }
+    
+                /* --- MODAL TASARIMI --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999;
+            inset: 0; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px); align-items: center; justify-content: center;
+            padding: 20px; animation: modalFade 0.3s ease;
+        }
+
+        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+
+        .modal-content {
+            max-width: 1000px; width: 90%; max-height: 90vh;
+            position: relative; overflow-y: auto; padding: 40px !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+        }
+
+        .close-modal {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 30px; cursor: pointer; color: var(--text); opacity: 0.5; transition: 0.3s;
+        }
+        .close-modal:hover { opacity: 1; color: var(--accent-2); }
+
+        .modal-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
+
+        .modal-image-area img {
+            width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .modal-text-area h2 { border: none !important; margin-bottom: 10px; font-size: 2.2rem; }
+
+        .modal-extra {
+            margin-top: 25px; padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; opacity: 0.8;
+        }
+
+        /* Mobilde modalı alt alta getir */
+        @media (max-width: 850px) {
+            .modal-body { grid-template-columns: 1fr; }
+        }
+
     </style>
 </head>
 <body class="dark-theme">
@@ -257,8 +386,8 @@
                     <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </label>
-                <button class="lang-btn" onclick="toggleLanguage()">TR / EN</button>
-            </div>
+                </div>
+        </div>
         </div>
         <ul class="nav-links">
             <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> <span data-key="nav_home">Ana Sayfa</span></a></li>
@@ -287,23 +416,58 @@
                 Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. "Kyuubi" adıyla dijital dünyada iz bırakıyorum.
             </p>
         </div>
+    <div id="game-dev" class="page">
+        <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Build <span class="highlight">&</span> Create.</h1>
+        <p style="opacity: 0.6; margin-bottom: 60px;">Geliştirdiğim projeler, tasarladığım dünyalar ve teknik çalışmalarım.</p>
 
-        <div id="game-dev" class="page">
-            <h2 data-key="game_title">Game Development</h2>
-            <p data-key="game_desc">Unity ve Unreal Engine ile geliştirdiğim projeler.</p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 30px;">
-                <div class="glass-card">
-                    <i class="fa-brands fa-unity" style="font-size: 2.2rem; color: var(--accent-2); margin-bottom: 15px;"></i>
-                    <h3 style="margin: 10px 0;">Mystopia Assets</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.7;" data-key="project_1">200+ Varlık, Low-poly optimizasyon.</p>
-                </div>
-                <div class="glass-card">
-                    <i class="fa-solid fa-cube" style="font-size: 2.2rem; color: var(--accent-1); margin-bottom: 15px;"></i>
-                    <h3 style="margin: 10px 0;">Hit & Boom</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.7;" data-key="project_2">3D Çevre tasarımı ve asset üretimi.</p>
-                </div>
+        <h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Game Projects</h2>
+        <div class="project-grid">
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
+                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
+            </div>
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
+                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
+            </div>
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
+                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
+            </div>
+            </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-cube"></i> 3D Models & Assets</h2>
+        <div class="project-grid">
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="asset1.jpg" alt="3D 1"></div>
+                <div class="project-info"><h3>Low-Poly Village</h3><p>200+ Optimize edilmiş oyun varlığı.</p></div>
             </div>
         </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-palette"></i> Concept Arts</h2>
+        <div class="project-grid">
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="art1.jpg" alt="Concept 1"></div>
+                <div class="project-info"><h3>Environment Study</h3><p>Dijital boyama ve kompozisyon çalışması.</p></div>
+            </div>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-bolt-lightning"></i> VFX Studies</h2>
+        <div class="project-grid">
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="vfx1.gif" alt="VFX 1"></div>
+                <div class="project-info"><h3>Hextech Explosion</h3><p>Shader Graph ve Particle System denemeleri.</p></div>
+            </div>
+        </div>
+
+        <h2 class="section-title"><i class="fa-solid fa-mug-hot"></i> Personal Works</h2>
+        <div class="project-grid">
+            <div class="glass-card project-card">
+                <div class="project-image"><img src="personal1.jpg" alt="Personal 1"></div>
+                <div class="project-info"><h3>Custom Engine Tool</h3><p>Unity editor için geliştirilen yardımcı araçlar.</p></div>
+            </div>
+        </div>
+    </div>
 
         <div id="cyber" class="page">
             <h2 data-key="cyber_title">Cyber Security</h2>
@@ -352,6 +516,25 @@
                 </article>
             </div>
         </div>
+
+        <div id="project-modal" class="modal">
+            <div class="modal-content glass-card">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <div class="modal-image-area">
+                        <img id="modal-img" src="" alt="Project Detail">
+                    </div>
+                    <div class="modal-text-area">
+                        <h2 id="modal-title">Project Title</h2>
+                        <div id="modal-tags" class="project-tags"></div>
+                        <p id="modal-description">Proje detayları buraya gelecek...</p>
+                        <div id="modal-extra-info" class="modal-extra">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <div class="fox-container">
