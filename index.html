@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* 🌑 YENİ GECE MODU (Sıcak & Analog Vibe) */
-            --bg: #12100e;            /* Koyu kömür kahvesi */
-            --text: #d4c7b0;          /* Eskitilmiş kağıt rengi */
-            --accent-1: #a67c52;      /* Sıcak Bakır */
-            --accent-2: #e6b31e;      /* Amber / Mum Işığı */
-            --sidebar-bg: #1a1714;    /* Derin gölge kahvesi */
+            /* 🌑 SICAK GECE MODU (Apple değil, Analog/Vintage Vibe) */
+            --bg: #12100e;            
+            --text: #d4c7b0;          
+            --accent-1: #a67c52;      
+            --accent-2: #e6b31e;      
+            --sidebar-bg: #1a1714;    
             --grid-color: rgba(166, 124, 82, 0.06);
             --font-head: 'Space Grotesk', sans-serif;
             --font-main: 'Outfit', sans-serif;
         }
 
         body.light-theme {
-            /* ☀️ GÜNDÜZ MODU (Beğenilen Vintage Versiyon) */
+            /* ☀️ GÜNDÜZ MODU */
             --bg: #f5f2e9; 
             --text: #2d241e;
             --accent-1: #8d6e63; 
@@ -31,7 +31,7 @@
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: var(--font-main); transition: background 0.8s ease, color 0.8s ease;
+            font-family: var(--font-main); transition: background 0.6s ease, color 0.6s ease;
             display: flex; height: 100vh; overflow: hidden;
         }
 
@@ -43,11 +43,11 @@
             background-size: 40px 40px; z-index: -2; pointer-events: none;
         }
 
-        /* 🌌 VIBRANT AURA */
+        /* 🌌 AURA BLOBS */
         #aura-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
         .aura-blob {
-            position: absolute; border-radius: 50%; filter: blur(140px);
-            opacity: 0.12; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: absolute; border-radius: 50%; filter: blur(120px);
+            opacity: 0.15; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         /* SIDEBAR */
@@ -57,14 +57,14 @@
             position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
         }
 
-        .sidebar-header { padding: 0 40px; margin-bottom: 40px; }
+        .sidebar-header { padding: 0 40px; margin-bottom: 20px; }
         .sidebar-header h2 { 
             font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; 
             letter-spacing: -1px; margin: 0; color: var(--accent-2); 
         }
 
-        /* TEMA ANAHTARI */
-        .theme-switch-container { padding: 0 40px; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; opacity: 0.7; }
+        /* TEMA SWITCH */
+        .theme-switch-wrapper { padding: 0 40px; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; opacity: 0.6; font-size: 0.75rem; }
         .theme-switch { position: relative; width: 34px; height: 18px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; inset: 0; background: #333; border-radius: 20px; transition: .4s; }
@@ -79,38 +79,32 @@
             border-radius: 8px; transition: 0.3s; opacity: 0.5; cursor: pointer;
         }
         .nav-links a:hover, .nav-links a.active { 
-            opacity: 1; 
-            background: rgba(166, 124, 82, 0.1); 
-            color: var(--accent-2); 
+            opacity: 1; background: rgba(166, 124, 82, 0.1); color: var(--accent-2); 
         }
         .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
 
         /* CONTENT */
-        .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; position: relative; }
+        .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; }
         .page { display: none; padding: 100px 80px; animation: entry 0.8s ease forwards; max-width: 800px; }
         .page.active { display: block; }
-        @keyframes entry { 
-            from { opacity: 0; transform: translateY(15px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes entry { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-family: var(--font-head); font-size: clamp(3.5rem, 10vw, 5.5rem); font-weight: 700; line-height: 0.9; margin: 0 0 30px 0; letter-spacing: -3px; color: var(--text); }
-        p { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; max-width: 600px; }
+        h1 { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; line-height: 0.9; margin-bottom: 25px; letter-spacing: -3px; }
+        p { font-size: 1.2rem; line-height: 1.7; opacity: 0.8; }
 
-        /* 🦆 SMOOTH DUCK */
-        .duck-container {
-            position: fixed; bottom: 20px; left: 300px; right: 40px; height: 50px; 
+        /* 🦊 TILKİ ANIMASYONU (FOX) */
+        .fox-container {
+            position: fixed; bottom: 30px; left: 300px; right: 40px; height: 60px; 
             pointer-events: none; z-index: 2000;
         }
-        body.light-theme .duck-container { opacity: 0.3; } /* Gündüz modunda biraz daha silik */
-        .duck-svg { 
-            width: 45px; height: 45px; position: absolute; 
-            filter: drop-shadow(0 0 15px var(--accent-2)); 
-            animation: duckSmoothMove 15s cubic-bezier(0.45, 0, 0.55, 1) infinite; 
+        .fox-svg { 
+            width: 50px; height: 50px; position: absolute; 
+            filter: drop-shadow(0 0 10px var(--accent-1));
+            animation: foxMove 20s cubic-bezier(0.45, 0, 0.55, 1) infinite; 
         }
-        @keyframes duckSmoothMove { 
+        @keyframes foxMove { 
             0% { left: 0%; transform: scaleX(1); } 
-            50% { left: 90%; transform: scaleX(-1); } 
+            50% { left: 92%; transform: scaleX(-1); } 
             100% { left: 0%; transform: scaleX(1); } 
         }
 
@@ -119,25 +113,25 @@
         .social-links { display: flex; gap: 30px; }
         .social-links a { 
             color: var(--text); font-size: 0.75rem; text-decoration: none; 
-            opacity: 0.4; transition: 0.3s; font-family: var(--font-head); letter-spacing: 1.5px; text-transform: uppercase;
+            opacity: 0.4; transition: 0.3s; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px;
         }
         .social-links a:hover { opacity: 1; color: var(--accent-2); transform: translateY(-2px); }
 
         /* RESPONSIVE */
         @media (max-width: 900px) {
             body { flex-direction: column; overflow-y: auto; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 30px 0; border-right: none; border-bottom: 1px solid rgba(166, 124, 82, 0.1); }
-            .content { margin-left: 0; width: 100%; height: auto; }
-            .page { padding: 60px 30px; }
-            .top-nav { position: relative; padding: 20px; width: 100%; display: flex; justify-content: center; box-sizing: border-box; }
-            .duck-container { display: none; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 30px 0; border-right: none; }
+            .content { margin-left: 0; width: 100%; }
+            .page { padding: 40px 25px; }
+            .top-nav { position: relative; padding: 20px; display: flex; justify-content: center; }
+            .fox-container { display: none; }
         }
     </style>
 </head>
 <body class="dark-theme">
 
     <div id="aura-container">
-        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -150px; right: -100px; background: var(--accent-1);"></div>
+        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -100px; right: -100px; background: var(--accent-1);"></div>
         <div class="aura-blob" id="blob2" style="width: 500px; height: 500px; bottom: -100px; left: 100px; background: var(--accent-2);"></div>
     </div>
 
@@ -145,22 +139,19 @@
         <div class="sidebar-header">
             <h2>uftsimge_log</h2>
         </div>
-        
-        <div class="theme-switch-container">
-            <span>Gece</span>
+        <div class="theme-switch-wrapper">
+            <span>DARK</span>
             <label class="theme-switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider"></span>
             </label>
-            <span>Gündüz</span>
+            <span>LIGHT</span>
         </div>
-
         <ul class="nav-links">
             <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
             <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> Game Dev</a></li>
             <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik</a></li>
             <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> Özgeçmiş</a></li>
-            <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> Blog</a></li>
         </ul>
     </nav>
 
@@ -168,7 +159,6 @@
         <div class="social-links">
             <a href="https://github.com/Kyuubi0" target="_blank">GitHub</a>
             <a href="https://www.linkedin.com/in/simge-temel/" target="_blank">LinkedIn</a>
-            <a href="https://uftsimge.itch.io" target="_blank">Itch.io</a>
             <a href="https://tryhackme.com/p/uftsimge" target="_blank">THM</a>
         </div>
     </header>
@@ -180,74 +170,48 @@
         </div>
 
         <div id="game-dev" class="page">
-            <h1>Game <span style="color: var(--accent-1);">Dev.</span></h1>
-            <p>Sınırları zorlayan mekanikler ve atmosferik dünyalar. Unity ve C# ile geliştirdiğim oyun projelerim yakında burada.</p>
+            <h1>Game <span style="color: var(--accent-1);">Design.</span></h1>
+            <p>Unity ve C# ile şekillenen dünyalar. Atmosferik ve mekanik odaklı oyun projelerim yakında burada.</p>
         </div>
 
         <div id="cyber" class="page">
             <h1>Cyber <span style="color: var(--accent-2);">Security.</span></h1>
-            <p>Sistemlerin açıklarını anlamak, onları korumanın en iyi yoludur. TryHackMe çözümleri ve siber güvenlik araştırmalarım.</p>
+            <p>Güvenlik açıklarını keşfetmek ve sistemleri daha dirençli hale getirmek üzerine yaptığım çalışmalar.</p>
         </div>
 
         <div id="cv" class="page">
             <h1>Resume.</h1>
-            <p>Yolculuğumun teknik detayları, yetkinliklerim ve üzerinde çalıştığım teknolojiler.</p>
-        </div>
-
-        <div id="blog" class="page">
-            <h1>Thoughts.</h1>
-            <p>Teknoloji, sanat ve geliştirme süreçleri üzerine notlar.</p>
+            <p>Teknik yetkinliklerim ve profesyonel gelişim yolculuğum.</p>
         </div>
     </main>
 
-    <div class="duck-container">
-        <svg class="duck-svg" viewBox="0 0 512 512">
-            <path fill="#FFD700" d="M160 128c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v32H160v-32zM32 256c0-70.7 57.3-128 128-128h192c70.7 0 128 57.3 128 128v64c0 70.7-57.3 128-128 128H160c-70.7 0-128-57.3-128-128v-64z"/>
-            <circle fill="#000" cx="200" cy="250" r="20"/><path fill="#FF8C00" d="M448 256h64v32h-64z"/>
+    <div class="fox-container">
+        <svg class="fox-svg" viewBox="0 0 512 512" fill="var(--accent-1)">
+            <path d="M495.9 111.1c-14-16.1-33.1-26.6-53.8-29.6-1.5-.2-3-.3-4.5-.3-10.8 0-21.2 3-30.2 8.4-1.2.7-2.3 1.5-3.5 2.3L288 168l-44.5-31.5c-2.1-1.5-4.4-2.7-6.8-3.7l-96-40c-15.6-6.5-33.2-5.4-47.9 3.1C78 104.5 69.5 120.2 69.5 137.4v133.5c0 14.5 6.1 28.3 16.8 38.1l144 132c14.6 13.4 37.1 13.4 51.7 0l144-132c10.7-9.8 16.8-23.6 16.8-38.1V137.4c0-10.2-3-20.1-8.9-26.3zM256 414.4l-128-117.3V148l80 33.3 48 34.1 48-34.1 80-33.3v149.1l-128 117.3z"/>
         </svg>
     </div>
 
     <script>
-        // Sayfa Değiştirme Fonksiyonu
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             
-            const targetPage = document.getElementById(pageId);
-            if (targetPage) {
-                targetPage.classList.add('active');
-            }
-
-            // Tıklanan butonu bul ve aktif et
-            const clickedLink = document.querySelector(`.nav-links a[onclick="showPage('${pageId}')"]`);
-            if (clickedLink) {
-                clickedLink.classList.add('active');
-            }
-
-            // İçerik alanını yukarı kaydır (Mobilde önemli)
+            document.getElementById(pageId).classList.add('active');
+            const btn = document.querySelector(`a[onclick="showPage('${pageId}')"]`);
+            if(btn) btn.classList.add('active');
             document.querySelector('.content').scrollTop = 0;
         }
 
-        // Tema Değiştirme
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('change', () => {
+        document.getElementById('theme-toggle').addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
 
-        // Mouse Hareketine Duyarlı Aura Blobları
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
-            // Değerleri yumuşatmak için bölüyoruz
-            mX = (window.innerWidth / 2 - e.pageX) / 35;
-            mY = (window.innerHeight / 2 - e.pageY) / 35;
-            
-            const b1 = document.getElementById('blob1');
-            const b2 = document.getElementById('blob2');
-            
-            if(b1 && b2) {
-                b1.style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
-                b2.style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
-            }
+            mX = (window.innerWidth / 2 - e.pageX) / 40;
+            mY = (window.innerHeight / 2 - e.pageY) / 40;
+            document.getElementById('blob1').style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
+            document.getElementById('blob2').style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
         });
     </script>
 </body>
