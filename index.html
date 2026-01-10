@@ -4,44 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyuubi'nin Yeri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <div id="parallax-bg"></div>
+<body class="dark-theme"> <div id="parallax-bg"></div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
             <h2>Kyuubi</h2>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
         </div>
         <ul class="nav-links">
-            <li><a href="./index.html" class="active">Ana Sayfa</a></li>
-            <li><a href="#">Game Dev</a></li>
-            <li><a href="#">Cybersecurity</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">CV / Özgeçmiş</a></li>
+            <li><a href="#"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
+            <li><a href="#"><i class="fa-solid fa-gamepad"></i> Game Dev</a></li>
+            <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</a></li>
+            <li><a href="#"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
+            <li><a href="#"><i class="fa-solid fa-file-pdf"></i> CV</a></li>
         </ul>
     </nav>
 
     <header class="top-nav">
         <div class="social-links">
-            <a href="https://tryhackme.com/p/kullaniciadin" target="_blank">TryHackMe</a>
-            <a href="https://linkedin.com/in/kullaniciadin" target="_blank">LinkedIn</a>
-            <a href="https://artstation.com/kullaniciadin" target="_blank">ArtStation</a>
-            <a href="https://github.com/kyuubi0" target="_blank">GitHub</a>
-            <a href="https://kullaniciadin.itch.io" target="_blank">Itch.io</a>
+            <a href="#" title="TryHackMe"><i class="fa-solid fa-terminal"></i></a>
+            <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" title="ArtStation"><i class="fa-brands fa-artstation"></i></a>
+            <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" title="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
         </div>
     </header>
 
     <main class="content">
-        <section class="hero">
+        <div class="container">
             <h1>Merhaba, Ben Kyuubi! 👋</h1>
             <p>Kendi sistemime hoş geldiniz. Burada projelerimi ve notlarımı paylaşıyorum.</p>
-            
-            <div class="status-card">
-                <h3>Güncel Durum</h3>
-                <p>Şu an web sitemin yeni arayüzü üzerinde çalışıyorum. 🛠️</p>
-            </div>
-        </section>
+        </div>
     </main>
 
     <script src="./script.js"></script>

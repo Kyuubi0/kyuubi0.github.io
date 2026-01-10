@@ -1,6 +1,15 @@
+// TEMA DEĞİŞTİRME
+const toggle = document.getElementById('theme-toggle');
+toggle.addEventListener('change', () => {
+    document.body.classList.toggle('light-theme');
+    document.body.classList.toggle('dark-theme');
+});
+
+// PARALLAX EFECT
 document.addEventListener("mousemove", (e) => {
     const bg = document.getElementById("parallax-bg");
-    const moveX = (window.innerWidth / 2 - e.pageX) / 30;
-    const moveY = (window.innerHeight / 2 - e.pageY) / 30;
-    bg.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    // Sayı ne kadar küçülürse hareket o kadar artar
+    const x = (window.innerWidth / 2 - e.pageX) / 15;
+    const y = (window.innerHeight / 2 - e.pageY) / 15;
+    bg.style.transform = `translate(${x}px, ${y}px)`;
 });
