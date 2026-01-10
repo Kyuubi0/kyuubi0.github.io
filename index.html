@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyuubi | Digital Grimoire</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+    <title>Kyuubi | Hextech Grimoire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@200;400;600&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg: #020406;
-            --text: #e0e6ed;
-            --accent-1: #6c5ce7; 
-            --accent-2: #00cec9; 
-            --sidebar-bg: rgba(4, 6, 12, 0.98);
-            --glass: rgba(255, 255, 255, 0.04);
+            /* 🧪 ARCANE NIGHT: Zaun & Hextech Fusion */
+            --bg: #050a0f; /* Derin Gece Mavisi */
+            --text: #d1d9e0;
+            --accent-1: #7d5fff; /* Shimmer Moru */
+            --accent-2: #00f2ff; /* Hextech Mavisi */
+            --sidebar-bg: rgba(6, 11, 17, 0.98);
+            --glass: rgba(0, 242, 255, 0.03);
+            --font-main: 'Geist', sans-serif;
+            --font-head: 'Cinzel', serif;
         }
 
         body.light-theme {
+            /* 📜 ELITE DAY: Piltover Academic */
             --bg: #f5f2e9; 
             --text: #2d241e;
             --accent-1: #8d6e63; 
@@ -27,161 +31,156 @@
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: 'Outfit', sans-serif; /* Ultra Modern & Temiz */
+            font-family: var(--font-main);
             display: flex; overflow: hidden;
-            transition: all 0.6s ease;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* 🌌 KENDİ KENDİNE HAREKET EDEN AURALAR */
+        /* 🌫️ ADVANCED AURA PARALLAX */
         #aura-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; pointer-events: none;
         }
 
         .aura-blob {
-            position: absolute; border-radius: 50%; filter: blur(140px);
-            opacity: 0.15; animation: floating 25s infinite alternate ease-in-out;
+            position: absolute; border-radius: 50%; filter: blur(150px);
+            opacity: 0.2; animation: shimmer 20s infinite alternate ease-in-out;
         }
 
-        @keyframes floating {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(120px, 80px) scale(1.1); }
-            100% { transform: translate(-80px, 160px) scale(0.95); }
+        @keyframes shimmer {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate(150px, -100px) rotate(180deg) scale(1.2); }
         }
 
-        /* SIDEBAR */
+        /* SIDEBAR: Ultra Clean & Modern */
         .sidebar {
             width: 280px; height: 100vh; background: var(--sidebar-bg);
-            backdrop-filter: blur(40px); border-right: 1px solid var(--glass);
+            backdrop-filter: blur(50px); border-right: 1px solid var(--glass);
             position: fixed; display: flex; flex-direction: column; padding: 60px 0;
             z-index: 1000;
         }
 
-        .sidebar-header { padding: 0 40px; margin-bottom: 50px; }
+        .sidebar-header { padding: 0 45px; margin-bottom: 60px; display: flex; justify-content: space-between; align-items: center;}
         .sidebar-header h2 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 2rem; letter-spacing: 1px; margin: 0; font-style: italic;
+            font-family: var(--font-head); 
+            font-size: 1.6rem; letter-spacing: 3px; margin: 0;
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
         .nav-links { list-style: none; padding: 0 25px; }
-        .nav-links li { margin-bottom: 5px; }
+        .nav-links li { margin-bottom: 8px; }
         .nav-links a { 
-            color: var(--text); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px;
-            text-transform: uppercase; display: flex; align-items: center; padding: 16px 20px; 
-            border-radius: 14px; transition: 0.4s; opacity: 0.5;
+            color: var(--text); text-decoration: none; font-size: 0.75rem; letter-spacing: 2px;
+            text-transform: uppercase; display: flex; align-items: center; padding: 14px 22px; 
+            border-radius: 10px; transition: 0.4s; opacity: 0.4; font-weight: 400;
         }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; background: var(--glass); color: var(--accent-2); }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; background: var(--glass); color: var(--accent-2); border-left: 2px solid var(--accent-2); }
 
         /* CONTENT */
         .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; }
-        .page { display: none; padding: 120px 10%; animation: slideIn 0.8s ease forwards; }
+        .page { display: none; padding: 120px 10%; animation: arcFade 1s ease forwards; }
         .page.active { display: block; }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes arcFade { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
 
-        h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 500; line-height: 1.1; margin-bottom: 2rem; }
-        p { font-weight: 200; line-height: 2; font-size: 1.15rem; opacity: 0.8; max-width: 650px; }
+        h1 { font-family: var(--font-head); font-size: 4.5rem; font-weight: 400; line-height: 1; margin-bottom: 2rem; }
+        p { font-weight: 200; line-height: 2; font-size: 1.1rem; opacity: 0.7; max-width: 600px; }
 
-        /* 🦆 RUBBER DUCK (SADECE SİYAH TEMADA) */
+        /* 🦆 DEBUG DUCK (Zaun Style) */
         .duck-path {
-            position: fixed; bottom: 15px; left: 290px; right: 20px;
-            height: 50px; pointer-events: none; z-index: 2000;
-            display: block; /* Varsayılan açık */
+            position: fixed; bottom: 20px; left: 300px; right: 40px;
+            height: 40px; pointer-events: none; z-index: 2000;
         }
-        body.light-theme .duck-path { display: none; } /* Açık temada gizle */
+        body.light-theme .duck-path { display: none; } 
 
         .duck {
-            width: 40px; height: 40px; position: absolute;
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/48/Rubber_Duckie.png');
-            background-size: contain; background-repeat: no-repeat;
-            animation: duckWalk 20s linear infinite;
+            width: 35px; height: 35px; position: absolute;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/48/Rubber_Duckie.png') no-repeat center/contain;
+            filter: drop-shadow(0 0 10px var(--accent-2)); /* Hextech Glow */
+            animation: duckWalk 25s linear infinite;
         }
 
         @keyframes duckWalk {
             0% { left: 0%; transform: scaleX(-1); }
-            49% { transform: scaleX(-1); }
             50% { left: 95%; transform: scaleX(1); }
-            99% { transform: scaleX(1); }
             100% { left: 0%; transform: scaleX(-1); }
         }
-
-        /* SOCIALS */
-        .top-nav { position: fixed; top: 0; right: 0; padding: 45px; z-index: 100; }
-        .social-links { display: flex; gap: 15px; }
-        .social-links a { 
-            color: var(--text); font-size: 1.1rem; opacity: 0.4; transition: 0.3s;
-            width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; border: 1px solid var(--glass); background: var(--glass);
-        }
-        .social-links a:hover { opacity: 1; color: var(--accent-2); border-color: var(--accent-2); transform: translateY(-5px); }
 
         /* THEME SWITCH */
         .theme-switch { position: relative; width: 40px; height: 20px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #222; transition: .4s; border-radius: 20px; }
-        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
+        .slider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #1a1f26; transition: .4s; border-radius: 20px; border: 1px solid var(--glass); }
+        .slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background: var(--accent-2); }
         input:checked + .slider:before { transform: translateX(20px); }
+
+        /* SOCIALS */
+        .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { 
+            color: var(--text); font-size: 1.2rem; opacity: 0.4; transition: 0.4s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .social-links a:hover { opacity: 1; color: var(--accent-2); transform: scale(1.1); }
     </style>
 </head>
 <body class="dark-theme">
 
     <div id="aura-container">
-        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -150px; right: -150px; background: var(--accent-1); animation-delay: 0s;"></div>
-        <div class="aura-blob" id="blob2" style="width: 600px; height: 600px; bottom: -150px; left: -150px; background: var(--accent-2); animation-delay: -7s;"></div>
+        <div class="aura-blob" id="blob1" style="width: 800px; height: 800px; top: -200px; right: -200px; background: var(--accent-1); animation-delay: 0s;"></div>
+        <div class="aura-blob" id="blob2" style="width: 600px; height: 600px; bottom: -150px; left: -150px; background: var(--accent-2); animation-delay: -5s;"></div>
+        <div class="aura-blob" id="blob3" style="width: 400px; height: 400px; top: 40%; left: 30%; background: #00cec9; opacity: 0.05; animation-duration: 30s;"></div>
     </div>
 
     <nav class="sidebar">
-        <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center;">
-            <h2>Kyuubi</h2>
+        <div class="sidebar-header">
+            <h2>KYUUBI</h2>
             <label class="theme-switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider"></span>
             </label>
         </div>
         <ul class="nav-links">
-            <li><a href="javascript:void(0)" onclick="showPage('home')" class="active"><i class="fa-solid fa-house-user"></i> Home</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('game-dev')"><i class="fa-solid fa-shapes"></i> Game Dev</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('cyber')"><i class="fa-solid fa-fingerprint"></i> Cyber</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('art')"><i class="fa-solid fa-wand-magic-sparkles"></i> Artworks</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('blog')"><i class="fa-solid fa-key"></i> Blog</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('game-dev')"><i class="fa-solid fa-cube"></i> Build</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('cyber')"><i class="fa-solid fa-ghost"></i> Lab</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('art')"><i class="fa-solid fa-palette"></i> Art</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('blog')"><i class="fa-solid fa-key"></i> Grimoire</a></li>
         </ul>
     </nav>
 
     <header class="top-nav">
         <div class="social-links">
-            <a href="#" title="TryHackMe"><i class="fa-solid fa-mask"></i></a>
-            <a href="#" title="ArtStation"><i class="fa-brands fa-artstation"></i></a>
-            <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" title="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
-            <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-solid fa-terminal"></i></a>
+            <a href="#"><i class="fa-brands fa-artstation"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-itch-io"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
         </div>
     </header>
 
     <main class="content">
         <div id="home" class="page active">
-            <h1>Elegance <br> in <span style="color: var(--accent-2);">Cipher.</span></h1>
-            <p>Minimalist tasarımın siber güvenlik ve oyun geliştirme dünyasıyla olan sofistike bağına hoş geldiniz.</p>
+            <h1>The <br> <span style="font-style: italic;">Hextech</span> <br> Archive.</h1>
+            <p>Siber güvenlik, oyun tasarımı ve dijital sanatın simyasal birleşimi. Piltover'ın düzeniyle Zaun'un kaosu arasında bir yerde.</p>
         </div>
 
         <div id="blog" class="page">
-            <div id="blog-lock" style="text-align: center; padding: 60px; background: var(--glass); border-radius: 40px; border: 1px solid var(--glass);">
-                <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem;">Vault is Locked</h2>
-                <p>Devam etmek için erişim anahtarını girin.</p>
-                <div style="margin-top: 30px;">
-                    <input type="password" id="blog-pass" placeholder="••••••••" style="padding: 15px; border-radius: 12px; border: none; background: rgba(0,0,0,0.3); color: white; text-align: center; font-size: 1.2rem;">
-                    <button onclick="checkPass()" style="padding: 15px 30px; border-radius: 12px; border: none; background: var(--accent-2); color: #000; font-weight: 700; cursor: pointer; margin-left: 10px;">UNLOCK</button>
-                </div>
+            <div id="blog-lock" style="text-align: center; padding: 60px; background: var(--glass); border-radius: 20px; border: 1px solid var(--glass);">
+                <h2 style="font-family: var(--font-head);">Vault is Sealed</h2>
+                <input type="password" id="blog-pass" placeholder="Enter Hex-Key..." style="padding: 15px; border-radius: 8px; border: 1px solid var(--accent-1); background: transparent; color: white; text-align: center; margin-top: 20px;">
+                <button onclick="checkPass()" style="padding: 15px 30px; border-radius: 8px; border: none; background: var(--accent-2); color: #000; font-weight: 700; cursor: pointer; margin-left: 10px;">UNLOCK</button>
             </div>
             <div id="blog-content" style="display: none;">
-                <h1>The Grimoire</h1>
-                <p>Hoş geldin. Gizli dökümanlar yükleniyor...</p>
+                <h1>Digital Grimoire</h1>
+                <p>Erişim Onaylandı. Veriler deşifre ediliyor...</p>
             </div>
         </div>
         
-        <div id="game-dev" class="page"><h1>Game Design</h1></div>
-        <div id="cyber" class="page"><h1>Security Lab</h1></div>
-        <div id="art" class="page"><h1>Gallery</h1></div>
+        <div id="game-dev" class="page"><h1>Constructs</h1></div>
+        <div id="cyber" class="page"><h1>Breach Protocol</h1></div>
+        <div id="art" class="page"><h1>Visual Grimoire</h1></div>
     </main>
 
     <div class="duck-path">
@@ -200,25 +199,24 @@
             if(document.getElementById('blog-pass').value === "simge.temel") {
                 document.getElementById('blog-lock').style.display = 'none';
                 document.getElementById('blog-content').style.display = 'block';
-            } else { alert("Erişim Reddedildi."); }
+            } else { alert("Key Mismatch."); }
         }
 
         document.getElementById('theme-toggle').addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
 
-        // PARALLAX
-        let mouseX = 0, mouseY = 0;
+        // HEXTECH PARALLAX
+        let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
-            mouseX = (window.innerWidth / 2 - e.pageX) / 45;
-            mouseY = (window.innerHeight / 2 - e.pageY) / 45;
+            mX = (window.innerWidth / 2 - e.pageX) / 45;
+            mY = (window.innerHeight / 2 - e.pageY) / 45;
         });
 
         function animate() {
-            const b1 = document.getElementById('blob1');
-            const b2 = document.getElementById('blob2');
-            b1.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            b2.style.transform = `translate3d(${-mouseX}px, ${-mouseY}px, 0)`;
+            document.getElementById('blob1').style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
+            document.getElementById('blob2').style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
+            document.getElementById('blob3').style.transform = `translate3d(${mX * 0.5}px, ${mY * 0.5}px, 0)`;
             requestAnimationFrame(animate);
         }
         animate();
