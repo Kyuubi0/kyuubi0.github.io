@@ -1,19 +1,43 @@
 ---
 ---
+
+// 1. ANA DEĞİŞKENLER (Zorla Uygula)
 :root {
-  /* Açık Tema: Beyaz & Altın Sarısı */
-  --body-background-color: #ffffff;
-  --link-color: #FFD700; 
-  --header-bg-color: #ffffff;
+  --nav-width: 220px !important;
+  --nav-width-md: 220px !important;
 }
 
+// 2. KOYU MOD: Siyah & Mor
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Koyu Tema: Siyah & Mor */
-    --body-background-color: #000000;
-    --link-color: #9b59b6;
-    --header-bg-color: #000000;
+    --body-background-color: #000000 !important;
+    --header-bg-color: #000000 !important;
+    --link-color: #9b59b6 !important;
+    --btn-primary-bg-color: #9b59b6 !important;
+    --nav-bg-color: #000000 !important;
   }
+  body, .side-bar { background-color: #000000 !important; }
 }
 
-/* Buraya ilerleyen aşamada desenlerin CSS kodlarını ekleyeceğiz */
+// 3. AÇIK MOD: Beyaz & Altın Sarısı
+@media (prefers-color-scheme: light) {
+  :root {
+    --body-background-color: #ffffff !important;
+    --header-bg-color: #ffffff !important;
+    --link-color: #f1c40f !important; // Altın Sarısı
+    --btn-primary-bg-color: #f1c40f !important;
+    --nav-bg-color: #ffffff !important;
+  }
+  body, .side-bar { background-color: #ffffff !important; }
+}
+
+// 4. DÜZEN AYARLARI
+.side-bar {
+  width: var(--nav-width) !important;
+}
+
+@media (min-width: 66.5rem) {
+  .main-content-wrap {
+    margin-left: var(--nav-width) !important;
+  }
+}
