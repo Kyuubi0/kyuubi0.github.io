@@ -3,104 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyuubi'nin Yeri</title>
+    <title>Kyuubi | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* KOYU MOD - Siyah & Neon Mor */
-            --bg: #000000;
-            --text: #eeeeee;
-            --accent: #bb86fc; 
-            --sidebar-bg: #0d0d0d;
+            /* MODERN DARK (Deep Space) */
+            --bg: #05070a;
+            --text: #e0e0e0;
+            --accent: #c3a5ff; /* Soft Pastel Mor */
+            --sidebar-bg: #080a0f;
             --sidebar-w: 260px;
         }
 
         body.light-theme {
-            /* DARK ACADEMIA MODU */
-            --bg: #f4f1e8; /* Antik kağıt rengi */
-            --text: #4e342e; /* Mürekkep kahverengisi */
-            --accent: #8d6e63; /* Bronz/Eski altın tonu */
-            --sidebar-bg: #ede9d9; /* Daha koyu parşömen sidebar */
+            /* MODERN DARK ACADEMIA (Paper & Ink) */
+            --bg: #fdfaf3; 
+            --text: #3c2f2f;
+            --accent: #b08d57; /* Bronz Altın */
+            --sidebar-bg: #f7f3e8;
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: 'Georgia', 'Times New Roman', serif; /* Daha edebi bir font */
-            display: flex; overflow: hidden;
-            transition: background 0.5s ease, color 0.5s ease;
+            font-family: 'Inter', sans-serif; display: flex; overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        h1 { font-family: 'Lora', serif; font-weight: 600; font-size: 3rem; color: var(--accent); }
+
         /* PARALLAX LAYER */
-        #parallax-dots {
-            position: fixed; top: -15%; left: -15%; width: 130%; height: 130%;
-            background-image: radial-gradient(var(--accent) 1.8px, transparent 1.8px);
-            background-size: 60px 60px;
-            opacity: 0.35; z-index: -1;
-            pointer-events: none;
-            will-change: transform;
+        #parallax-layer {
+            position: fixed; top: -20%; left: -20%; width: 140%; height: 140%;
+            z-index: -1; pointer-events: none; will-change: transform;
+            transition: background 0.5s ease;
         }
+
+        /* Arka Plan Varyasyonları */
+        .vars-dots { background-image: radial-gradient(var(--accent) 1.5px, transparent 1.5px); background-size: 50px 50px; opacity: 0.25; }
+        .vars-lines { background: repeating-linear-gradient(0deg, transparent, transparent 40px, var(--accent) 40px, var(--accent) 41px); opacity: 0.1; }
+        .vars-stars { background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(var(--accent) 1px, transparent 1px); background-size: 100px 100px, 150px 150px; opacity: 0.4; }
 
         /* SIDEBAR */
         .sidebar {
             width: var(--sidebar-w); height: 100vh; background: var(--sidebar-bg);
-            border-right: 1px solid var(--accent); position: fixed;
-            display: flex; flex-direction: column; align-items: center;
-            padding: 40px 0; transition: background 0.5s ease;
+            border-right: 1px solid rgba(255,255,255,0.05); position: fixed;
+            display: flex; flex-direction: column; align-items: center; padding: 40px 0;
         }
+        body.light-theme .sidebar { border-right: 1px solid rgba(0,0,0,0.05); }
 
-        .sidebar-header {
-            width: 80%; display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 50px;
-        }
+        .sidebar-header { width: 80%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 50px; }
+        .sidebar-header h2 { font-family: 'Lora', serif; margin: 0; color: var(--accent); }
 
-        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); }
-
-        .nav-links { list-style: none; padding: 0; margin: 0; width: 80%; }
+        .nav-links { list-style: none; padding: 0; width: 80%; }
         .nav-links li { margin-bottom: 25px; }
-        .nav-links a { 
-            color: var(--text); text-decoration: none; font-size: 1.1rem; 
-            display: flex; align-items: center; transition: 0.3s; 
-        }
-
-        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; }
-        .nav-links a:hover { color: var(--accent); transform: translateX(8px); }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 1rem; display: flex; align-items: center; transition: 0.3s; font-weight: 300; }
+        .nav-links a i { margin-right: 15px; color: var(--accent); width: 20px; text-align: center; }
+        .nav-links a:hover { color: var(--accent); transform: translateX(10px); }
 
         /* TOP NAV */
         .top-nav { position: fixed; top: 0; right: 0; padding: 30px 40px; z-index: 100; }
-        .social-links { display: flex; gap: 20px; }
-        .social-links a { color: var(--text); font-size: 1.5rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: scale(1.1); }
+        .social-links { display: flex; gap: 25px; }
+        .social-links a { color: var(--text); font-size: 1.3rem; transition: 0.3s; opacity: 0.7; }
+        .social-links a:hover { color: var(--accent); opacity: 1; transform: translateY(-3px); }
 
         /* CONTENT */
-        .content {
-            margin-left: var(--sidebar-w); width: 100%;
-            display: flex; justify-content: center; align-items: center; min-height: 100vh;
-        }
-        .container {
-            max-width: 750px; padding: 0 60px; text-align: left;
-        }
+        .content { margin-left: var(--sidebar-w); width: 100%; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { max-width: 700px; padding: 0 60px; }
+        .container p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; opacity: 0.9; }
 
-        .container h1 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent); font-weight: normal; }
-        .container p { font-size: 1.25rem; line-height: 1.7; font-style: italic; }
+        /* VARYASYON BUTONLARI (Alt Orta) */
+        .variation-panel {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-20%);
+            display: flex; gap: 10px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 50px; backdrop-filter: blur(10px);
+        }
+        .var-btn {
+            border: 1px solid var(--accent); background: transparent; color: var(--text);
+            padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: 0.3s;
+        }
+        .var-btn:hover { background: var(--accent); color: #000; }
 
-        /* SWITCH TASARIMI */
-        .theme-switch { position: relative; width: 44px; height: 22px; }
+        /* SWITCH */
+        .theme-switch { position: relative; width: 40px; height: 20px; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #333; transition: .4s; border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
-            background-color: white; transition: .4s; border-radius: 50%;
-        }
-        input:checked + .slider { background-color: var(--accent); }
-        input:checked + .slider:before { transform: translateX(22px); }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #333; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--accent); }
+        input:checked + .slider:before { transform: translateX(20px); }
     </style>
 </head>
 <body class="dark-theme">
 
-    <div id="parallax-dots"></div>
+    <div id="parallax-layer" class="vars-dots"></div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
@@ -111,46 +105,52 @@
             </label>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
-            <li><a href="#"><i class="fa-solid fa-gamepad"></i> Game Dev</a></li>
-            <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Cybersecurity</a></li>
-            <li><a href="#"><i class="fa-solid fa-pen-nib"></i> Blog</a></li>
-            <li><a href="#"><i class="fa-solid fa-file-pdf"></i> CV</a></li>
+            <li><a href="#"><i class="fa-solid fa-compass"></i> Ana Sayfa</a></li>
+            <li><a href="#"><i class="fa-solid fa-code"></i> Geliştirme</a></li>
+            <li><a href="#"><i class="fa-solid fa-user-shield"></i> Güvenlik</a></li>
+            <li><a href="#"><i class="fa-solid fa-book-open"></i> Günlük</a></li>
         </ul>
     </nav>
 
     <header class="top-nav">
         <div class="social-links">
-            <a href="#" title="TryHackMe"><i class="fa-solid fa-terminal"></i></a>
-            <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#" title="ArtStation"><i class="fa-brands fa-artstation"></i></a>
-            <a href="#" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#" title="Itch.io"><i class="fa-brands fa-itch-io"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
         </div>
     </header>
 
     <main class="content">
         <div class="container">
-            <h1>Mektubuma Hoş Geldiniz... 👋</h1>
-            <p>Burada tozlu raflardan çıkan siber güvenlik notlarını, kodların arasındaki hikayeleri ve oyun geliştirme sanatı üzerine düşüncelerimi paylaşıyorum.</p>
+            <h1>Sanat ve Kodun Kesişimi.</h1>
+            <p>Ben Kyuubi. Modern siber güvenlik mimarileri inşa ediyor, dijital dünyanın karanlık köşelerinde ışık arıyorum. Bu alan benim zihinsel kütüphanem.</p>
         </div>
     </main>
 
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        toggle.addEventListener('change', () => {
-            document.body.classList.toggle('light-theme');
-        });
+    <div class="variation-panel">
+        <button class="var-btn" onclick="changeVar('vars-dots')">Noktalar</button>
+        <button class="var-btn" onclick="changeVar('vars-lines')">Çizgiler</button>
+        <button class="var-btn" onclick="changeVar('vars-stars')">Yıldızlar</button>
+    </div>
 
+    <script>
+        // TEMA
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('change', () => { document.body.classList.toggle('light-theme'); });
+
+        // VARYASYON DEĞİŞTİRME
+        function changeVar(className) {
+            const layer = document.getElementById('parallax-layer');
+            layer.className = ''; 
+            layer.classList.add(className);
+        }
+
+        // PREMIUM PARALLAX
         document.addEventListener("mousemove", (e) => {
-            const dots = document.getElementById("parallax-dots");
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const moveX = (centerX - mouseX) / 25;
-            const moveY = (centerY - mouseY) / 25;
-            dots.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+            const layer = document.getElementById("parallax-layer");
+            const x = (window.innerWidth / 2 - e.pageX) / 35;
+            const y = (window.innerHeight / 2 - e.pageY) / 35;
+            layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         });
     </script>
 </body>
