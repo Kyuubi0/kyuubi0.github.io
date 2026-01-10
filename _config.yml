@@ -34,3 +34,6 @@ plugins:
 # Navigasyon
 nav_enabled: true
 search_enabled: true
+
+# JavaScript dosyamızı yüklüyoruz
+footer_content: '<script src="/assets/js/parallax.js"></script>'

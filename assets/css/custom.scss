@@ -1,43 +1,39 @@
 ---
 ---
 
-// 1. ANA DEĞİŞKENLER (Zorla Uygula)
+// TEMA RENKLERİ VE DAR MENÜ
 :root {
   --nav-width: 220px !important;
-  --nav-width-md: 220px !important;
 }
 
-// 2. KOYU MOD: Siyah & Mor
+// 🟣 KOYU MOD (Siyah & Mor)
 @media (prefers-color-scheme: dark) {
   :root {
     --body-background-color: #000000 !important;
     --header-bg-color: #000000 !important;
     --link-color: #9b59b6 !important;
-    --btn-primary-bg-color: #9b59b6 !important;
-    --nav-bg-color: #000000 !important;
   }
-  body, .side-bar { background-color: #000000 !important; }
 }
 
-// 3. AÇIK MOD: Beyaz & Altın Sarısı
+// 🟡 AÇIK MOD (Beyaz & Altın Sarısı)
 @media (prefers-color-scheme: light) {
   :root {
     --body-background-color: #ffffff !important;
     --header-bg-color: #ffffff !important;
-    --link-color: #f1c40f !important; // Altın Sarısı
-    --btn-primary-bg-color: #f1c40f !important;
-    --nav-bg-color: #ffffff !important;
+    --link-color: #FFD700 !important;
   }
-  body, .side-bar { background-color: #ffffff !important; }
 }
 
-// 4. DÜZEN AYARLARI
-.side-bar {
-  width: var(--nav-width) !important;
-}
-
-@media (min-width: 66.5rem) {
-  .main-content-wrap {
-    margin-left: var(--nav-width) !important;
-  }
+// --- PARALAKS DESENLER İÇİN ARKA PLAN ALANI ---
+// Buraya hareketli desenleri yerleştireceğimiz katmanı ekliyoruz
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, var(--link-color) 1px, transparent 1px);
+  background-size: 30px 30px; // Noktalı bir desen oluşturur
+  opacity: 0.1;
+  transition: transform 0.1s ease-out; // Hareket için yumuşatma
 }
