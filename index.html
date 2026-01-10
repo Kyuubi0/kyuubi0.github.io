@@ -10,33 +10,42 @@
     <style>
         /* --- RENK PALETİ VE AYARLAR --- */
         :root {
-            /* GECE MODU (Varsayılan) - "Luxury Tech" Estetiği */
-            --bg: #0b0c10;          /* Obsidyen Siyahı (Tam siyah değil, derin füme) */
-            --text: #e0e6ed;        /* Gümüş Beyazı (Göz almayan soft beyaz) */
-            --sidebar-bg: #111318;  /* Bir ton açık arka plan */
+            /* GECE MODU - "Dark Roast & Gold" Estetiği (YENİLENDİ) */
+            /* Arka plan: Tam siyah değil, çok koyu bir Espresso kahvesi */
+            --bg: #14110f;             
             
-            /* Accent Renkleri: Neon yerine daha "Classy" tonlar */
-            --accent-1: #9d8ec4;    /* Soluk Kraliyet Moru (Lavanta) */
-            --accent-2: #d4af37;    /* Şampanya Altını (Gold) - Elit duruş için */
+            /* Yazılar: Göz alıcı beyaz yerine, yumuşak "Latte Köpüğü" rengi */
+            --text: #e6dace;           
             
-            --grid-color: rgba(212, 175, 55, 0.03); /* Altın rengi çok silik ızgara */
+            /* Sidebar: Ana renkten bir tık daha açık, sıcak bir antrasit-kahve */
+            --sidebar-bg: #1c1815;     
+            
+            /* Accent Renkleri: Classy duruş için Bakır ve Altın */
+            --accent-1: #c89f81;    /* Bakır / Sütlü Kahve tonu (Eski mor yerine) */
+            --accent-2: #d4af37;    /* Klasik Altın (Değişmedi, kahveyle çok iyi gider) */
+            
+            --grid-color: rgba(193, 154, 107, 0.05); /* Izgara rengi hafif taba rengi */
             --font-head: 'Space Grotesk', sans-serif;
             --font-main: 'Outfit', sans-serif;
         }
 
-        /* GÜNDÜZ MODU - Mevcut "Cream/Coffee" Estetiği */
+        /* GÜNDÜZ MODU - Mevcut "Cream/Coffee" Estetiği (Aynı Kaldı) */
         body.light-theme {
             --bg: #f5f2e9; 
             --text: #2d241e;
             --sidebar-bg: #ede9d9;
-            --accent-1: #8d6e63; /* Kahve tonu */
-            --accent-2: #b08d57; /* Bronz/Toprak */
+            --accent-1: #8d6e63;
+            --accent-2: #b08d57;
             --grid-color: rgba(0, 0, 0, 0.03);
         }
 
         body {
-            margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: var(--font-main); transition: background 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s ease;
+            margin: 0; padding: 0; 
+            /* Arka plana derinlik katmak için radyal gradyan eklendi */
+            background: radial-gradient(circle at 50% 50%, #1f1b18 0%, var(--bg) 100%);
+            color: var(--text);
+            font-family: var(--font-main); 
+            transition: background 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.5s ease;
             display: flex; overflow: hidden;
         }
 
@@ -51,7 +60,7 @@
         #aura-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
         .aura-blob {
             position: absolute; border-radius: 50%; filter: blur(140px);
-            opacity: 0.12; /* Biraz daha soft, göz yormasın */
+            opacity: 0.08; /* Gece modunda daha sofistike durması için opaklık kısıldı */
             animation: orbit 40s infinite linear;
         }
         @keyframes orbit {
@@ -64,27 +73,27 @@
             width: 280px; height: 100vh; background: var(--sidebar-bg);
             border-right: 1px solid rgba(255,255,255,0.03);
             position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
-            box-shadow: 5px 0 30px rgba(0,0,0,0.2); /* Hafif gölge */
+            box-shadow: 5px 0 30px rgba(0,0,0,0.3); /* Gölge biraz daha belirgin */
         }
 
         .sidebar-header { padding: 0 40px; margin-bottom: 40px; }
         .sidebar-header h2 { 
             font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; 
             letter-spacing: -1px; margin: 0; color: var(--accent-2); 
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Altın parıltısı */
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
         }
 
         .nav-links { list-style: none; padding: 0 20px; }
         .nav-links a { 
             color: var(--text); text-decoration: none; font-size: 0.9rem;
             display: flex; align-items: center; padding: 16px 20px; 
-            border-radius: 8px; transition: 0.4s; opacity: 0.5; cursor: pointer;
+            border-radius: 8px; transition: 0.4s; opacity: 0.6; cursor: pointer;
             font-weight: 400;
         }
         .nav-links a:hover, .nav-links a.active { 
             opacity: 1; 
-            background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, transparent 100%);
-            color: var(--accent-2); 
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            color: var(--accent-1); /* Hover rengi bakır oldu */
             transform: translateX(5px);
         }
         .nav-links i { margin-right: 15px; width: 20px; text-align: center; color: var(--accent-1); }
@@ -104,6 +113,7 @@
         h1 { 
             font-family: var(--font-head); font-size: 5rem; font-weight: 700; 
             line-height: 0.95; margin: 0 0 25px 0; letter-spacing: -3px; 
+            /* Başlık gradyanı bakırdan altına geçiş yapacak şekilde ayarlandı */
             background: linear-gradient(to right, var(--text), var(--accent-1));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
@@ -111,7 +121,7 @@
         
         h2 { 
             font-family: var(--font-head); color: var(--accent-2); 
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1); /* Çizgi rengi yumuşatıldı */
             padding-bottom: 15px; margin-bottom: 35px; letter-spacing: -0.5px;
         }
 
@@ -157,7 +167,7 @@
         .lock-input:focus { border-color: var(--accent-2); width: 220px; }
         .lock-btn {
             margin-top: 15px; padding: 10px 30px; background: var(--accent-1);
-            color: white; border: none; border-radius: 50px; cursor: pointer;
+            color: #14110f; border: none; border-radius: 50px; cursor: pointer;
             font-family: var(--font-head); font-weight: 600; transition: 0.3s;
         }
         .lock-btn:hover { background: var(--accent-2); color: #000; }
