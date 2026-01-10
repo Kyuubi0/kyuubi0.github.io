@@ -279,6 +279,7 @@
         <ul class="nav-links">
             <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
             <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> <span>Game Dev</span></a></li>
+            <li><a onclick="showPage('art')"><i class="fa-solid fa-palette"></i> <span>Artworks</span></a></li>
             <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> <span>Cyber Security</span></a></li>
             <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> <span>Resume</span></a></li>
             <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> <span>Blog</span></a></li>
@@ -299,7 +300,7 @@
         <div id="home" class="page active">
             <h1>Simge Temel <br> <span class="highlight">Creative Tech.</span></h1>
             <p style="max-width: 600px; line-height: 1.7; font-size: 1.15rem; opacity: 0.8; font-weight: 300;">
-                Mathematical Engineering student, Game Developer, and Cyber Security enthusiast. 
+                Mathematical Engineering student, Game Developer, and Cyber Security enthusiast.
                 Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.
             </p>
         </div>
@@ -310,8 +311,8 @@
 
             <h2 class="section-title"><i class="fa-brands fa-steam"></i> Professional Work</h2>
             <div class="project-grid">
-                
-                <div class="glass-card" onclick="openModal('Mystopia', 'mystopia.jpg', 'Art Direction for Mystopia.', 'Steam Link Available')">
+
+                <div class="glass-card" onclick="openModal('Mystopia', 'mystopia.png', 'Art Direction for Mystopia.', 'Role: Art Director', 'https://store.steampowered.com/app/3012780/Mystopia/')">
                     <div class="project-image"><img src="mystopia.png" alt="Mystopia"></div>
                     <div class="project-info">
                         <h3>Mystopia</h3>
@@ -320,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Home Again', 'homeagain.jpg', 'Art Direction for Home Again.', 'Steam Link Available')">
+                <div class="glass-card" onclick="openModal('Home Again', 'homeagain.png', 'Art Direction for Home Again.', 'Role: Art Director', 'https://store.steampowered.com/app/3535860/Home_Again/')">
                     <div class="project-image"><img src="homeagain.png" alt="Home Again"></div>
                     <div class="project-info">
                         <h3>Home Again</h3>
@@ -329,7 +330,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Hit and Boom', 'hitandboom.jpg', '3D Artist for Hit and Boom.', 'Steam Link Available')">
+                <div class="glass-card" onclick="openModal('Hit and Boom', 'hitandboom.jpg', '3D Artist for Hit and Boom.', 'Role: 3D Artist', 'https://store.steampowered.com/app/2024080/Hit_and_Boom/')">
                     <div class="project-image"><img src="hitandboom.jpg" alt="Hit and Boom"></div>
                     <div class="project-info">
                         <h3>Hit and Boom</h3>
@@ -341,40 +342,99 @@
 
             <h2 class="section-title"><i class="fa-brands fa-itch-io"></i> Game Jam Projects</h2>
             <div class="project-grid">
-                
-                <div class="glass-card" onclick="openModal('Patch Notes', 'patchnotes.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+
+                <div class="glass-card" onclick="openModal('Patch Notes', 'patchnotes.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://uftsimge.itch.io/patch-notes')">
                     <div class="project-image"><img src="patchnotes.png" alt="Patch Notes"></div>
                     <div class="project-info"><h3>Patch Notes</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Resonance', 'resonance.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('Resonance', 'resonance.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://uftsimge.itch.io/resonance')">
                     <div class="project-image"><img src="resonance.png" alt="Resonance"></div>
                     <div class="project-info"><h3>Resonance</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Babylon', 'babylon.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('Babylon', 'babylon.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://tzdevil.itch.io/babylon')">
                     <div class="project-image"><img src="babylon.png" alt="Babylon"></div>
                     <div class="project-info"><h3>Babylon</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Death From Laughter', 'dfl.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('Death From Laughter', 'deathfromlaughter.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://tzdevil.itch.io/death-from-laughter')">
                     <div class="project-image"><img src="deathfromlaughter.png" alt="Death From Laughter"></div>
                     <div class="project-info"><h3>Death From Laughter</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Ukde', 'ukde.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('Ukde', 'ukde.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://soyamilk.itch.io/ukde')">
                     <div class="project-image"><img src="ukde.png" alt="Ukde"></div>
                     <div class="project-info"><h3>Ukde</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('Viral Sansasyon', 'viral.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('Viral Sansasyon', 'viralsansasyon.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://maziko66.itch.io/viral-sansasyon')">
                     <div class="project-image"><img src="viralsansasyon.png" alt="Viral Sansasyon"></div>
                     <div class="project-info"><h3>Viral Sansasyon</h3><p>Game Jam Project</p></div>
                 </div>
 
-                <div class="glass-card" onclick="openModal('The Descendant', 'descendant.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                <div class="glass-card" onclick="openModal('The Descendant', 'descendant.png', 'Game Jam Project on Itch.io', 'Role: Developer', 'https://alren54.itch.io/the-descendant')">
                     <div class="project-image"><img src="descendant.png" alt="The Descendant"></div>
                     <div class="project-info"><h3>The Descendant</h3><p>Game Jam Project</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="art" class="page">
+            <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Visual <span class="highlight">Grimoire.</span></h1>
+            <p style="opacity: 0.6; margin-bottom: 60px;">Concept art, character design, and environmental storytelling.</p>
+
+            <h2 class="section-title"><i class="fa-solid fa-pen-nib"></i> Concept Art</h2>
+            <div class="project-grid">
+
+                <div class="glass-card" onclick="openModal('Cyberpunk Market', 'concept1.jpg', 'Atmospheric concept art for a futuristic market.', 'Tool: Photoshop', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="concept1.jpg" alt="Concept Art"></div>
+                    <div class="project-info">
+                        <h3>Cyberpunk Market</h3>
+                        <p>Digital Painting</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Character Study', 'concept2.jpg', 'Main character design sketches.', 'Tool: Procreate', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="concept2.jpg" alt="Character"></div>
+                    <div class="project-info">
+                        <h3>Character Study</h3>
+                        <p>Character Design</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2 class="section-title"><i class="fa-solid fa-cube"></i> 3D Sculpts & Renders</h2>
+            <div class="project-grid">
+
+                <div class="glass-card" onclick="openModal('Ancient Relic', 'sculpt1.jpg', 'High-poly sculpting and texturing practice.', 'Tool: ZBrush & Substance', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="sculpt1.jpg" alt="Sculpt"></div>
+                    <div class="project-info">
+                        <h3>Ancient Relic</h3>
+                        <p>ZBrush Sculpt</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Sci-Fi Helmet', 'sculpt2.jpg', 'Hard surface modeling study.', 'Tool: Blender', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="sculpt2.jpg" alt="Helmet"></div>
+                    <div class="project-info">
+                        <h3>Sci-Fi Helmet</h3>
+                        <p>Hard Surface</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"></i> VFX & Shaders</h2>
+            <div class="project-grid">
+
+                <div class="glass-card" onclick="openModal('Magic Shield', 'vfx1.gif', 'Stylized shield effect using Shader Graph.', 'Engine: Unity', 'https://www.artstation.com/uftsimge')">
+                    <div class="project-image"><img src="vfx1.gif" alt="VFX"></div>
+                    <div class="project-info">
+                        <h3>Magic Shield</h3>
+                        <p>Unity VFX</p>
+                    </div>
                 </div>
 
             </div>
@@ -421,26 +481,28 @@
             </div>
         </div>
 
-        <div id="project-modal" class="modal">
-            <div class="modal-content glass-card">
-                <span class="close-modal" onclick="closeModal()">&times;</span>
-                <div class="modal-body">
-                    <div class="modal-image-area"><img id="modal-img" src=""></div>
-                    <div class="modal-text-area">
-                        <h2 id="modal-title"></h2>
-                        <p id="modal-desc"></p>
-                        <p id="modal-extra" style="margin-top:20px; opacity:0.6; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1);"></p>
-                    </div>
+    <div id="project-modal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-area"><img id="modal-img" src=""></div>
+                <div class="modal-text-area">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-desc"></p>
+                    <p id="modal-extra" style="margin-top:20px; opacity:0.6; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1);"></p>
+
+                    <a id="modal-link-btn" href="#" target="_blank" class="download-btn" style="margin-top: 25px; display: none; width: fit-content;">
+                        <i class="fa-solid fa-rocket"></i> <span>View Project</span>
+                    </a>
                 </div>
             </div>
         </div>
-
-    </main>
+    </div>
 
     <div class="fox-container">
         <div class="speech-bubble">Coding... <br>Yip Yip! 🦊</div>
         <svg class="fox-svg" viewBox="0 0 100 100">
-            <path d="M15,60 Q20,30 45,50 Q40,70 20,75 Z" fill="#cd5c5c" /> 
+            <path d="M15,60 Q20,30 45,50 Q40,70 20,75 Z" fill="#cd5c5c" />
             <path d="M15,60 Q18,45 25,55 Z" fill="#fff" opacity="0.8" /> <path d="M35,75 Q50,85 75,75 L70,55 Q50,55 35,75" fill="#e67e22" />
             <path d="M60,40 L85,40 L72.5,65 Z" fill="#e67e22" />
             <path d="M60,40 L65,20 L70,40" fill="#d35400" />
@@ -457,9 +519,10 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            // Menüdeki aktif class'ı güncelle
+
+            // Sidebar linkini aktif yap
             document.querySelectorAll('.nav-links a').forEach(link => {
-                 if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
+                if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
             });
         }
 
@@ -468,7 +531,7 @@
             document.body.classList.toggle('light-theme');
         });
 
-        // Parallax
+        // Parallax Efekti
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
             mX = (window.innerWidth / 2 - e.pageX) / 45;
@@ -495,17 +558,47 @@
             }
         }
 
-        // Modal Logic
-        function openModal(title, img, desc, extra) {
+        // --- GÜNCELLENMİŞ MODAL VE LINK MANTIĞI ---
+        function openModal(title, img, desc, extra, link) {
+            // Metinleri ve resmi güncelle
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-img').src = img;
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-extra').innerText = extra;
+            
+            // Link Butonu Kontrolü
+            const btn = document.getElementById('modal-link-btn');
+            
+            if (btn) {
+                // Eğer link varsa (boş değilse ve undefined değilse)
+                if (link && link.trim() !== "") {
+                    btn.href = link;
+                    btn.style.display = 'inline-flex'; // Butonu görünür yap
+                    
+                    // Buton metnini duruma göre güncelle
+                    const span = btn.querySelector('span');
+                    if(link.includes('steam')) {
+                        btn.innerHTML = '<i class="fa-brands fa-steam"></i> View on Steam';
+                    } else if(link.includes('itch.io')) {
+                        btn.innerHTML = '<i class="fa-brands fa-itch-io"></i> View on Itch.io';
+                    } else {
+                        btn.innerHTML = '<i class="fa-solid fa-rocket"></i> View Project';
+                    }
+                    
+                } else {
+                    btn.style.display = 'none'; // Link yoksa butonu gizle
+                }
+            }
+
+            // Modalı aç
             document.getElementById('project-modal').style.display = 'flex';
         }
+
         function closeModal() {
             document.getElementById('project-modal').style.display = 'none';
         }
+
+        // Pencere dışına tıklayınca kapatma
         window.onclick = function(e) {
             if (e.target == document.getElementById('project-modal')) closeModal();
         }
