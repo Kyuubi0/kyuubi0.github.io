@@ -566,34 +566,84 @@
         }
 
         // --- GÜNCELLENMİŞ MODAL VE LINK MANTIĞI ---
-        function openModal(title, img, desc, extra, link) {
-            // Metinleri ve resmi güncelle
+        function openModal(title, imagesStr, desc, extra, link) {
+            // Başlık ve metinleri doldur
             document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-img').src = img;
             document.getElementById('modal-desc').innerText = desc;
             document.getElementById('modal-extra').innerText = extra;
+
+            // Resim İşlemleri
+            const modalImg = document.getElementById('modal-img');
             
+            // Eğer Modal HTML'inde galeri div'i yoksa oluştur (Eski HTML kalmasın diye kontrol)
+            let galleryDiv = document.getElementById('modal-gallery');
+            if (!galleryDiv) {
+                galleryDiv = document.createElement('div');
+                galleryDiv.id = 'modal-gallery';
+                galleryDiv.className = 'gallery-grid';
+                // Resim alanının içine ekle
+                document.querySelector('.modal-image-area').appendChild(galleryDiv);
+            }
+            
+            // Önce galeriyi temizle
+            galleryDiv.innerHTML = '';
+
+            // Gelen string'i virgüle göre bölüp diziye çevir
+            // trim() boşlukları temizler ki dosya adı bozulmasın
+            const images = imagesStr.split(',').map(img => img.trim());
+
+            // İlk resmi ana resim yap
+            if (images.length > 0) {
+                modalImg.src = images[0];
+                modalImg.style.display = 'block'; // Resim varsa göster
+            } else {
+                modalImg.style.display = 'none'; // Resim yoksa gizle
+            }
+
+            // Eğer birden fazla resim varsa galeri oluştur
+            if (images.length > 1) {
+                images.forEach((imgSrc, index) => {
+                    const thumb = document.createElement('img');
+                    thumb.src = imgSrc;
+                    thumb.className = 'gallery-thumb';
+                    
+                    // İlk resme 'active' sınıfı ver
+                    if(index === 0) thumb.classList.add('active');
+
+                    // Küçük resme tıklayınca ana resmi değiştir
+                    thumb.onclick = function() {
+                        modalImg.src = imgSrc;
+                        // Aktif sınıfını güncelle
+                        document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                    };
+
+                    galleryDiv.appendChild(thumb);
+                });
+                galleryDiv.style.display = 'grid';
+            } else {
+                // Tek resim varsa galeriyi gizle
+                galleryDiv.style.display = 'none';
+            }
+
             // Link Butonu Kontrolü
             const btn = document.getElementById('modal-link-btn');
-            
             if (btn) {
-                // Eğer link varsa (boş değilse ve undefined değilse)
                 if (link && link.trim() !== "") {
                     btn.href = link;
-                    btn.style.display = 'inline-flex'; // Butonu görünür yap
+                    btn.style.display = 'inline-flex';
                     
-                    // Buton metnini duruma göre güncelle
-                    const span = btn.querySelector('span');
                     if(link.includes('steam')) {
                         btn.innerHTML = '<i class="fa-brands fa-steam"></i> View on Steam';
                     } else if(link.includes('itch.io')) {
                         btn.innerHTML = '<i class="fa-brands fa-itch-io"></i> View on Itch.io';
+                    } else if(link.includes('artstation')) {
+                        btn.innerHTML = '<i class="fa-brands fa-artstation"></i> View on ArtStation';
                     } else {
                         btn.innerHTML = '<i class="fa-solid fa-rocket"></i> View Project';
                     }
-                    
                 } else {
-                    btn.style.display = 'none'; // Link yoksa butonu gizle
+                    btn.style.display = 'none';
                 }
             }
 
@@ -605,7 +655,6 @@
             document.getElementById('project-modal').style.display = 'none';
         }
 
-        // Pencere dışına tıklayınca kapatma
         window.onclick = function(e) {
             if (e.target == document.getElementById('project-modal')) closeModal();
         }
