@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simge Temel | Creative Tech</title>
+    <title>uftsimge_log</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
@@ -84,6 +84,16 @@
 
         h1 { font-family: var(--font-head); font-size: 5rem; font-weight: 700; line-height: 0.9; margin: 0 0 20px 0; letter-spacing: -3px; }
         h2 { font-family: var(--font-head); color: var(--accent-2); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 30px; }
+
+        /* --- BUTTON STYLES --- */
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 25px; background: var(--accent-2); color: #000;
+            text-decoration: none; border-radius: 8px; font-weight: bold;
+            font-family: var(--font-head); margin-bottom: 30px;
+            transition: 0.3s; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+        }
+        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0, 242, 255, 0.5); }
 
         /* --- BLOG KİLİT EKRANI --- */
         .lock-screen {
@@ -194,7 +204,7 @@
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>Simge_Temel</h2>
+            <h2>uftsimge_log</h2>
             <div class="controls-area">
                 <label class="theme-switch">
                     <input type="checkbox" id="theme-toggle">
@@ -259,7 +269,12 @@
 
         <div id="cv" class="page">
             <h2 data-key="cv_title">Özgeçmiş</h2>
-            <ul style="list-style: none; padding: 0; margin-top: 30px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+            
+            <a href="Simge_Temel_CV.pdf" download class="download-btn">
+                <i class="fa-solid fa-file-pdf"></i> <span data-key="cv_download">PDF Olarak İndir</span>
+            </a>
+
+            <ul style="list-style: none; padding: 0; margin-top: 10px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
                 
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-2); border-radius: 50%;"></div>
@@ -293,7 +308,7 @@
                     <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Yıldız Teknik Üniversitesi</span>
                     <h3 style="margin: 5px 0;" data-key="cv_edu">Matematik Mühendisliği</h3>
                     <p style="opacity: 0.8; font-size: 0.95rem;" data-key="cv_edu_desc">
-                        4. [span_0](start_span)Sınıf Öğrencisi[span_0](end_span).
+                        4. Sınıf Öğrencisi.
                     </p>
                 </li>
             </ul>
@@ -352,15 +367,15 @@
             tr: {
                 nav_home: "Ana Sayfa", nav_game: "Oyun Geliştirme", nav_cyber: "Siber Güvenlik", nav_cv: "Özgeçmiş", nav_blog: "Blog",
                 home_title: "Simge Temel <br> <span style='color: var(--accent-2);'>Creative Tech.</span>",
-                [span_1](start_span)home_desc: "Matematik Mühendisliği öğrencisi[span_1](end_span), Oyun Geliştirici ve Siber Güvenlik meraklısı. Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. 'Kyuubi' adıyla dijital dünyada iz bırakıyorum.",
+                home_desc: "Matematik Mühendisliği öğrencisi, Oyun Geliştirici ve Siber Güvenlik meraklısı. Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. 'Kyuubi' adıyla dijital dünyada iz bırakıyorum.",
                 game_title: "Oyun Geliştirme", game_desc: "Unity ve Unreal Engine ile geliştirdiğim projeler.",
                 project_1: "200+ Varlık, Low-poly optimizasyon.", project_2: "3D Çevre tasarımı ve asset üretimi.",
                 cyber_title: "Siber Güvenlik", cyber_desc: "CTF Çözümleri ve Pentest Raporları.",
                 cyber_detail: "Exploitation, Reverse Engineering ve Log Analizi üzerine çalışmalar.",
-                cv_title: "Özgeçmiş", cv_edu: "Matematik Mühendisliği", cv_edu_desc: "4. [span_2](start_span)Sınıf Öğrencisi[span_2](end_span).",
-                [span_3](start_span)cv_date1: "09/2023 - Günümüz[span_3](end_span)[span_4](start_span)", cv_desc1: "IT Support, PC kurulumu ve SAP ABAP Geliştirme (ALV raporları, SE16N sorguları)[span_4](end_span).",
-                [span_5](start_span)cv_date2: "04/2024 - 05/2025[span_5](end_span)[span_6](start_span)", cv_desc2: "200+ asset tasarımı, performans optimizasyonu, VFX ve shader geliştirme[span_6](end_span).",
-                [span_7](start_span)cv_date3: "04/2023 - 09/2023[span_7](end_span)[span_8](start_span)", cv_desc3: "Hit & Boom projesi için çevre tasarımı (Environment Art), sculpting ve materyal oluşturma[span_8](end_span).",
+                cv_title: "Özgeçmiş", cv_download: "PDF Olarak İndir", cv_edu: "Matematik Mühendisliği", cv_edu_desc: "4. Sınıf Öğrencisi.",
+                cv_date1: "09/2023 - Günümüz", cv_desc1: "IT Support, PC kurulumu ve SAP ABAP Geliştirme (ALV raporları, SE16N sorguları).",
+                cv_date2: "04/2024 - 05/2025", cv_desc2: "200+ asset tasarımı, performans optimizasyonu, VFX ve shader geliştirme.",
+                cv_date3: "04/2023 - 09/2023", cv_desc3: "Hit & Boom projesi için çevre tasarımı (Environment Art), sculpting ve materyal oluşturma.",
                 blog_locked: "Bu Bölüm Korumalıdır", blog_title: "Neden Kendi Oyun Motorumu Yazıyorum?",
                 blog_desc: "Hazır motorlar harika, ama tekerleği yeniden icat etmek bazen en iyi öğrenme yoludur...",
                 duck_msg: "Henüz kodluyorum... <br>Quack! 🚧"
@@ -368,15 +383,15 @@
             en: {
                 nav_home: "Home", nav_game: "Game Dev", nav_cyber: "Cyber Security", nav_cv: "Resume", nav_blog: "Blog",
                 home_title: "Simge Temel <br> <span style='color: var(--accent-2);'>Creative Tech.</span>",
-                [span_9](start_span)home_desc: "Mathematical Engineering student[span_9](end_span), Game Developer, and Cyber Security enthusiast. Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.",
+                home_desc: "Mathematical Engineering student, Game Developer, and Cyber Security enthusiast. Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.",
                 game_title: "Game Development", game_desc: "Projects developed with Unity and Unreal Engine.",
                 project_1: "200+ Assets, Low-poly optimization.", project_2: "3D Environment design and asset production.",
                 cyber_title: "Cyber Security", cyber_desc: "CTF Solutions and Pentest Reports.",
                 cyber_detail: "Studies on Exploitation, Reverse Engineering and Log Analysis.",
-                [span_10](start_span)cv_title: "Resume", cv_edu: "Mathematical Engineering", cv_edu_desc: "4th Year Student[span_10](end_span).",
-                [span_11](start_span)cv_date1: "09/2023 - Present[span_11](end_span)[span_12](start_span)", cv_desc1: "IT Support, PC setup, and SAP ABAP Development (ALV reports, SE16N queries)[span_12](end_span).",
-                [span_13](start_span)cv_date2: "04/2024 - 05/2025[span_13](end_span)[span_14](start_span)", cv_desc2: "Designed 200+ assets, performance optimization, VFX, and shader development[span_14](end_span).",
-                [span_15](start_span)cv_date3: "04/2023 - 09/2023[span_15](end_span)[span_16](start_span)", cv_desc3: "Environment Art for 'Hit & Boom', sculpting, and material creation[span_16](end_span).",
+                cv_title: "Resume", cv_download: "Download as PDF", cv_edu: "Mathematical Engineering", cv_edu_desc: "4th Year Student.",
+                cv_date1: "09/2023 - Present", cv_desc1: "IT Support, PC setup, and SAP ABAP Development (ALV reports, SE16N queries).",
+                cv_date2: "04/2024 - 05/2025", cv_desc2: "Designed 200+ assets, performance optimization, VFX, and shader development.",
+                cv_date3: "04/2023 - 09/2023", cv_desc3: "Environment Art for 'Hit & Boom', sculpting, and material creation.",
                 blog_locked: "Restricted Access", blog_title: "Why Am I Writing My Own Game Engine?",
                 blog_desc: "Pre-made engines are great, but reinventing the wheel is sometimes the best way to learn...",
                 duck_msg: "Still coding... <br>Quack! 🚧"
