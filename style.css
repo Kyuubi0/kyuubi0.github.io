@@ -1,25 +1,23 @@
 :root {
     --bg: #000000;
     --text: #eeeeee;
-    --accent: #9b59b6; /* Mor */
+    --accent: #9b59b6;
     --sidebar-w: 220px;
 }
 
-/* Bilgisayarı açık modda olanlar için Altın/Beyaz */
 @media (prefers-color-scheme: light) {
     :root {
         --bg: #ffffff;
         --text: #222222;
-        --accent: #FFD700; /* Altın */
+        --accent: #FFD700;
     }
 }
 
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     display: flex;
     overflow-x: hidden;
 }
@@ -33,7 +31,6 @@ body {
     background-size: 40px 40px;
     opacity: 0.2;
     z-index: -1;
-    transition: transform 0.1s ease-out;
 }
 
 .sidebar {
@@ -48,21 +45,10 @@ body {
 .sidebar h2 { color: var(--accent); margin-bottom: 30px; }
 .sidebar ul { list-style: none; padding: 0; }
 .sidebar li { margin-bottom: 15px; }
-.sidebar a { 
-    color: var(--text); 
-    text-decoration: none; 
-    font-size: 18px;
-    transition: 0.3s;
-}
+.sidebar a { color: var(--text); text-decoration: none; font-size: 18px; transition: 0.3s; }
 .sidebar a:hover { color: var(--accent); padding-left: 10px; }
 
-.top-nav {
-    position: fixed;
-    top: 0; right: 0;
-    padding: 25px 40px;
-    z-index: 10;
-}
-
+.top-nav { position: fixed; top: 0; right: 0; padding: 25px 40px; z-index: 10; }
 .social-links a {
     color: var(--accent);
     text-decoration: none;
@@ -74,13 +60,6 @@ body {
     transition: 0.3s;
 }
 
-.social-links a:hover {
-    background: var(--accent);
-    color: #000;
-}
+.social-links a:hover { background: var(--accent); color: #000; }
 
-.content {
-    margin-left: var(--sidebar-w);
-    padding: 100px 60px;
-    width: 100%;
-}
+.content { margin-left: var(--sidebar-w); padding: 100px 60px; width: 100%; }
