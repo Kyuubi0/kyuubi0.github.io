@@ -16,26 +16,26 @@
         }
 
         body.light-theme {
-            /* AÇIK MOD - Yumuşak Beyaz & Altın */
-            --bg: #fdfcf8; /* Göz yormayan fildişi beyazı */
-            --text: #2c2c2c;
-            --accent: #d4af37; /* Gerçek Altın Sarısı */
-            --sidebar-bg: #f4f1e8;
+            /* DARK ACADEMIA MODU */
+            --bg: #f4f1e8; /* Antik kağıt rengi */
+            --text: #4e342e; /* Mürekkep kahverengisi */
+            --accent: #8d6e63; /* Bronz/Eski altın tonu */
+            --sidebar-bg: #ede9d9; /* Daha koyu parşömen sidebar */
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; overflow: hidden;
+            font-family: 'Georgia', 'Times New Roman', serif; /* Daha edebi bir font */
+            display: flex; overflow: hidden;
             transition: background 0.5s ease, color 0.5s ease;
         }
 
         /* PARALLAX LAYER */
         #parallax-dots {
             position: fixed; top: -15%; left: -15%; width: 130%; height: 130%;
-            /* Noktalar her iki modda da kendi rengini alır */
             background-image: radial-gradient(var(--accent) 1.8px, transparent 1.8px);
             background-size: 60px 60px;
-            opacity: 0.3; z-index: -1;
+            opacity: 0.35; z-index: -1;
             pointer-events: none;
             will-change: transform;
         }
@@ -45,7 +45,7 @@
             width: var(--sidebar-w); height: 100vh; background: var(--sidebar-bg);
             border-right: 1px solid var(--accent); position: fixed;
             display: flex; flex-direction: column; align-items: center;
-            padding: 40px 0; transition: background 0.5s ease, border 0.5s ease;
+            padding: 40px 0; transition: background 0.5s ease;
         }
 
         .sidebar-header {
@@ -53,7 +53,7 @@
             margin-bottom: 50px;
         }
 
-        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); transition: 0.5s; }
+        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); }
 
         .nav-links { list-style: none; padding: 0; margin: 0; width: 80%; }
         .nav-links li { margin-bottom: 25px; }
@@ -62,14 +62,14 @@
             display: flex; align-items: center; transition: 0.3s; 
         }
 
-        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; transition: 0.5s; }
+        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; }
         .nav-links a:hover { color: var(--accent); transform: translateX(8px); }
 
         /* TOP NAV */
         .top-nav { position: fixed; top: 0; right: 0; padding: 30px 40px; z-index: 100; }
         .social-links { display: flex; gap: 20px; }
         .social-links a { color: var(--text); font-size: 1.5rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: scale(1.2); }
+        .social-links a:hover { color: var(--accent); transform: scale(1.1); }
 
         /* CONTENT */
         .content {
@@ -80,8 +80,8 @@
             max-width: 750px; padding: 0 60px; text-align: left;
         }
 
-        .container h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); transition: 0.5s; }
-        .container p { font-size: 1.2rem; line-height: 1.6; }
+        .container h1 { font-size: 2.8rem; margin-bottom: 20px; color: var(--accent); font-weight: normal; }
+        .container p { font-size: 1.25rem; line-height: 1.7; font-style: italic; }
 
         /* SWITCH TASARIMI */
         .theme-switch { position: relative; width: 44px; height: 22px; }
@@ -94,7 +94,7 @@
             position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
             background-color: white; transition: .4s; border-radius: 50%;
         }
-        input:checked + .slider { background-color: #d4af37; } /* Switch açıldığında altın rengi */
+        input:checked + .slider { background-color: var(--accent); }
         input:checked + .slider:before { transform: translateX(22px); }
     </style>
 </head>
@@ -131,33 +131,25 @@
 
     <main class="content">
         <div class="container">
-            <h1>Merhaba, Ben Kyuubi! 👋</h1>
-            <p>Kişisel sistemime hoş geldiniz. Burada siber güvenlik notlarımı, oyun geliştirme süreçlerimi ve diğer tüm projelerimi bulabilirsiniz.</p>
+            <h1>Mektubuma Hoş Geldiniz... 👋</h1>
+            <p>Burada tozlu raflardan çıkan siber güvenlik notlarını, kodların arasındaki hikayeleri ve oyun geliştirme sanatı üzerine düşüncelerimi paylaşıyorum.</p>
         </div>
     </main>
 
     <script>
-        // TEMA DEĞİŞTİRME
         const toggle = document.getElementById('theme-toggle');
         toggle.addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
 
-        // GELİŞMİŞ PARALLAX EFECT
         document.addEventListener("mousemove", (e) => {
             const dots = document.getElementById("parallax-dots");
-            
-            // Mouse pozisyonunu al ve merkeze göre oranla
             const mouseX = e.clientX;
             const mouseY = e.clientY;
-            
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
-            
-            // 25 çarpanı hareketi daha "premium" ve akıcı yapar
             const moveX = (centerX - mouseX) / 25;
             const moveY = (centerY - mouseY) / 25;
-            
             dots.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
         });
     </script>
