@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* 🌑 SICAK GECE MODU */
             --bg: #12100e;            
             --text: #d4c7b0;          
             --accent-1: #a67c52;      
@@ -20,7 +19,6 @@
         }
 
         body.light-theme {
-            /* ☀️ GÜNDÜZ MODU */
             --bg: #f5f2e9; 
             --text: #2d241e;
             --accent-1: #8d6e63; 
@@ -82,39 +80,41 @@
         @keyframes entry { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; line-height: 0.9; margin-bottom: 25px; letter-spacing: -3px; }
-        
-        /* 🦊 FOX ANIMATION */
-        .fox-container { position: fixed; bottom: 30px; left: 300px; right: 40px; height: 60px; pointer-events: none; z-index: 2000; }
-        .fox-icon { 
-            font-size: 40px; position: absolute; color: var(--accent-1);
-            filter: drop-shadow(0 0 10px var(--accent-1));
-            animation: foxMove 18s cubic-bezier(0.45, 0, 0.55, 1) infinite; 
+
+        /* 🦊 RUNNING FOX & SPEECH BUBBLE */
+        .fox-container { position: fixed; bottom: 40px; left: 320px; width: 200px; height: 60px; pointer-events: none; z-index: 2000; 
+            animation: foxSprint 12s cubic-bezier(0.45, 0, 0.55, 1) infinite;
         }
-        @keyframes foxMove { 
-            0% { left: 0%; transform: scaleX(1); } 
-            50% { left: 92%; transform: scaleX(-1); } 
-            100% { left: 0%; transform: scaleX(1); } 
+        
+        .fox-svg { width: 60px; fill: var(--accent-1); filter: drop-shadow(0 0 5px var(--accent-1)); }
+        
+        .speech-bubble {
+            position: absolute; top: -40px; left: 50px; background: var(--sidebar-bg);
+            color: var(--accent-2); padding: 5px 12px; border-radius: 12px;
+            font-size: 0.75rem; white-space: nowrap; border: 1px solid var(--accent-1);
+            font-family: var(--font-head); opacity: 0.9;
         }
 
-        /* 🔒 BLOG LOCK STYLE */
-        .lock-container { text-align: center; padding: 40px; border: 1px dashed var(--accent-1); border-radius: 12px; }
-        .lock-container input { 
-            background: transparent; border: 1px solid var(--accent-1); color: var(--text); 
-            padding: 10px; border-radius: 5px; font-family: var(--font-head); margin-top: 10px;
+        @keyframes foxSprint {
+            0% { left: 300px; transform: scaleX(1); }
+            50% { left: calc(100% - 150px); transform: scaleX(-1); }
+            100% { left: 300px; transform: scaleX(1); }
         }
+
+        /* 🔒 BLOG LOCK */
+        .lock-container { text-align: center; padding: 40px; border: 1px dashed var(--accent-1); border-radius: 12px; }
+        .lock-container input { background: transparent; border: 1px solid var(--accent-1); color: var(--text); padding: 10px; border-radius: 5px; margin-top: 15px; text-align: center; }
         .blog-content { display: none; }
 
         .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
         .social-links { display: flex; gap: 30px; }
-        .social-links a { color: var(--text); font-size: 0.75rem; text-decoration: none; opacity: 0.4; transition: 0.3s; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1.5px; }
+        .social-links a { color: var(--text); font-size: 0.75rem; text-decoration: none; opacity: 0.4; transition: 0.3s; text-transform: uppercase; letter-spacing: 1.5px; }
         .social-links a:hover { opacity: 1; color: var(--accent-2); }
 
         @media (max-width: 900px) {
-            body { flex-direction: column; overflow-y: auto; }
-            .sidebar { width: 100%; height: auto; position: relative; padding: 30px 0; border-right: none; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 20px 0; }
             .content { margin-left: 0; width: 100%; }
-            .page { padding: 40px 25px; }
-            .top-nav { position: relative; padding: 20px; display: flex; justify-content: center; }
+            body { flex-direction: column; overflow-y: auto; }
             .fox-container { display: none; }
         }
     </style>
@@ -158,35 +158,38 @@
 
         <div id="game-dev" class="page">
             <h1>Game <span style="color: var(--accent-1);">Design.</span></h1>
-            <p>Unity ve C# projelerim buraya gelecek.</p>
+            <p>Geliştirme aşamasında...</p>
         </div>
 
         <div id="cyber" class="page">
             <h1>Cyber <span style="color: var(--accent-2);">Security.</span></h1>
-            <p>Ofansif güvenlik notlarım ve CTF çözümlerim.</p>
+            <p>Analizler ve raporlar çok yakında.</p>
         </div>
 
         <div id="cv" class="page">
             <h1>Resume.</h1>
-            <p>Yolculuğumun teknik detayları.</p>
+            <p>Professional background.</p>
         </div>
 
         <div id="blog" class="page">
             <h1>Encrypted <span style="color: var(--accent-1);">Journal.</span></h1>
             <div id="blog-lock" class="lock-container">
                 <i class="fa-solid fa-lock" style="font-size: 2rem; color: var(--accent-1);"></i>
-                <p>İçeriği görüntülemek için anahtarı girin.</p>
+                <p>Anahtarı girin.</p>
                 <input type="password" id="blog-pass" placeholder="Password..." oninput="checkPass(this.value)">
             </div>
             <div id="blog-real-content" class="blog-content">
-                <p>🔓 Erişim Onaylandı. Günlük tutulmaya başlanıyor...</p>
-                </div>
+                <p>🔓 Blog erişimi açıldı. Yazılar yükleniyor...</p>
+            </div>
         </div>
     </main>
 
     <div class="fox-container">
-        <i class="fa-solid fa-otter fox-icon"></i> 
-        </div>
+        <div class="speech-bubble">Site hala geliştiriliyor! 🛠️</div>
+        <svg class="fox-svg" viewBox="0 0 512 512">
+            <path d="M485 145c-20-25-50-35-80-35-15 0-30 3-43 10L256 180l-106-60c-13-7-28-10-43-10-30 0-60 10-80 35-18 22-25 50-22 78 5 45 35 82 78 95l145 120c15 12 37 12 52 0l145-120c43-13 73-50 78-95 3-28-4-56-22-78zM256 400L135 300c-30-10-50-35-54-65-2-20 3-40 15-55 12-15 30-22 49-22 10 0 20 2 30 7l81 45 81-45c10-5 20-7 30-7 19 0 37 7 49 22 12 15 17 35 15 55-4 30-24 55-54 65L256 400z"/>
+        </svg>
+    </div>
 
     <script>
         function showPage(pageId) {
@@ -195,11 +198,9 @@
             document.getElementById(pageId).classList.add('active');
             const btn = document.querySelector(`a[onclick="showPage('${pageId}')"]`);
             if(btn) btn.classList.add('active');
-            document.querySelector('.content').scrollTop = 0;
         }
 
         function checkPass(val) {
-            // Şifreyi buradan belirle (Örn: 'kyuubi')
             if(val.toLowerCase() === 'kyuubi') {
                 document.getElementById('blog-lock').style.display = 'none';
                 document.getElementById('blog-real-content').style.display = 'block';
@@ -212,12 +213,10 @@
 
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
-            mX = (window.innerWidth / 2 - e.pageX) / 40;
-            mY = (window.innerHeight / 2 - e.pageY) / 40;
-            const b1 = document.getElementById('blob1');
-            const b2 = document.getElementById('blob2');
-            if(b1) b1.style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
-            if(b2) b2.style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
+            mX = (window.innerWidth / 2 - e.pageX) / 45;
+            mY = (window.innerHeight / 2 - e.pageY) / 45;
+            document.getElementById('blob1').style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
+            document.getElementById('blob2').style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
         });
     </script>
 </body>
