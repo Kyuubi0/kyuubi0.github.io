@@ -1,15 +1,22 @@
-// TEMA DEĞİŞTİRME
-const toggle = document.getElementById('theme-toggle');
-toggle.addEventListener('change', () => {
-    document.body.classList.toggle('light-theme');
-    document.body.classList.toggle('dark-theme');
+// TEMA SWITCH MANTIĞI
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('change', () => {
+    if (themeToggle.checked) {
+        document.body.classList.remove('dark-theme');
+        document.body.classList.add('light-theme');
+    } else {
+        document.body.classList.remove('light-theme');
+        document.body.classList.add('dark-theme');
+    }
 });
 
-// PARALLAX EFECT
+// PARALAKS EFECT - NOKTALARIN HAREKETİ
 document.addEventListener("mousemove", (e) => {
-    const bg = document.getElementById("parallax-bg");
-    // Sayı ne kadar küçülürse hareket o kadar artar
-    const x = (window.innerWidth / 2 - e.pageX) / 15;
-    const y = (window.innerHeight / 2 - e.pageY) / 15;
-    bg.style.transform = `translate(${x}px, ${y}px)`;
+    const dots = document.getElementById("parallax-dots");
+    
+    // Değeri artırırsan hareket yavaşlar (30 idealdir)
+    const x = (window.innerWidth / 2 - e.pageX) / 30;
+    const y = (window.innerHeight / 2 - e.pageY) / 30;
+    
+    dots.style.transform = `translate(${x}px, ${y}px)`;
 });
