@@ -1,43 +1,16 @@
 ---
 ---
 
-/* CSS Değişkenlerini Override Ediyoruz - Import Yok Hata Yok */
-
+// Sadece bu kalsın, hata riskini sıfıra indirelim
 :root {
-  /* Menü Genişliği */
   --nav-width: 220px !important;
   --nav-width-md: 220px !important;
 }
 
-/* 🟣 KOYU MOD (Siyah & Mor) */
+// Koyu Mod Mor
 @media (prefers-color-scheme: dark) {
   :root {
-    --header-bg-color: #000000 !important;
-    --body-background-color: #050505 !important;
+    --body-background-color: #000000 !important;
     --link-color: #9b59b6 !important;
-    --btn-primary-bg-color: #9b59b6 !important;
-  }
-  .side-bar { background-color: #000000 !important; }
-}
-
-/* 🟡 AÇIK MOD (Beyaz & Sarı) */
-@media (prefers-color-scheme: light) {
-  :root {
-    --header-bg-color: #ffffff !important;
-    --body-background-color: #ffffff !important;
-    --link-color: #f39c12 !important;
-    --btn-primary-bg-color: #f39c12 !important;
-  }
-  .side-bar { background-color: #fdfdfd !important; }
-}
-
-/* Düzen Zorlaması */
-.side-bar {
-  width: var(--nav-width) !important;
-}
-
-@media (min-width: 66.5rem) {
-  .main-content-wrap {
-    margin-left: var(--nav-width) !important;
   }
 }

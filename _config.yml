@@ -1,18 +1,16 @@
 remote_theme: just-the-docs/just-the-docs
 
 title: Kyuubi'nin Yeri
-description: Kişisel Portfolyo
 url: "https://kyuubi0.github.io"
 baseurl: ""
 
-# Arama ve Navigasyon
-search_enabled: true
-nav_enabled: true
+aux_links:
+  "TryHackMe": "https://tryhackme.com/p/kullaniciadin"
+  "LinkedIn": "https://linkedin.com/in/kullaniciadin"
+  "ArtStation": "https://artstation.com/kullaniciadin"
+  "GitHub": "https://github.com/kyuubi0"
+  "Itch.io": "https://kullaniciadin.itch.io"
 
-# Bu eklentiler GitHub Pages için zorunludur
 plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
-
-sass:
-  style: compressed
