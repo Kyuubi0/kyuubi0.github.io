@@ -14,5 +14,5 @@ plugins:
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-  sass:
-  style: compressed
+sass:
+style: compressed
