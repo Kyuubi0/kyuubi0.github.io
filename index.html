@@ -3,140 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyuubi | Digital Archive</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>Kyuubi | Creative Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg: #030508;
-            --text: #ffffff;
-            --accent-1: #6c5ce7; 
-            --accent-2: #00f2ff; 
-            --sidebar-bg: #060a0f;
-            --font-main: 'Inter', sans-serif;
+            /* 🌌 NIGHT: Obsidian & Cyber-Sapphire */
+            --bg: #02040a;
+            --text: #c9d1d9;
+            --accent-1: #7928ca; /* Deep Violet */
+            --accent-2: #00f2ff; /* Cyber Cyan */
+            --sidebar-bg: #040812;
+            --grid-color: rgba(0, 242, 255, 0.03);
             --font-head: 'Space Grotesk', sans-serif;
+            --font-main: 'Outfit', sans-serif;
         }
 
         body.light-theme {
+            /* 📜 DAY: Elite Dark Academia */
             --bg: #f5f2e9; 
             --text: #2d241e;
             --accent-1: #8d6e63; 
             --accent-2: #b08d57; 
             --sidebar-bg: #ede9d9;
+            --grid-color: rgba(0, 0, 0, 0.02);
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: var(--font-main); letter-spacing: -0.01em;
+            font-family: var(--font-main); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             display: flex; overflow: hidden;
-            transition: all 0.5s ease;
         }
 
-        /* 🌌 AURA PARALLAX */
+        /* 👾 GAME DEV GRID */
+        body::after {
+            content: ""; position: fixed; inset: 0;
+            background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), 
+                              linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 50px 50px; z-index: -2; pointer-events: none;
+        }
+
+        /* 🌌 VIBRANT AURA */
         #aura-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; pointer-events: none;
+            position: fixed; inset: 0; z-index: -1; pointer-events: none;
         }
-
         .aura-blob {
-            position: absolute; border-radius: 50%; filter: blur(140px);
-            opacity: 0.12; animation: float 25s infinite alternate ease-in-out;
+            position: absolute; border-radius: 50%; filter: blur(160px);
+            opacity: 0.15; animation: orbit 30s infinite linear;
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, -100px) scale(1.2); }
-        }
-
-        /* SIDEBAR */
+        /* SIDEBAR: Dev Console Style */
         .sidebar {
-            width: 260px; height: 100vh; background: var(--sidebar-bg);
-            border-right: 1px solid rgba(255,255,255,0.03);
-            position: fixed; display: flex; flex-direction: column; padding: 60px 0;
-            z-index: 1000;
+            width: 280px; height: 100vh; background: var(--sidebar-bg);
+            border-right: 1px solid rgba(255,255,255,0.05);
+            position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
         }
 
-        .sidebar-header { padding: 0 40px; margin-bottom: 60px; display: flex; justify-content: space-between; align-items: center;}
+        .sidebar-header { padding: 0 40px; margin-bottom: 40px; }
         .sidebar-header h2 { 
-            font-family: var(--font-head); font-weight: 700;
-            font-size: 1.4rem; letter-spacing: -1px; margin: 0;
-            color: var(--accent-2);
+            font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; 
+            letter-spacing: -1px; margin: 0; color: var(--accent-2); 
         }
 
         .nav-links { list-style: none; padding: 0 20px; }
-        .nav-links li { margin-bottom: 5px; }
         .nav-links a { 
             color: var(--text); text-decoration: none; font-size: 0.85rem;
             display: flex; align-items: center; padding: 14px 20px; 
-            border-radius: 10px; transition: 0.3s; opacity: 0.4;
+            border-radius: 8px; transition: 0.3s; opacity: 0.4;
         }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; background: rgba(255,255,255,0.03); color: var(--accent-2); }
-        .nav-links i { margin-right: 15px; font-size: 1rem; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; background: rgba(0, 242, 255, 0.05); color: var(--accent-2); }
+        .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
 
-        /* CONTENT */
-        .content { margin-left: 260px; width: calc(100% - 260px); height: 100vh; overflow-y: auto; }
-        .page { display: none; padding: 120px 80px; animation: fadeIn 0.6s ease; }
+        /* CONTENT AREA */
+        .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; }
+        .page { display: none; padding: 100px 80px; animation: entry 0.8s ease; }
         .page.active { display: block; }
+        @keyframes entry { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        h1 { font-family: var(--font-head); font-size: 5rem; font-weight: 700; line-height: 0.9; margin: 0 0 20px 0; letter-spacing: -3px; }
+        .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .cv-item { background: rgba(255,255,255,0.02); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
 
-        h1 { font-family: var(--font-head); font-size: 5rem; font-weight: 700; letter-spacing: -3px; line-height: 0.9; margin-bottom: 2rem; }
-        p { font-weight: 300; line-height: 1.8; font-size: 1.1rem; opacity: 0.6; max-width: 550px; }
-
-        /* 🦆 RUBBER DUCK (SVG - GARANTİ ÇALIŞIR) */
+        /* 🦆 DEBUG DUCK (SADECE SİYAH TEMA) */
         .duck-container {
-            position: fixed; bottom: 20px; left: 280px; right: 40px;
-            height: 50px; pointer-events: none; z-index: 2000;
+            position: fixed; bottom: 20px; left: 300px; right: 40px; height: 50px; 
+            pointer-events: none; z-index: 2000; display: block;
         }
-        body.light-theme .duck-container { display: none; } 
-
-        .duck-svg {
-            width: 45px; height: 45px; position: absolute;
-            filter: drop-shadow(0 0 10px var(--accent-2));
-            animation: duckMove 18s linear infinite;
-        }
-
-        @keyframes duckMove {
-            0% { left: 0%; transform: scaleX(1); }
-            50% { left: 95%; transform: scaleX(-1); }
-            100% { left: 0%; transform: scaleX(1); }
-        }
+        body.light-theme .duck-container { display: none; }
+        .duck-svg { width: 40px; height: 40px; position: absolute; filter: drop-shadow(0 0 10px var(--accent-2)); animation: duckMove 15s linear infinite; }
+        @keyframes duckMove { 0% { left: 0%; transform: scaleX(1); } 50% { left: 95%; transform: scaleX(-1); } 100% { left: 0%; transform: scaleX(1); } }
 
         /* THEME SWITCH */
-        .theme-switch { position: relative; width: 36px; height: 18px; cursor: pointer; }
+        .theme-switch { position: relative; width: 40px; height: 20px; cursor: pointer; margin-top: 10px; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #1a1a1a; transition: .4s; border-radius: 20px; }
-        .slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
+        .slider { position: absolute; inset: 0; background: #111; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); transition: .4s; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 2px; bottom: 2px; background: white; border-radius: 50%; transition: .4s; }
         input:checked + .slider { background: var(--accent-2); }
-        input:checked + .slider:before { transform: translateX(18px); }
+        input:checked + .slider:before { transform: translateX(20px); }
 
         /* SOCIALS */
         .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
-        .social-links { display: flex; gap: 25px; }
-        .social-links a { color: var(--text); font-size: 1.2rem; opacity: 0.3; transition: 0.3s; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: var(--text); font-size: 1.2rem; opacity: 0.4; transition: 0.3s; }
         .social-links a:hover { opacity: 1; color: var(--accent-2); transform: translateY(-3px); }
     </style>
 </head>
 <body class="dark-theme">
 
     <div id="aura-container">
-        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -100px; right: -100px; background: var(--accent-1);"></div>
-        <div class="aura-blob" id="blob2" style="width: 500px; height: 500px; bottom: -100px; left: -100px; background: var(--accent-2);"></div>
+        <div class="aura-blob" id="blob1" style="width: 800px; height: 800px; top: -100px; right: -100px; background: var(--accent-1);"></div>
+        <div class="aura-blob" id="blob2" style="width: 600px; height: 600px; bottom: -100px; left: 100px; background: var(--accent-2);"></div>
     </div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>KYUUBI</h2>
+            <h2>KYUUBI_LOG</h2>
             <label class="theme-switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider"></span>
             </label>
         </div>
         <ul class="nav-links">
-            <li><a href="javascript:void(0)" onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('game-dev')"><i class="fa-solid fa-code"></i> Projects</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('cyber')"><i class="fa-solid fa-bolt"></i> Lab</a></li>
-            <li><a href="javascript:void(0)" onclick="showPage('blog')"><i class="fa-solid fa-key"></i> Grimoire</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('home')" class="active"><i class="fa-solid fa-code-branch"></i> HOME.EXE</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> WORLD_BUILD</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('cyber')"><i class="fa-solid fa-skull-crossbones"></i> ROOT_LAB</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('cv')"><i class="fa-solid fa-id-card"></i> IDENTITY</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('blog')"><i class="fa-solid fa-key"></i> GRIMOIRE</a></li>
         </ul>
     </nav>
 
@@ -152,28 +148,32 @@
 
     <main class="content">
         <div id="home" class="page active">
-            <h1>Less is <br> <span style="color: var(--accent-2);">Power.</span></h1>
-            <p>Minimalist estetik, siber güvenlik disiplini ve oyun geliştirme tutkusu. Dijital dünyadaki ayak izim.</p>
+            <h1>Create <br> Or <span style="color: var(--accent-2);">Delete.</span></h1>
+            <p>Bir sanatçının gözüyle kod yazmak, bir mühendisin titizliğiyle sanat yapmak. Dijital dünyanın her iki yakasında da inşa ediyorum.</p>
+        </div>
+
+        <div id="cv" class="page">
+            <h1>Identity.</h1>
+            <div class="cv-grid">
+                <div class="cv-item"><h3>Skills</h3><p>C#, C++, Shader Programming, Pentesting, Digital Illustration.</p></div>
+                <div class="cv-item"><h3>Experience</h3><p>3+ Years in Indie Game Dev & Security Research.</p></div>
+            </div>
         </div>
 
         <div id="blog" class="page">
-            <div id="blog-lock" style="text-align: center; padding: 60px; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid rgba(255,255,255,0.05);">
-                <h2 style="font-family: var(--font-head); letter-spacing: -1px;">SYSTEM LOCKED</h2>
-                <input type="password" id="blog-pass" placeholder="Authorization Key" style="padding: 15px; border-radius: 8px; border: 1px solid var(--accent-1); background: transparent; color: white; text-align: center; margin-top: 20px; width: 250px;">
-                <button onclick="checkPass()" style="padding: 15px 30px; border-radius: 8px; border: none; background: var(--accent-2); color: #000; font-weight: 700; cursor: pointer; margin-top: 20px;">ACCESS</button>
+            <div id="blog-lock" style="text-align: center; padding: 60px; background: rgba(255,255,255,0.02); border-radius: 20px; border: 1px solid var(--accent-2);">
+                <h2>KEY_AUTH_REQUIRED</h2>
+                <input type="password" id="blog-pass" placeholder="Enter Credentials" style="padding: 15px; border-radius: 8px; border: 1px solid var(--accent-1); background: transparent; color: white; text-align: center; margin-top: 20px; outline: none;">
+                <button onclick="checkPass()" style="padding: 15px 30px; border-radius: 8px; border: none; background: var(--accent-2); color: #000; font-weight: 700; cursor: pointer; margin-top: 20px;">ACCESS_GRANT</button>
             </div>
-            <div id="blog-content" style="display: none;">
-                <h1>Archive Unlocked</h1>
-                <p>Veriler başarıyla deşifre edildi.</p>
-            </div>
+            <div id="blog-content" style="display: none;"><h1>Welcome, Kyuubi.</h1><p>Gizli dosyalar açıldı.</p></div>
         </div>
     </main>
 
     <div class="duck-container">
         <svg class="duck-svg" viewBox="0 0 512 512">
             <path fill="#FFD700" d="M160 128c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v32H160v-32zM32 256c0-70.7 57.3-128 128-128h192c70.7 0 128 57.3 128 128v64c0 70.7-57.3 128-128 128H160c-70.7 0-128-57.3-128-128v-64z"/>
-            <circle fill="#000" cx="200" cy="250" r="20"/>
-            <path fill="#FF8C00" d="M448 256h64v32h-64z"/>
+            <circle fill="#000" cx="200" cy="250" r="20"/><path fill="#FF8C00" d="M448 256h64v32h-64z"/>
         </svg>
     </div>
 
@@ -189,17 +189,18 @@
             if(document.getElementById('blog-pass').value === "simge.temel") {
                 document.getElementById('blog-lock').style.display = 'none';
                 document.getElementById('blog-content').style.display = 'block';
-            } else { alert("Access Denied."); }
+            } else { alert("ACCESS_DENIED"); }
         }
 
         document.getElementById('theme-toggle').addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
 
+        // HİBRİT PARALLAX
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
-            mX = (window.innerWidth / 2 - e.pageX) / 45;
-            mY = (window.innerHeight / 2 - e.pageY) / 45;
+            mX = (window.innerWidth / 2 - e.pageX) / 40;
+            mY = (window.innerHeight / 2 - e.pageY) / 40;
         });
 
         function animate() {
