@@ -4,46 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>uftsimge_log</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Outfit:wght@200;300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- ELITE PALETTE & SETTINGS --- */
+        /* --- AYARLAR --- */
         :root {
-            /* GECE MODU: Deep Void & Luxury Gold */
+            /* GECE MODU (Elite Dark) */
             --bg-color: #050505;
             --bg-gradient: radial-gradient(circle at center, #1a1b26 0%, #000000 100%);
             --text: #e2e2e2;
-            --sidebar-bg: rgba(10, 10, 10, 0.7); /* Transparan */
+            --sidebar-bg: rgba(10, 10, 10, 0.6);
             
-            --accent-1: #bf9aca;    /* Muted Amethyst (Asil Mor) */
-            --accent-2: #d4af37;    /* Metallic Gold (Lüks Altın) */
+            --accent-1: #bf9aca;    /* Asil Mor */
+            --accent-2: #d4af37;    /* Altın */
             
-            --blob-1: rgba(121, 40, 202, 0.25); /* Mor huzme */
-            --blob-2: rgba(0, 242, 255, 0.15);  /* Camgöbeği huzme */
+            --blob-1: rgba(121, 40, 202, 0.25);
+            --blob-2: rgba(0, 242, 255, 0.15);
             
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-bg: rgba(255, 255, 255, 0.03);
             
+            /* ESKİ FONT AYARLARI GERİ GELDİ */
             --font-head: 'Space Grotesk', sans-serif;
             --font-main: 'Outfit', sans-serif;
         }
 
         body.light-theme {
-            /* GÜNDÜZ MODU: Paper & Watercolor */
-            --bg-color: #f4f1ea; /* Eski Kağıt Tonu */
-            --bg-gradient: radial-gradient(circle at center, #f4f1ea 0%, #e0dcd3 100%);
+            /* GÜNDÜZ MODU (Paper) */
+            --bg-color: #f4f1ea;
+            --bg-gradient: linear-gradient(135deg, #f4f1ea 0%, #e0dcd3 100%); /* Radial yerine Linear */
             --text: #2c2c2c;
-            --sidebar-bg: rgba(244, 241, 234, 0.8);
+            --sidebar-bg: rgba(244, 241, 234, 0.85);
 
-            --accent-1: #7c6a5e; /* Mocha */
-            --accent-2: #c46210; /* Yanık Turuncu (Burnt Orange) */
+            --accent-1: #7c6a5e; 
+            --accent-2: #c46210; 
 
-            --blob-1: rgba(255, 107, 107, 0.15); /* Soft Coral */
-            --blob-2: rgba(78, 205, 196, 0.15);  /* Soft Teal */
+            --blob-1: rgba(255, 107, 107, 0.15);
+            --blob-2: rgba(78, 205, 196, 0.15);
 
             --glass-border: rgba(0, 0, 0, 0.05);
-            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.6);
         }
 
         body {
@@ -57,154 +58,163 @@
             height: 100vh;
         }
 
-        /* --- NOISE TEXTURE (Classy Feel) --- */
+        /* --- NOISE DOKUSU (Gece Modunun Havası İçin) --- */
         .noise-overlay {
             position: fixed; inset: 0; pointer-events: none; z-index: 9000;
             opacity: 0.04;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* --- PARALLAX BACKGROUND (Aurora) --- */
+        /* --- PARALLAX BLOB --- */
         #aura-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
         .aura-blob {
             position: absolute; border-radius: 50%; 
-            filter: blur(100px); /* Daha yumuşak geçişler */
+            filter: blur(80px);
             transition: background 1s ease;
-            mix-blend-mode: screen; /* Renklerin birbirine karışmasını sağlar */
+            mix-blend-mode: screen; 
         }
-        body.light-theme .aura-blob { mix-blend-mode: multiply; filter: blur(120px); } /* Gündüz için sulu boya efekti */
+        body.light-theme .aura-blob { mix-blend-mode: multiply; filter: blur(100px); }
 
         /* --- SIDEBAR --- */
         .sidebar {
             width: 280px; height: 100vh; 
             background: var(--sidebar-bg);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); /* Frosted Glass */
+            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-right: 1px solid var(--glass-border);
             position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
         }
 
-        .sidebar-header { padding: 0 40px; margin-bottom: 50px; }
+        .sidebar-header { padding: 0 40px; margin-bottom: 40px; }
         .sidebar-header h2 { 
-            font-family: var(--font-head); font-weight: 300; font-size: 1.2rem; 
-            letter-spacing: 2px; margin: 0; color: var(--text); text-transform: uppercase;
+            font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; /* Font eski kalınlığına döndü */
+            letter-spacing: -1px; margin: 0; color: var(--accent-2);
         }
 
         .nav-links { list-style: none; padding: 0 20px; }
         .nav-links a { 
             color: var(--text); text-decoration: none; font-size: 0.9rem;
             display: flex; align-items: center; padding: 16px 20px; margin-bottom: 5px;
-            border-radius: 4px; transition: 0.5s; opacity: 0.5; cursor: pointer;
-            font-weight: 300; letter-spacing: 0.5px; position: relative; overflow: hidden;
+            border-radius: 8px; transition: 0.3s; opacity: 0.6; cursor: pointer;
+            font-weight: 500; /* Font kalınlığı düzeltildi */
         }
-        /* Hover Efekti: Soldan ince çizgi */
-        .nav-links a::before {
-            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-            background: var(--accent-2); transform: scaleY(0); transition: 0.3s;
-        }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; background: var(--glass-bg); }
-        .nav-links a:hover::before, .nav-links a.active::before { transform: scaleY(1); }
-        
-        .nav-links i { margin-right: 20px; width: 20px; text-align: center; font-size: 0.8rem; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; background: var(--glass-bg); color: var(--accent-2); }
+        .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
 
         /* --- CONTENT --- */
         .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; scroll-behavior: smooth; }
         
-        .page { display: none; padding: 120px 100px; animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .page { display: none; padding: 100px 80px; animation: fadeUp 0.8s ease; }
         .page.active { display: block; }
         
-        @keyframes fadeUp { 
-            from { opacity: 0; transform: translateY(40px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         h1 { 
-            font-family: var(--font-head); font-size: 5.5rem; font-weight: 300; 
-            line-height: 1; margin: 0 0 30px 0; letter-spacing: -2px; 
+            font-family: var(--font-head); font-size: 5rem; font-weight: 700; /* Bold geri geldi */
+            line-height: 1; margin: 0 0 20px 0; letter-spacing: -2px; 
             color: var(--text);
         }
-        .highlight { 
-            font-weight: 600; 
-            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        .highlight { color: var(--accent-2); }
 
         h2 { 
-            font-family: var(--font-head); color: var(--text); font-weight: 300;
+            font-family: var(--font-head); color: var(--accent-2); font-weight: 700; /* Bold geri geldi */
             font-size: 2rem; border-bottom: 1px solid var(--glass-border); 
-            padding-bottom: 20px; margin-bottom: 40px; letter-spacing: -1px;
+            padding-bottom: 15px; margin-bottom: 30px; 
         }
 
-        /* --- ULTRA GLASS CARDS --- */
+        /* --- CARDS --- */
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            padding: 40px; border-radius: 2px; /* Keskin köşeler daha modern */
+            backdrop-filter: blur(10px);
+            padding: 30px; border-radius: 12px;
             border: 1px solid var(--glass-border);
-            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            position: relative; overflow: hidden;
+            transition: 0.4s;
         }
         .glass-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-2);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        /* Kartın içinde parlayan yansıma efekti */
-        .glass-card::after {
-            content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
-            transform: rotate(45deg) translateY(-100%); transition: 0.6s; pointer-events: none;
-        }
-        .glass-card:hover::after { transform: rotate(45deg) translateY(100%); }
 
-        /* --- PDF & BUTTONS --- */
+        /* --- CV PDF BUTTON --- */
         .download-btn {
-            display: inline-block; padding: 15px 40px; 
-            background: transparent; color: var(--text);
-            border: 1px solid var(--glass-border); font-family: var(--font-head);
-            font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;
-            text-decoration: none; transition: 0.3s; position: relative; z-index: 1;
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 12px 30px; background: transparent; color: var(--accent-2);
+            text-decoration: none; border-radius: 8px; font-weight: 700;
+            font-family: var(--font-head); transition: 0.3s; 
+            border: 1px solid var(--accent-2);
         }
-        .download-btn::before {
-            content: ""; position: absolute; inset: 0; background: var(--accent-2);
-            z-index: -1; transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.8, 0, 0.2, 1);
-        }
-        .download-btn:hover { color: #000; border-color: transparent; }
-        .download-btn:hover::before { transform: scaleX(1); transform-origin: left; }
-
-        /* --- FOX --- */
-        .fox-container { position: fixed; bottom: 30px; right: 40px; z-index: 2000; display: flex; flex-direction: column; align-items: flex-end; }
-        .speech-bubble {
-            background: var(--text); color: var(--bg-color); padding: 10px 20px;
-            border-radius: 20px 20px 0 20px; font-size: 0.8rem; font-weight: 500;
-            margin-bottom: 10px; opacity: 0; transform: translateY(10px);
-            animation: popIn 4s infinite alternate; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        .fox-svg { width: 60px; height: 60px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2)); }
-        
-        @keyframes popIn { 
-            0%, 20% { opacity: 0; transform: translateY(10px); }
-            30%, 80% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
+        .download-btn:hover { background: var(--accent-2); color: var(--bg-color); }
 
         /* --- TOP NAV & CONTROLS --- */
-        .top-nav { position: fixed; top: 0; right: 0; padding: 40px 60px; z-index: 1100; display: flex; gap: 40px; align-items: center; }
+        .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 1100; display: flex; gap: 30px; align-items: center; }
         .social-links { display: flex; gap: 20px; }
-        .social-links a { color: var(--text); opacity: 0.4; transition: 0.3s; font-size: 1.1rem; }
-        .social-links a:hover { opacity: 1; color: var(--accent-2); transform: scale(1.1); }
-        
-        .theme-switch { cursor: pointer; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--text); position: relative; opacity: 0.6; transition: 0.3s; }
-        .theme-switch:hover { opacity: 1; }
-        .theme-switch::after { content: ""; position: absolute; inset: 3px; background: var(--text); border-radius: 50%; transform: scale(0); transition: 0.3s; }
-        body.light-theme .theme-switch::after { transform: scale(1); }
+        .social-links a { color: var(--text); opacity: 0.5; transition: 0.3s; font-size: 1rem; }
+        .social-links a:hover { opacity: 1; color: var(--accent-2); transform: translateY(-3px); }
+
+        /* ESKİ SLIDER BUTTON GERİ GELDİ */
+        .controls-area { display: flex; gap: 15px; align-items: center; margin-top: 15px; }
+        .theme-switch { position: relative; width: 44px; height: 24px; cursor: pointer; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border-radius: 30px; transition: .4s; border: 1px solid var(--glass-border); }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 2px; bottom: 2px; background: var(--accent-2); border-radius: 50%; transition: .4s; }
+        input:checked + .slider { background: rgba(0,0,0,0.1); }
+        input:checked + .slider:before { transform: translateX(20px); background: var(--text); }
+
+        .lang-btn {
+            background: none; border: 1px solid var(--glass-border); color: var(--text);
+            padding: 4px 12px; border-radius: 6px; cursor: pointer; font-family: var(--font-head);
+            font-size: 0.75rem; opacity: 0.7; transition: 0.3s;
+        }
+        .lang-btn:hover { border-color: var(--accent-2); color: var(--accent-2); opacity: 1; }
+
+        /* --- 🦊 FOX ANIMASYONLARI (GERİ GELDİ) --- */
+        .fox-container {
+            position: fixed; bottom: 20px; width: 100%; height: 100px;
+            pointer-events: none; z-index: 2000;
+        }
+        .speech-bubble {
+            position: absolute; bottom: 90px; background: var(--text); color: var(--bg-color);
+            padding: 8px 16px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;
+            font-family: var(--font-main); box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            opacity: 0; white-space: nowrap;
+            /* Konuşma balonu da tilki ile beraber hareket etsin diye animasyon eklendi */
+            animation: moveAcross 30s linear infinite, fadeBubble 6s ease-in-out infinite;
+        }
+        .speech-bubble::after {
+            content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+            border-width: 6px 6px 0; border-style: solid; border-color: var(--text) transparent transparent transparent;
+        }
+        .fox-svg { 
+            width: 80px; height: 80px; position: absolute; bottom: 0;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
+            /* Yürüme ve Zıplama Animasyonu */
+            animation: moveAcross 30s linear infinite, bounce 0.6s ease-in-out infinite alternate; 
+        }
+
+        @keyframes moveAcross { 
+            0% { left: -10%; transform: scaleX(1); } 
+            45% { left: 100%; transform: scaleX(1); }
+            50% { left: 100%; transform: scaleX(-1); } /* Dönüş */
+            95% { left: -10%; transform: scaleX(-1); }
+            100% { left: -10%; transform: scaleX(1); } 
+        }
+        @keyframes bounce { 
+            from { margin-bottom: 0px; rotate: -3deg; } 
+            to { margin-bottom: 8px; rotate: 3deg; } 
+        }
+        @keyframes fadeBubble {
+            0%, 20% { opacity: 0; transform: translateY(10px); }
+            30%, 70% { opacity: 1; transform: translateY(0); }
+            80%, 100% { opacity: 0; transform: translateY(10px); }
+        }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             body { flex-direction: column; overflow-y: auto; height: auto; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 30px 0; border-right: none; border-bottom: 1px solid var(--glass-border); }
             .content { margin-left: 0; width: 100%; height: auto; }
-            .page { padding: 60px 30px; }
-            h1 { font-size: 3.5rem; }
+            .page { padding: 50px 25px; }
+            h1 { font-size: 3rem; }
             .top-nav { position: relative; padding: 20px; justify-content: center; width: 100%; right: auto; top: auto; }
             .fox-container { display: none; }
         }
@@ -215,21 +225,28 @@
     <div class="noise-overlay"></div>
 
     <div id="aura-container">
-        <div class="aura-blob" id="blob1" style="width: 60vh; height: 60vh; top: -10%; right: -10%; background: var(--blob-1);"></div>
-        <div class="aura-blob" id="blob2" style="width: 50vh; height: 50vh; bottom: -10%; left: -10%; background: var(--blob-2);"></div>
-        <div class="aura-blob" id="blob3" style="width: 30vh; height: 30vh; top: 40%; left: 40%; background: var(--accent-2); opacity: 0.1;"></div>
+        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -100px; right: -100px; background: var(--blob-1);"></div>
+        <div class="aura-blob" id="blob2" style="width: 500px; height: 500px; bottom: -50px; left: 50px; background: var(--blob-2);"></div>
+        <div class="aura-blob" id="blob3" style="width: 300px; height: 300px; top: 40%; left: 40%; background: var(--accent-2); opacity: 0.1;"></div>
     </div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
             <h2>UFTSIMGE_LOG</h2>
+            <div class="controls-area">
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <button class="lang-btn" onclick="toggleLanguage()">TR / EN</button>
+            </div>
         </div>
         <ul class="nav-links">
-            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> Game Dev</a></li>
-            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> Security</a></li>
-            <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> Resume</a></li>
-            <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> Insights</a></li>
+            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> <span data-key="nav_home">Ana Sayfa</span></a></li>
+            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> <span data-key="nav_game">Game Dev</span></a></li>
+            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> <span data-key="nav_cyber">Security</span></a></li>
+            <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> <span data-key="nav_cv">Özgeçmiş</span></a></li>
+            <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> <span data-key="nav_blog">Blog</span></a></li>
         </ul>
     </nav>
 
@@ -239,14 +256,12 @@
             <a href="https://www.linkedin.com/in/simge-temel/" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="https://github.com/Kyuubi0" target="_blank"><i class="fa-brands fa-github"></i></a>
         </div>
-        <div class="theme-switch" id="theme-btn" title="Toggle Theme"></div>
-        <button onclick="toggleLanguage()" style="background:none; border:none; color:var(--text); font-family:var(--font-head); cursor:pointer; opacity:0.6; font-size:0.8rem;">TR/EN</button>
     </header>
 
     <main class="content">
         <div id="home" class="page active">
             <h1 data-key="home_title">Simge Temel <br> <span class="highlight">Creative Tech.</span></h1>
-            <p data-key="home_desc" style="max-width: 550px; line-height: 1.8; font-size: 1.1rem; opacity: 0.7; font-weight: 300;">
+            <p data-key="home_desc" style="max-width: 600px; line-height: 1.6; font-size: 1.1rem; opacity: 0.8; font-weight: 400;">
                 Matematik Mühendisliği öğrencisi. Oyun Geliştirici. Siber Güvenlik Araştırmacısı. 
                 <br><br>
                 Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. Dijital dünyada "Kyuubi" imzasıyla iz bırakıyorum.
@@ -258,25 +273,25 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
                 <div class="glass-card">
                     <i class="fa-brands fa-unity" style="font-size: 2rem; color: var(--accent-2); margin-bottom: 20px; display:block;"></i>
-                    <h3 style="margin: 0 0 10px 0; font-weight: 400;">Mystopia Assets</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.6;" data-key="project_1">200+ Varlık, Low-poly optimizasyon ve artistik direktörlük.</p>
+                    <h3 style="margin: 0 0 10px 0;">Mystopia Assets</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;" data-key="project_1">200+ Varlık, Low-poly optimizasyon ve artistik direktörlük.</p>
                 </div>
                 <div class="glass-card">
                     <i class="fa-solid fa-cube" style="font-size: 2rem; color: var(--accent-1); margin-bottom: 20px; display:block;"></i>
-                    <h3 style="margin: 0 0 10px 0; font-weight: 400;">Hit & Boom</h3>
-                    <p style="font-size: 0.9rem; opacity: 0.6; line-height: 1.6;" data-key="project_2">MOBA projesi için 3D Çevre tasarımı ve asset üretimi.</p>
+                    <h3 style="margin: 0 0 10px 0;">Hit & Boom</h3>
+                    <p style="font-size: 0.9rem; opacity: 0.7; line-height: 1.6;" data-key="project_2">MOBA projesi için 3D Çevre tasarımı ve asset üretimi.</p>
                 </div>
             </div>
         </div>
 
         <div id="cyber" class="page">
             <h2 data-key="cyber_title">Security Research</h2>
-            <div class="glass-card" style="border-left: 3px solid var(--accent-1);">
+            <div class="glass-card" style="border-left: 4px solid var(--accent-1);">
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <h3 style="margin:0;">SKYSEC Bootcamp</h3>
                     <i class="fa-solid fa-shield-cat" style="color:var(--accent-1); font-size:1.5rem;"></i>
                 </div>
-                <p data-key="cyber_detail" style="margin-top:15px; opacity:0.7; line-height:1.6;">
+                <p data-key="cyber_detail" style="margin-top:15px; opacity: 0.8; line-height:1.6;">
                     Exploitation, Reverse Engineering ve Log Analizi üzerine yoğunlaştırılmış çalışmalar. CTF dereceleri.
                 </p>
             </div>
@@ -284,26 +299,30 @@
 
         <div id="cv" class="page">
             <h2 data-key="cv_title">Resume</h2>
-            <div style="width: 100%; height: 70vh; background: var(--glass-bg); border: 1px solid var(--glass-border); overflow: hidden;">
-                <iframe src="Simge_Temel_CV.pdf" type="application/pdf" width="100%" height="100%" style="border: none;"></iframe>
+            <div style="width: 100%; height: 70vh; background: var(--glass-bg); border: 1px solid var(--glass-border); overflow: hidden; border-radius: 12px;">
+                <iframe src="Simge_Temel_CV.pdf" type="application/pdf" width="100%" height="100%" style="border: none;">
+                     <p style="text-align: center; padding: 20px;">PDF görüntülenemiyor.</p>
+                </iframe>
             </div>
-            <div style="margin-top: 30px; text-align: right;">
-                <a href="Simge_Temel_CV.pdf" download class="download-btn">Download PDF</a>
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="Simge_Temel_CV.pdf" download class="download-btn">
+                     <i class="fa-solid fa-file-pdf"></i> <span data-key="cv_download">PDF Olarak İndir</span>
+                </a>
             </div>
         </div>
 
         <div id="blog" class="page">
             <h2 data-key="nav_blog">Insights</h2>
-            <div style="text-align:center; padding: 60px 0; border: 1px solid var(--glass-border); background: var(--glass-bg);">
+            <div style="text-align:center; padding: 60px 0; border: 1px solid var(--glass-border); background: var(--glass-bg); border-radius: 12px;">
                 <i class="fa-solid fa-fingerprint" style="font-size: 3rem; color: var(--accent-2); margin-bottom: 20px;"></i>
-                <h3 data-key="blog_locked" style="font-weight:400; margin-bottom: 20px;">Restricted Access</h3>
+                <h3 data-key="blog_locked" style="margin-bottom: 20px;">Erişim Korumalı</h3>
                 <input type="password" id="blog-pass" placeholder="Pass: 1234" style="background:transparent; border:none; border-bottom:1px solid var(--text); padding:10px; color:var(--text); text-align:center; outline:none; font-family:var(--font-head);">
                 <br><br>
-                <button onclick="checkPass()" style="background:var(--text); color:var(--bg-color); border:none; padding:10px 30px; cursor:pointer; font-family:var(--font-head); font-weight:600;">UNLOCK</button>
+                <button onclick="checkPass()" style="background:var(--text); color:var(--bg-color); border:none; padding:10px 30px; cursor:pointer; font-family:var(--font-head); font-weight:bold; border-radius:4px;">GİRİŞ</button>
                 <div id="blog-content" style="display:none; margin-top:40px; text-align:left; padding:0 40px;">
                     <hr style="opacity:0.2; margin-bottom:20px;">
                     <h4>Neden Kendi Oyun Motorumu Yazıyorum?</h4>
-                    <p style="opacity:0.7; font-size:0.9rem;">Çünkü her şeyi sıfırdan öğrenmek, hazır olanı kullanmaktan daha öğreticidir...</p>
+                    <p style="opacity:0.8; font-size:0.95rem;">Çünkü her şeyi sıfırdan öğrenmek, hazır olanı kullanmaktan daha öğreticidir...</p>
                 </div>
             </div>
         </div>
@@ -312,7 +331,12 @@
     <div class="fox-container">
         <div class="speech-bubble" data-key="duck_msg">Yip Yip! 🦊</div>
         <svg class="fox-svg" viewBox="0 0 100 100">
-             <path d="M20,70 Q40,40 60,60 Q50,90 20,85 Z" fill="#d35400" /> <path d="M40,80 Q60,90 80,70 L70,50 Q50,50 40,80" fill="#e67e22" /> <path d="M60,40 L90,40 L75,70 Z" fill="#e67e22" /> <path d="M60,40 L65,15 L75,40" fill="#d35400" /> <path d="M90,40 L85,15 L75,40" fill="#d35400" /> <circle cx="70" cy="50" r="2.5" fill="#1a1a1a" />
+             <path d="M20,70 Q40,40 60,60 Q50,90 20,85 Z" fill="#d35400" /> 
+             <path d="M40,80 Q60,90 80,70 L70,50 Q50,50 40,80" fill="#e67e22" /> 
+             <path d="M60,40 L90,40 L75,70 Z" fill="#e67e22" /> 
+             <path d="M60,40 L65,15 L75,40" fill="#d35400" /> 
+             <path d="M90,40 L85,15 L75,40" fill="#d35400" /> 
+             <circle cx="70" cy="50" r="2.5" fill="#1a1a1a" />
              <circle cx="80" cy="50" r="2.5" fill="#1a1a1a" />
         </svg>
     </div>
@@ -327,21 +351,21 @@
             const x = e.clientX / window.innerWidth;
             const y = e.clientY / window.innerHeight;
             
-            // Subtle movement opposite to mouse
             blob1.style.transform = `translate(${x * -40}px, ${y * -40}px)`;
             blob2.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
             blob3.style.transform = `translate(${x * -20}px, ${y * 60}px)`;
         });
 
-        // Theme Toggle
-        const themeBtn = document.getElementById('theme-btn');
-        themeBtn.addEventListener('click', () => {
+        // Theme Toggle (DÜZELTİLDİ)
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
 
-        // Language & Navigation (Simplified for brevity)
+        // Language & Navigation
         const langData = {
             tr: {
+                nav_home: "Ana Sayfa", nav_game: "Oyun Geliştirme", nav_cyber: "Siber Güvenlik", nav_cv: "Özgeçmiş", nav_blog: "Blog",
                 home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
                 home_desc: "Matematik Mühendisliği öğrencisi. Oyun Geliştirici. Siber Güvenlik Araştırmacısı. <br><br>Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. Dijital dünyada 'Kyuubi' imzasıyla iz bırakıyorum.",
                 game_title: "Seçilmiş İşler",
@@ -349,11 +373,12 @@
                 project_2: "MOBA projesi için 3D Çevre tasarımı ve asset üretimi.",
                 cyber_title: "Güvenlik Araştırmaları",
                 cyber_detail: "Exploitation, Reverse Engineering ve Log Analizi üzerine yoğunlaştırılmış çalışmalar.",
-                cv_title: "Özgeçmiş",
+                cv_title: "Özgeçmiş", cv_download: "PDF Olarak İndir",
                 blog_locked: "Erişim Korumalı",
                 duck_msg: "Yip Yip! 🦊"
             },
             en: {
+                nav_home: "Home", nav_game: "Game Dev", nav_cyber: "Security", nav_cv: "Resume", nav_blog: "Blog",
                 home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
                 home_desc: "Mathematical Engineering student. Game Developer. Cyber Security Researcher. <br><br>Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.",
                 game_title: "Selected Works",
@@ -361,7 +386,7 @@
                 project_2: "3D Environment design and asset production for MOBA project.",
                 cyber_title: "Security Research",
                 cyber_detail: "Intensive studies on Exploitation, Reverse Engineering and Log Analysis.",
-                cv_title: "Resume",
+                cv_title: "Resume", cv_download: "Download as PDF",
                 blog_locked: "Restricted Access",
                 duck_msg: "Yip Yip! 🦊"
             }
@@ -381,7 +406,11 @@
             document.getElementById(pageId).classList.add('active');
             
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-            event.currentTarget.classList.add('active'); // Needs proper event handling in production
+            // Basit active state mantığı
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
+            });
         }
         
         function checkPass() {
