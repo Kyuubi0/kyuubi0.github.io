@@ -1,27 +1,67 @@
 ---
 ---
 
-// 1. Önce kendi renk değişkenlerimizi tanımlayalım (Renkleri buradan değiştirebilirsin)
-$dark-primary: #7253ed; // Ana renk (Mor yaptık, istersen değiştir)
-$dark-text: #e0e0e0;    // Yazı rengi
-$link-color: #ff9f43;   // Link rengi (Turuncu yaptık, değiştirebilirsin)
+// ==========================================
+// 1. TEMA AYARLARI (ÖNCE BURASI OKUNUR)
+// ==========================================
 
-// 2. Sol Menü Genişliği Ayarı
-$nav-width: 220px;      // Varsayılan 260px civarıdır, daralttık.
+// --- GENEL AYARLAR ---
+$nav-width: 220px;       // Sol menü genişliği (Senin istediğin dar yapı)
 $nav-width-md: 220px;
 
-// 3. Temayı çağır (Bu satır mecburi, silme)
+// --- AÇIK TEMA (Light Mode) -> BEYAZ & SARI ---
+// Not: Saf sarı beyaz üstünde okunmaz, o yüzden "Bal Sarısı/Turuncu" tonu kullandım.
+$light-background: #ffffff;      // Arka plan bembeyaz
+$light-text: #222222;            // Yazılar koyu gri (Okunabilirlik için)
+$light-primary: #f39c12;         // Linkler ve Butonlar: Tilki Sarısı 🦊
+$light-secondary: #e67e22;       // İkincil renkler
+
+// --- KOYU TEMA (Dark Mode) -> SİYAH & MOR ---
+$dark-background: #050505;       // Arka plan: Zifiri Siyah
+$dark-text: #eeeeee;             // Yazılar: Kırık Beyaz
+$dark-primary: #9b59b6;          // Linkler: Ametist Moru 🔮
+$dark-secondary: #8e44ad;        // Hover (üzerine gelince) rengi
+
+// ==========================================
+// 2. TEMAYI YÜKLE (MOTORU ÇALIŞTIR)
+// ==========================================
 @import "just-the-docs";
 
-// 4. Ekstra CSS Müdahaleleri (En alta yazılır)
+// ==========================================
+// 3. ÖZEL MÜDAHALELER (İNCE AYARLAR)
+// ==========================================
 
-// Sol menü arka plan rengi
+// --- Sol Menü (Sidebar) Ayarları ---
 .side-bar {
-    background-color: #151515 !important; // Daha koyu siyah
-    border-right: 1px solid #333;
+    // Koyu modda sol menüyü tam siyah yapalım, hafif ayrısın diye sağa çizgi
+    @include mq(md) {
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
+    }
 }
 
-// Sağ üstteki linklerin rengi
+// Dark Modda Sol Menü Rengi (Tam Siyah)
+@media (prefers-color-scheme: dark) {
+    .side-bar {
+        background-color: #000000 !important;
+    }
+    // Arama kutusu rengini uyumlu yap
+    .search-input {
+        background-color: #1a1a1a;
+        border-color: #9b59b6; // Mor çerçeve
+        color: white;
+    }
+}
+
+// Light Modda Sol Menü (Hafif Gri/Beyaz)
+@media (prefers-color-scheme: light) {
+    .side-bar {
+        background-color: #fcfcfc !important;
+        border-right: 1px solid #eee;
+    }
+}
+
+// --- Sağ Üst Linkler (Aux Links) ---
 .site-header .aux-nav .list-item {
-    color: $link-color;
+    font-weight: bold;
+    // Renkleri yukarıdaki primary değişkenlerden otomatik alır
 }

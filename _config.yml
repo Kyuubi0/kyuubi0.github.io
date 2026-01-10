@@ -8,7 +8,7 @@ baseurl: ""  # Burası kesinlikle boş kalmalı
 remote_theme: just-the-docs/just-the-docs
 
 # GÖRÜNÜM
-color_scheme: dark  # Koyu mod (açık istersen nil yap)
+color_scheme: nill  # Koyu mod (açık istersen nil yap)
 
 # NAVİGASYON VE ARAMA
 search_enabled: true
