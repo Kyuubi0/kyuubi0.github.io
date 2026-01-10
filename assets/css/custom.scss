@@ -1,0 +1,27 @@
+---
+---
+
+// 1. Önce kendi renk değişkenlerimizi tanımlayalım (Renkleri buradan değiştirebilirsin)
+$dark-primary: #7253ed; // Ana renk (Mor yaptık, istersen değiştir)
+$dark-text: #e0e0e0;    // Yazı rengi
+$link-color: #ff9f43;   // Link rengi (Turuncu yaptık, değiştirebilirsin)
+
+// 2. Sol Menü Genişliği Ayarı
+$nav-width: 220px;      // Varsayılan 260px civarıdır, daralttık.
+$nav-width-md: 220px;
+
+// 3. Temayı çağır (Bu satır mecburi, silme)
+@import "just-the-docs";
+
+// 4. Ekstra CSS Müdahaleleri (En alta yazılır)
+
+// Sol menü arka plan rengi
+.side-bar {
+    background-color: #151515 !important; // Daha koyu siyah
+    border-right: 1px solid #333;
+}
+
+// Sağ üstteki linklerin rengi
+.site-header .aux-nav .list-item {
+    color: $link-color;
+}
