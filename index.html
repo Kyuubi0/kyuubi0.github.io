@@ -3,98 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyuubi | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Kyuubi | Digital Art & Code</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            /* MODERN DARK (Deep Space) */
-            --bg: #05070a;
-            --text: #e0e0e0;
-            --accent: #c3a5ff; /* Soft Pastel Mor */
-            --sidebar-bg: #080a0f;
-            --sidebar-w: 260px;
+            --bg: #0a0a0a;
+            --text: #ffffff;
+            --accent: #a29bfe; /* Soft Lavender (Mor) */
+            --sidebar-bg: rgba(15, 15, 15, 0.8);
+            --sidebar-w: 280px;
+            --glass: rgba(255, 255, 255, 0.03);
         }
 
         body.light-theme {
-            /* MODERN DARK ACADEMIA (Paper & Ink) */
-            --bg: #fdfaf3; 
-            --text: #3c2f2f;
-            --accent: #b08d57; /* Bronz Altın */
-            --sidebar-bg: #f7f3e8;
+            --bg: #fcfcfc;
+            --text: #1a1a1a;
+            --accent: #6c5ce7;
+            --sidebar-bg: rgba(245, 245, 245, 0.8);
+            --glass: rgba(0, 0, 0, 0.03);
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: 'Inter', sans-serif; display: flex; overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Montserrat', sans-serif; display: flex; overflow: hidden;
+            transition: all 0.6s ease;
         }
 
-        h1 { font-family: 'Lora', serif; font-weight: 600; font-size: 3rem; color: var(--accent); }
-
-        /* PARALLAX LAYER */
-        #parallax-layer {
-            position: fixed; top: -20%; left: -20%; width: 140%; height: 140%;
-            z-index: -1; pointer-events: none; will-change: transform;
-            transition: background 0.5s ease;
+        /* 🌌 NEW PARALLAX: Saydam Büyük Küreler */
+        #parallax-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none;
         }
 
-        /* Arka Plan Varyasyonları */
-        .vars-dots { background-image: radial-gradient(var(--accent) 1.5px, transparent 1.5px); background-size: 50px 50px; opacity: 0.25; }
-        .vars-lines { background: repeating-linear-gradient(0deg, transparent, transparent 40px, var(--accent) 40px, var(--accent) 41px); opacity: 0.1; }
-        .vars-stars { background-image: radial-gradient(white 1px, transparent 1px), radial-gradient(var(--accent) 1px, transparent 1px); background-size: 100px 100px, 150px 150px; opacity: 0.4; }
+        .blob {
+            position: absolute; border-radius: 50%;
+            background: var(--accent); filter: blur(80px);
+            opacity: 0.15; transition: transform 0.2s ease-out;
+        }
 
-        /* SIDEBAR */
+        /* SIDEBAR: Ultra Clean */
         .sidebar {
             width: var(--sidebar-w); height: 100vh; background: var(--sidebar-bg);
-            border-right: 1px solid rgba(255,255,255,0.05); position: fixed;
-            display: flex; flex-direction: column; align-items: center; padding: 40px 0;
+            backdrop-filter: blur(20px); border-right: 1px solid var(--glass);
+            position: fixed; display: flex; flex-direction: column; padding: 60px 0;
         }
-        body.light-theme .sidebar { border-right: 1px solid rgba(0,0,0,0.05); }
 
-        .sidebar-header { width: 80%; display: flex; align-items: center; justify-content: space-between; margin-bottom: 50px; }
-        .sidebar-header h2 { font-family: 'Lora', serif; margin: 0; color: var(--accent); }
+        .sidebar-header { padding: 0 40px; margin-bottom: 60px; display: flex; justify-content: space-between; align-items: center; }
+        .sidebar-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0; font-style: italic; }
 
-        .nav-links { list-style: none; padding: 0; width: 80%; }
-        .nav-links li { margin-bottom: 25px; }
-        .nav-links a { color: var(--text); text-decoration: none; font-size: 1rem; display: flex; align-items: center; transition: 0.3s; font-weight: 300; }
-        .nav-links a i { margin-right: 15px; color: var(--accent); width: 20px; text-align: center; }
-        .nav-links a:hover { color: var(--accent); transform: translateX(10px); }
-
-        /* TOP NAV */
-        .top-nav { position: fixed; top: 0; right: 0; padding: 30px 40px; z-index: 100; }
-        .social-links { display: flex; gap: 25px; }
-        .social-links a { color: var(--text); font-size: 1.3rem; transition: 0.3s; opacity: 0.7; }
-        .social-links a:hover { color: var(--accent); opacity: 1; transform: translateY(-3px); }
-
-        /* CONTENT */
-        .content { margin-left: var(--sidebar-w); width: 100%; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { max-width: 700px; padding: 0 60px; }
-        .container p { font-size: 1.1rem; line-height: 1.8; font-weight: 300; opacity: 0.9; }
-
-        /* VARYASYON BUTONLARI (Alt Orta) */
-        .variation-panel {
-            position: fixed; bottom: 30px; left: 50%; transform: translateX(-20%);
-            display: flex; gap: 10px; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 50px; backdrop-filter: blur(10px);
+        .nav-links { list-style: none; padding: 0 30px; }
+        .nav-links li { margin-bottom: 10px; }
+        .nav-links a { 
+            color: var(--text); text-decoration: none; font-size: 0.9rem; letter-spacing: 1px;
+            display: flex; align-items: center; padding: 15px; border-radius: 12px;
+            transition: 0.3s; opacity: 0.6;
         }
-        .var-btn {
-            border: 1px solid var(--accent); background: transparent; color: var(--text);
-            padding: 5px 15px; border-radius: 20px; cursor: pointer; font-size: 0.8rem; transition: 0.3s;
-        }
-        .var-btn:hover { background: var(--accent); color: #000; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; background: var(--glass); transform: translateX(5px); }
+        .nav-links i { margin-right: 15px; font-size: 1.1rem; width: 20px; }
+
+        /* TOP NAV: Minimal Sosyal Linkler */
+        .top-nav { position: fixed; top: 0; right: 0; padding: 40px 60px; z-index: 100; }
+        .social-links { display: flex; gap: 30px; }
+        .social-links a { color: var(--text); font-size: 1.2rem; opacity: 0.4; transition: 0.4s; }
+        .social-links a:hover { opacity: 1; transform: scale(1.1); }
+
+        /* CONTENT: Sayfa Değişimi Simülasyonu */
+        .content { margin-left: var(--sidebar-w); width: calc(100% - var(--sidebar-w)); height: 100vh; overflow-y: auto; scroll-behavior: smooth; }
+        .page { display: none; padding: 120px 80px; animation: fadeIn 0.8s ease forwards; }
+        .page.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 20px; font-weight: 600; }
+        p { font-size: 1.1rem; line-height: 1.8; opacity: 0.7; max-width: 600px; font-weight: 300; }
+
+        .card { background: var(--glass); border: 1px solid var(--glass); padding: 30px; border-radius: 20px; margin-top: 40px; }
 
         /* SWITCH */
-        .theme-switch { position: relative; width: 40px; height: 20px; }
+        .theme-switch { position: relative; width: 36px; height: 18px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #333; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
+        .slider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #333; transition: .4s; border-radius: 20px; }
+        .slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background: var(--accent); }
-        input:checked + .slider:before { transform: translateX(20px); }
+        input:checked + .slider:before { transform: translateX(18px); }
     </style>
 </head>
 <body class="dark-theme">
 
-    <div id="parallax-layer" class="vars-dots"></div>
+    <div id="parallax-container">
+        <div class="blob" style="width: 400px; height: 400px; top: 10%; left: 20%;"></div>
+        <div class="blob" style="width: 300px; height: 300px; bottom: 10%; right: 20%; background: #6c5ce7;"></div>
+    </div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
@@ -105,10 +105,10 @@
             </label>
         </div>
         <ul class="nav-links">
-            <li><a href="#"><i class="fa-solid fa-compass"></i> Ana Sayfa</a></li>
-            <li><a href="#"><i class="fa-solid fa-code"></i> Geliştirme</a></li>
-            <li><a href="#"><i class="fa-solid fa-user-shield"></i> Güvenlik</a></li>
-            <li><a href="#"><i class="fa-solid fa-book-open"></i> Günlük</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('game-dev')"><i class="fa-solid fa-cube"></i> Game Dev</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('cyber')"><i class="fa-solid fa-ghost"></i> Cyber</a></li>
+            <li><a href="javascript:void(0)" onclick="showPage('cv')"><i class="fa-solid fa-address-card"></i> CV</a></li>
         </ul>
     </nav>
 
@@ -116,41 +116,63 @@
         <div class="social-links">
             <a href="#"><i class="fa-brands fa-github"></i></a>
             <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#"><i class="fa-solid fa-paper-plane"></i></a>
         </div>
     </header>
 
     <main class="content">
-        <div class="container">
-            <h1>Sanat ve Kodun Kesişimi.</h1>
-            <p>Ben Kyuubi. Modern siber güvenlik mimarileri inşa ediyor, dijital dünyanın karanlık köşelerinde ışık arıyorum. Bu alan benim zihinsel kütüphanem.</p>
+        <div id="home" class="page active">
+            <h1>Art of Minimal.</h1>
+            <p>Siber dünya ve oyun tasarımının estetikle buluştuğu nokta. Karmaşıklığı sadelikle çözüyoruz.</p>
+            <div class="card">
+                <h3>Current Status</h3>
+                <p>Developing a custom engine for "Silent Echo" project.</p>
+            </div>
+        </div>
+
+        <div id="game-dev" class="page">
+            <h1>Game Projects</h1>
+            <p>Unity ve Unreal Engine ile geliştirilen dijital dünyalar.</p>
+            <div class="card">
+                <h3>Silent Echo (In Progress)</h3>
+                <p>A psychological horror experience focused on sound design.</p>
+            </div>
+        </div>
+
+        <div id="cyber" class="page">
+            <h1>Cyber Lab</h1>
+            <p>Zafiyet analizleri ve siber güvenlik araştırmaları.</p>
+            <div class="card">
+                <h3>Latest Writeup</h3>
+                <p>Analysis of CVE-2025-XXXX: The ghost in the machine.</p>
+            </div>
         </div>
     </main>
 
-    <div class="variation-panel">
-        <button class="var-btn" onclick="changeVar('vars-dots')">Noktalar</button>
-        <button class="var-btn" onclick="changeVar('vars-lines')">Çizgiler</button>
-        <button class="var-btn" onclick="changeVar('vars-stars')">Yıldızlar</button>
-    </div>
-
     <script>
-        // TEMA
+        // Sayfa Değiştirme Fonksiyonu
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Tema Switch
         const toggle = document.getElementById('theme-toggle');
         toggle.addEventListener('change', () => { document.body.classList.toggle('light-theme'); });
 
-        // VARYASYON DEĞİŞTİRME
-        function changeVar(className) {
-            const layer = document.getElementById('parallax-layer');
-            layer.className = ''; 
-            layer.classList.add(className);
-        }
-
-        // PREMIUM PARALLAX
+        // PREMIUM BLOB PARALLAX
         document.addEventListener("mousemove", (e) => {
-            const layer = document.getElementById("parallax-layer");
-            const x = (window.innerWidth / 2 - e.pageX) / 35;
-            const y = (window.innerHeight / 2 - e.pageY) / 35;
-            layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            const blobs = document.querySelectorAll(".blob");
+            const x = (window.innerWidth / 2 - e.pageX) / 40;
+            const y = (window.innerHeight / 2 - e.pageY) / 40;
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.5;
+                blob.style.transform = `translate3d(${x * speed}px, ${y * speed}px, 0)`;
+            });
         });
     </script>
 </body>
