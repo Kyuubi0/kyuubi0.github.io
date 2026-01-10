@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +8,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- RENK PALETİ VE AYARLAR --- */
+        /* --- RENK PALETİ VE AYARLAR (Senin Kodun) --- */
         :root {
-            /* GECE MODU (Varsayılan) - "Luxury Tech" Estetiği */
-            --bg: #1e2031;          /* Obsidyen Siyahı (Tam siyah değil, derin füme) */
-            --text: #e0e6ed;        /* Gümüş Beyazı (Göz almayan soft beyaz) */
-            --sidebar-bg: #2f2f3b;  /* Bir ton açık arka plan */
-            
-            /* Accent Renkleri: Neon yerine daha "Classy" tonlar */
-            --accent-1: #9d8ec4;    /* Soluk Kraliyet Moru (Lavanta) */
-            --accent-2: #fccdad;    /* Şampanya Altını (Gold) - Elit duruş için */
-
-            --grid-color: rgba(212, 175, 55, 0.03); /* Altın rengi çok silik ızgara */
+            /* GECE MODU */
+            --bg: #1e2031;
+            --text: #e0e6ed;
+            --sidebar-bg: #2f2f3b;
+            --accent-1: #9d8ec4; /* Lavanta */
+            --accent-2: #fccdad; /* Şampanya Altını */
+            --grid-color: rgba(212, 175, 55, 0.03);
             --font-head: 'Space Grotesk', sans-serif;
             --font-main: 'Outfit', sans-serif;
         }
 
-        /* GÜNDÜZ MODU - Mevcut "Cream/Coffee" Estetiği */
+        /* GÜNDÜZ MODU */
         body.light-theme {
             --bg: #f8f2e1;
             --text: #2d241e;
             --sidebar-bg: #ebe5cd;
-            --accent-1: #8d6e63; /* Kahve tonu */
-            --accent-2: #b08d57; /* Bronz/Toprak */
+            --accent-1: #8d6e63;
+            --accent-2: #b08d57;
             --grid-color: rgba(0, 0, 0, 0.03);
         }
 
@@ -51,8 +48,7 @@
         #aura-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
         .aura-blob {
             position: absolute; border-radius: 50%; filter: blur(140px);
-            opacity: 0.12; /* Biraz daha soft, göz yormasın */
-            animation: orbit 40s infinite linear;
+            opacity: 0.12; animation: orbit 40s infinite linear;
         }
         @keyframes orbit {
             from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
@@ -64,14 +60,14 @@
             width: 280px; height: 100vh; background: var(--sidebar-bg);
             border-right: 1px solid rgba(255,255,255,0.03);
             position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
-            box-shadow: 5px 0 30px rgba(0,0,0,0.2); /* Hafif gölge */
+            box-shadow: 5px 0 30px rgba(0,0,0,0.2);
         }
 
         .sidebar-header { padding: 0 40px; margin-bottom: 40px; }
         .sidebar-header h2 { 
             font-family: var(--font-head); font-weight: 700; font-size: 1.4rem; 
             letter-spacing: -1px; margin: 0; color: var(--accent-2); 
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2); /* Altın parıltısı */
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .nav-links { list-style: none; padding: 0 20px; }
@@ -116,11 +112,20 @@
         }
 
         /* --- KUTU TASARIMLARI (Cards) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
         .glass-card {
             background: rgba(255,255,255,0.02); 
-            padding: 30px; border-radius: 16px; 
+            padding: 0; border-radius: 16px; 
             border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.4s;
+            transition: 0.4s; overflow: hidden;
+            display: flex; flex-direction: column;
+            cursor: pointer;
         }
         .glass-card:hover {
             border-color: var(--accent-1);
@@ -129,40 +134,49 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        /* --- CV PAGE (PDF Embed) --- */
-        .download-btn-container { display: flex; justify-content: flex-end; margin-top: 30px; margin-bottom: 50px; }
-        .download-btn {
-            display: inline-flex; align-items: center; gap: 10px;
-            padding: 14px 35px; background: transparent; color: var(--accent-2);
-            text-decoration: none; border-radius: 50px; font-weight: 600;
-            font-family: var(--font-head); transition: 0.3s; 
-            border: 1px solid var(--accent-2);
+        .project-image {
+            width: 100%; height: 180px; background: rgba(0,0,0,0.3); position: relative; overflow: hidden;
         }
-        .download-btn:hover { background: var(--accent-2); color: var(--bg); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        .project-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .glass-card:hover .project-image img { transform: scale(1.1); }
+        
+        .project-overlay {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.6);
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; transition: 0.3s;
+        }
+        .glass-card:hover .project-overlay { opacity: 1; }
+        
+        .project-info { padding: 20px; }
+        .project-info h3 { font-family: var(--font-head); font-size: 1.2rem; margin: 0 0 5px 0; color: var(--accent-2); }
+        .project-info p { font-size: 0.85rem; opacity: 0.6; margin: 0; }
 
-        /* --- BLOG LOCK --- */
-        .lock-screen {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 50vh; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, transparent 100%);
-            text-align: center;
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 9999;
+            inset: 0; background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px); align-items: center; justify-content: center;
+            padding: 20px; animation: modalFade 0.3s ease;
         }
-        .lock-screen i { font-size: 2.5rem; margin-bottom: 25px; color: var(--accent-1); opacity: 0.8; }
-        .lock-input {
-            background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
-            padding: 12px 25px; color: var(--text); font-family: var(--font-head);
-            margin-top: 20px; border-radius: 50px; outline: none; text-align: center; width: 200px;
-            transition: 0.3s;
-        }
-        .lock-input:focus { border-color: var(--accent-2); width: 220px; }
-        .lock-btn {
-            margin-top: 15px; padding: 10px 30px; background: var(--accent-1);
-            color: white; border: none; border-radius: 50px; cursor: pointer;
-            font-family: var(--font-head); font-weight: 600; transition: 0.3s;
-        }
-        .lock-btn:hover { background: var(--accent-2); color: #000; }
+        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
 
-        /* --- ÜST MENÜ --- */
+        .modal-content {
+            max-width: 900px; width: 90%; max-height: 90vh;
+            position: relative; overflow-y: auto; padding: 40px !important;
+            border: 1px solid rgba(255,255,255,0.1) !important;
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px;
+        }
+        .close-modal {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 30px; cursor: pointer; color: var(--text); opacity: 0.5; transition: 0.3s;
+        }
+        .close-modal:hover { opacity: 1; color: var(--accent-2); }
+        .modal-image-area img { width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .modal-text-area h2 { border: none !important; margin-bottom: 10px; font-size: 2.2rem; }
+        
+        @media (max-width: 850px) { .modal-content { grid-template-columns: 1fr; } }
+
+        /* --- UI ELEMENTS --- */
         .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
         .social-links { display: flex; gap: 25px; align-items: center; }
         .social-links a { 
@@ -172,7 +186,6 @@
         }
         .social-links a:hover { opacity: 1; color: var(--accent-2); transform: translateY(-3px); }
 
-        /* --- KONTROLLER --- */
         .controls-area { display: flex; gap: 15px; align-items: center; margin-top: 15px; }
         .theme-switch { position: relative; width: 44px; height: 24px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
@@ -181,18 +194,8 @@
         input:checked + .slider { background: rgba(0,0,0,0.2); }
         input:checked + .slider:before { transform: translateX(20px); background: var(--text); box-shadow: none; }
 
-        .lang-btn {
-            background: none; border: 1px solid rgba(255,255,255,0.1); color: var(--text);
-            padding: 4px 12px; border-radius: 50px; cursor: pointer; font-family: var(--font-head);
-            font-size: 0.75rem; opacity: 0.6; transition: 0.3s; letter-spacing: 1px;
-        }
-        .lang-btn:hover { border-color: var(--accent-2); color: var(--accent-2); opacity: 1; }
-
         /* --- 🦊 KAWAII TİLKİ (FOX) --- */
-        .fox-container {
-            position: fixed; bottom: 20px; width: 100%; height: 100px;
-            pointer-events: none; z-index: 2000;
-        }
+        .fox-container { position: fixed; bottom: 20px; width: 100%; height: 100px; pointer-events: none; z-index: 2000; }
         .speech-bubble {
             position: absolute; bottom: 90px; background: var(--text); color: var(--bg);
             padding: 8px 16px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;
@@ -210,165 +213,50 @@
             animation: moveAcross 30s linear infinite, bounce 0.6s ease-in-out infinite alternate; 
         }
         
-        /* Animasyonlar */
         @keyframes moveAcross { 
             0% { left: -15%; transform: scaleX(1); } 
             45% { left: 105%; transform: scaleX(1); }
-            50% { left: 105%; transform: scaleX(-1); } /* Dönüş */
+            50% { left: 105%; transform: scaleX(-1); }
             95% { left: -15%; transform: scaleX(-1); }
             100% { left: -15%; transform: scaleX(1); } 
         }
-        @keyframes bounce { from { margin-bottom: 0px; transform-origin: bottom center; rotate: -3deg; } to { margin-bottom: 5px; rotate: 3deg; } }
-        @keyframes fadeBubble {
-            0%, 20% { opacity: 0; transform: translateY(10px); }
-            30%, 70% { opacity: 1; transform: translateY(0); } /* Balon daha uzun kalsın */
-            80%, 100% { opacity: 0; transform: translateY(10px); }
-        }
+        @keyframes bounce { from { margin-bottom: 0px; rotate: -3deg; } to { margin-bottom: 5px; rotate: 3deg; } }
+        @keyframes fadeBubble { 0%, 20% { opacity: 0; } 30%, 70% { opacity: 1; } 80%, 100% { opacity: 0; } }
 
-        /* --- MOBİL UYUM --- */
+        /* --- BLOG LOCK & CV --- */
+        .lock-screen {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 50vh; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.01) 0%, transparent 100%);
+            text-align: center;
+        }
+        .lock-input {
+            background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 25px; color: var(--text); font-family: var(--font-head);
+            margin-top: 20px; border-radius: 50px; outline: none; text-align: center; width: 200px;
+        }
+        .lock-btn {
+            margin-top: 15px; padding: 10px 30px; background: var(--accent-1);
+            color: white; border: none; border-radius: 50px; cursor: pointer;
+            font-family: var(--font-head); font-weight: 600;
+        }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 35px; background: transparent; color: var(--accent-2);
+            text-decoration: none; border-radius: 50px; font-weight: 600;
+            font-family: var(--font-head); border: 1px solid var(--accent-2); transition: 0.3s;
+        }
+        .download-btn:hover { background: var(--accent-2); color: var(--bg); }
+        
+        /* Mobil */
         @media (max-width: 768px) {
             body { flex-direction: column; overflow-y: auto; }
-            .sidebar {
-                width: 100%; height: auto; position: relative; padding: 25px 0;
-                border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05);
-            }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 25px 0; border-right: none; }
             .content { margin-left: 0; width: 100%; height: auto; }
-            .page { padding: 50px 25px; }
-            h1 { font-size: 2.8rem; }
-            .top-nav { position: relative; padding: 20px; justify-content: center; width: 100%; box-sizing: border-box; }
-            .social-links { gap: 20px; justify-content: center; }
+            .top-nav { position: relative; padding: 20px; justify-content: center; }
             .social-links span { display: none; }
-            .fox-container { display: none; } /* Mobilde tilkiyi gizle */
+            .fox-container { display: none; }
         }
-
-                /* --- GAME DEV PAGE ENHANCEMENTS --- */
-        .section-title {
-            font-family: var(--font-head);
-            font-size: 1.5rem !important;
-            margin: 60px 0 30px 0 !important;
-            color: var(--accent-1) !important;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            border: none !important; /* Eski H2 çizgisini kaldırır */
-        }
-
-        .section-title i {
-            font-size: 1.2rem;
-            color: var(--accent-2);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 20px;
-        }
-
-        .project-card {
-            padding: 0 !important;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.03) !important;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 180px;
-            background: rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        .project-overlay {
-            position: absolute; inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; transition: 0.4s;
-        }
-
-        .project-card:hover .project-overlay { opacity: 1; }
-        .project-card:hover img { transform: scale(1.1); }
-
-        .project-info { padding: 20px; }
-        .project-info h3 {
-            font-family: var(--font-head);
-            font-size: 1.1rem;
-            margin: 0 0 8px 0;
-            color: var(--accent-2);
-        }
-
-        .project-info p {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            opacity: 0.5;
-            margin: 0;
-        }
-
-        .project-overlay a {
-            width: 45px;
-            height: 45px;
-            background: var(--accent-2);
-            color: #000;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.2rem;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
-        }
-
-        /* Scroll çubuğu güzelleştirme */
-        .content::-webkit-scrollbar { width: 5px; }
-        .content::-webkit-scrollbar-thumb { background: var(--glass); border-radius: 10px; }
-    
-                /* --- MODAL TASARIMI --- */
-        .modal {
-            display: none; position: fixed; z-index: 9999;
-            inset: 0; background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px); align-items: center; justify-content: center;
-            padding: 20px; animation: modalFade 0.3s ease;
-        }
-
-        @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
-
-        .modal-content {
-            max-width: 1000px; width: 90%; max-height: 90vh;
-            position: relative; overflow-y: auto; padding: 40px !important;
-            border: 1px solid rgba(255,255,255,0.1) !important;
-        }
-
-        .close-modal {
-            position: absolute; top: 20px; right: 25px;
-            font-size: 30px; cursor: pointer; color: var(--text); opacity: 0.5; transition: 0.3s;
-        }
-        .close-modal:hover { opacity: 1; color: var(--accent-2); }
-
-        .modal-body { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; }
-
-        .modal-image-area img {
-            width: 100%; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .modal-text-area h2 { border: none !important; margin-bottom: 10px; font-size: 2.2rem; }
-
-        .modal-extra {
-            margin-top: 25px; padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; opacity: 0.8;
-        }
-
-        /* Mobilde modalı alt alta getir */
-        @media (max-width: 850px) {
-            .modal-body { grid-template-columns: 1fr; }
-        }
-
     </style>
 </head>
 <body class="dark-theme">
@@ -386,150 +274,162 @@
                     <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </label>
-                </div>
-        </div>
+            </div>
         </div>
         <ul class="nav-links">
-            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> <span data-key="nav_home">Ana Sayfa</span></a></li>
-            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> <span data-key="nav_game">Game Dev</span></a></li>
-            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> <span data-key="nav_cyber">Siber Güvenlik</span></a></li>
-            <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> <span data-key="nav_cv">Özgeçmiş</span></a></li>
-            <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> <span data-key="nav_blog">Blog</span></a></li>
+            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> <span>Game Dev</span></a></li>
+            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> <span>Cyber Security</span></a></li>
+            <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> <span>Resume</span></a></li>
+            <li><a onclick="showPage('blog')"><i class="fa-solid fa-book"></i> <span>Blog</span></a></li>
         </ul>
     </nav>
 
     <header class="top-nav">
         <div class="social-links">
-            <a href="https://tryhackme.com/p/uftsimge" target="_blank" title="TryHackMe"><i class="fa-solid fa-terminal"></i> <span>THM</span></a>
-            <a href="https://www.artstation.com/uftsimge" target="_blank" title="ArtStation"><i class="fa-brands fa-artstation"></i> <span>Artstation</span></a>
-            <a href="https://www.linkedin.com/in/simge-temel/" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i> <span>LinkedIn</span></a>
-            <a href="https://uftsimge.itch.io" target="_blank" title="Itch.io"><i class="fa-brands fa-itch-io"></i> <span>Itch.io</span></a>
-            <a href="https://github.com/Kyuubi0" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i> <span>GitHub</span></a>
+            <a href="https://tryhackme.com/p/uftsimge" target="_blank"><i class="fa-solid fa-terminal"></i> <span>THM</span></a>
+            <a href="https://www.artstation.com/uftsimge" target="_blank"><i class="fa-brands fa-artstation"></i> <span>Artstation</span></a>
+            <a href="https://www.linkedin.com/in/simge-temel/" target="_blank"><i class="fa-brands fa-linkedin-in"></i> <span>LinkedIn</span></a>
+            <a href="https://uftsimge.itch.io" target="_blank"><i class="fa-brands fa-itch-io"></i> <span>Itch.io</span></a>
+            <a href="https://github.com/Kyuubi0" target="_blank"><i class="fa-brands fa-github"></i> <span>GitHub</span></a>
         </div>
     </header>
 
     <main class="content">
         <div id="home" class="page active">
-            <h1 data-key="home_title">Simge Temel <br> <span class="highlight">Creative Tech.</span></h1>
-            <p data-key="home_desc" style="max-width: 600px; line-height: 1.7; font-size: 1.15rem; opacity: 0.8; font-weight: 300;">
-                Matematik Mühendisliği öğrencisi, Oyun Geliştirici ve Siber Güvenlik meraklısı.
-                Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. "Kyuubi" adıyla dijital dünyada iz bırakıyorum.
+            <h1>Simge Temel <br> <span class="highlight">Creative Tech.</span></h1>
+            <p style="max-width: 600px; line-height: 1.7; font-size: 1.15rem; opacity: 0.8; font-weight: 300;">
+                Mathematical Engineering student, Game Developer, and Cyber Security enthusiast. 
+                Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.
             </p>
         </div>
-    <div id="game-dev" class="page">
-        <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Build <span class="highlight">&</span> Create.</h1>
-        <p style="opacity: 0.6; margin-bottom: 60px;">Geliştirdiğim projeler, tasarladığım dünyalar ve teknik çalışmalarım.</p>
 
-        <h2 class="section-title"><i class="fa-solid fa-gamepad"></i> Game Projects</h2>
-        <div class="project-grid">
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
-                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
-            </div>
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
-                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
-            </div>
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="game1.jpg" alt="Game 1"><div class="project-overlay"><a href="#"><i class="fa-solid fa-link"></i></a></div></div>
-                <div class="project-info"><h3>Silent Echo</h3><p>Unity ile geliştirilen atmosferik korku oyunu.</p></div>
-            </div>
+        <div id="game-dev" class="page">
+            <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Build <span class="highlight">&</span> Create.</h1>
+            <p style="opacity: 0.6; margin-bottom: 60px;">Professional releases and experimental game jam projects.</p>
+
+            <h2 class="section-title"><i class="fa-brands fa-steam"></i> Professional Work</h2>
+            <div class="project-grid">
+                
+                <div class="glass-card" onclick="openModal('Mystopia', 'mystopia.jpg', 'Art Direction for Mystopia.', 'Steam Link Available')">
+                    <div class="project-image"><img src="mystopia.png" alt="Mystopia"></div>
+                    <div class="project-info">
+                        <h3>Mystopia</h3>
+                        <p style="color: var(--accent-1); font-weight: bold;">Art Direction</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px;"><i class="fa-brands fa-steam"></i> Steam Release</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Home Again', 'homeagain.jpg', 'Art Direction for Home Again.', 'Steam Link Available')">
+                    <div class="project-image"><img src="homeagain.png" alt="Home Again"></div>
+                    <div class="project-info">
+                        <h3>Home Again</h3>
+                        <p style="color: var(--accent-1); font-weight: bold;">Art Direction</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px;"><i class="fa-brands fa-steam"></i> Steam Release</p>
+                    </div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Hit and Boom', 'hitandboom.jpg', '3D Artist for Hit and Boom.', 'Steam Link Available')">
+                    <div class="project-image"><img src="hitandboom.jpg" alt="Hit and Boom"></div>
+                    <div class="project-info">
+                        <h3>Hit and Boom</h3>
+                        <p style="color: var(--accent-2); font-weight: bold;">3D Artist</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px;"><i class="fa-brands fa-steam"></i> Steam Release</p>
+                    </div>
+                </div>
             </div>
 
-        <h2 class="section-title"><i class="fa-solid fa-cube"></i> 3D Models & Assets</h2>
-        <div class="project-grid">
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="asset1.jpg" alt="3D 1"></div>
-                <div class="project-info"><h3>Low-Poly Village</h3><p>200+ Optimize edilmiş oyun varlığı.</p></div>
+            <h2 class="section-title"><i class="fa-brands fa-itch-io"></i> Game Jam Projects</h2>
+            <div class="project-grid">
+                
+                <div class="glass-card" onclick="openModal('Patch Notes', 'patchnotes.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="patchnotes.png" alt="Patch Notes"></div>
+                    <div class="project-info"><h3>Patch Notes</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Resonance', 'resonance.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="resonance.png" alt="Resonance"></div>
+                    <div class="project-info"><h3>Resonance</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Babylon', 'babylon.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="babylon.png" alt="Babylon"></div>
+                    <div class="project-info"><h3>Babylon</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Death From Laughter', 'dfl.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="deathfromlaughter.png" alt="Death From Laughter"></div>
+                    <div class="project-info"><h3>Death From Laughter</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Ukde', 'ukde.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="ukde.png" alt="Ukde"></div>
+                    <div class="project-info"><h3>Ukde</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('Viral Sansasyon', 'viral.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="viralsansasyon.png" alt="Viral Sansasyon"></div>
+                    <div class="project-info"><h3>Viral Sansasyon</h3><p>Game Jam Project</p></div>
+                </div>
+
+                <div class="glass-card" onclick="openModal('The Descendant', 'descendant.jpg', 'Game Jam Project on Itch.io', 'Role: Developer')">
+                    <div class="project-image"><img src="descendant.png" alt="The Descendant"></div>
+                    <div class="project-info"><h3>The Descendant</h3><p>Game Jam Project</p></div>
+                </div>
+
             </div>
         </div>
-
-        <h2 class="section-title"><i class="fa-solid fa-palette"></i> Concept Arts</h2>
-        <div class="project-grid">
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="art1.jpg" alt="Concept 1"></div>
-                <div class="project-info"><h3>Environment Study</h3><p>Dijital boyama ve kompozisyon çalışması.</p></div>
-            </div>
-        </div>
-
-        <h2 class="section-title"><i class="fa-solid fa-bolt-lightning"></i> VFX Studies</h2>
-        <div class="project-grid">
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="vfx1.gif" alt="VFX 1"></div>
-                <div class="project-info"><h3>Hextech Explosion</h3><p>Shader Graph ve Particle System denemeleri.</p></div>
-            </div>
-        </div>
-
-        <h2 class="section-title"><i class="fa-solid fa-mug-hot"></i> Personal Works</h2>
-        <div class="project-grid">
-            <div class="glass-card project-card">
-                <div class="project-image"><img src="personal1.jpg" alt="Personal 1"></div>
-                <div class="project-info"><h3>Custom Engine Tool</h3><p>Unity editor için geliştirilen yardımcı araçlar.</p></div>
-            </div>
-        </div>
-    </div>
 
         <div id="cyber" class="page">
-            <h2 data-key="cyber_title">Cyber Security</h2>
-            <p data-key="cyber_desc">CTF Çözümleri ve Pentest Raporları.</p>
-            <div style="margin-top: 30px; padding: 30px; border-left: 3px solid var(--accent-1); background: rgba(255,255,255,0.03); border-radius: 0 12px 12px 0;">
-                <h3 style="margin-top: 0; color: var(--accent-1);">SKYSEC Bootcamp <i class="fa-solid fa-trophy" style="color: var(--accent-2); margin-left: 10px;"></i></h3>
-                <p data-key="cyber_detail" style="opacity: 0.8;">Exploitation, Reverse Engineering ve Log Analizi üzerine çalışmalar.</p>
+            <h2>Cyber Security</h2>
+            <p>CTF Solutions and Pentest Reports.</p>
+            <div style="margin-top: 30px; padding: 30px; border-left: 3px solid var(--accent-1); background: rgba(255,255,255,0.03);">
+                <h3 style="margin-top: 0; color: var(--accent-1);">SKYSEC Bootcamp <i class="fa-solid fa-trophy" style="color: var(--accent-2);"></i></h3>
+                <p style="opacity: 0.8;">Exploitation, Reverse Engineering and Log Analysis studies.</p>
             </div>
         </div>
 
-        <div id="cv" class="page cv-container">
-            <h2 data-key="cv_title">Özgeçmiş</h2>
-            
+        <div id="cv" class="page">
+            <h2>Resume</h2>
             <div style="width: 100%; height: 75vh; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
                 <iframe src="Simge_Temel_CV.pdf" type="application/pdf" width="100%" height="100%" style="border: none;">
-                    <p style="text-align: center; padding: 20px;">
-                        Tarayıcınız PDF önizlemeyi desteklemiyor. <br>
-                        Aşağıdaki butondan indirebilirsiniz.
-                    </p>
+                    <p style="text-align: center; padding: 20px;">PDF preview not available.</p>
                 </iframe>
             </div>
-
-            <div class="download-btn-container" style="justify-content: center; margin-top: 25px;">
+            <div style="display: flex; justify-content: center; margin-top: 25px;">
                 <a href="Simge_Temel_CV.pdf" download class="download-btn">
-                    <i class="fa-solid fa-file-pdf"></i> <span data-key="cv_download">PDF Olarak İndir</span>
+                    <i class="fa-solid fa-file-pdf"></i> Download PDF
                 </a>
             </div>
         </div>
 
         <div id="blog" class="page">
-            <h2 data-key="nav_blog">Blog</h2>
-            
+            <h2>Blog</h2>
             <div id="blog-lock" class="lock-screen">
                 <i class="fa-solid fa-lock"></i>
-                <h3 data-key="blog_locked">Bu Bölüm Korumalıdır</h3>
+                <h3>Restricted Access</h3>
                 <input type="password" id="blog-pass" class="lock-input" placeholder="Password...">
                 <button onclick="checkPass()" class="lock-btn">Unlock</button>
                 <p id="error-msg" style="color: #ff6b6b; font-size: 0.8rem; margin-top: 15px; display: none;">Access Denied</p>
             </div>
-
             <div id="blog-content" style="display: none; margin-top: 30px;">
-                <article style="padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px;">
-                    <span style="color: var(--accent-1); font-size: 0.8rem; font-weight: bold; letter-spacing: 1px;">TEKNOLOJİ</span>
-                    <h3 style="margin: 15px 0; font-size: 1.5rem;" data-key="blog_title">Neden Kendi Oyun Motorumu Yazıyorum?</h3>
-                    <p style="opacity: 0.7; line-height: 1.6;" data-key="blog_desc">Hazır motorlar harika, ama tekerleği yeniden icat etmek bazen en iyi öğrenme yoludur...</p>
+                <article style="border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 30px; padding-bottom:30px;">
+                    <span style="color: var(--accent-1); font-size: 0.8rem; font-weight: bold;">TECH</span>
+                    <h3 style="margin: 15px 0;">Why Am I Writing My Own Game Engine?</h3>
+                    <p style="opacity: 0.7;">Reinventing the wheel is sometimes the best way to learn...</p>
                 </article>
             </div>
         </div>
 
         <div id="project-modal" class="modal">
             <div class="modal-content glass-card">
-                <span class="close-modal">&times;</span>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
                 <div class="modal-body">
-                    <div class="modal-image-area">
-                        <img id="modal-img" src="" alt="Project Detail">
-                    </div>
+                    <div class="modal-image-area"><img id="modal-img" src=""></div>
                     <div class="modal-text-area">
-                        <h2 id="modal-title">Project Title</h2>
-                        <div id="modal-tags" class="project-tags"></div>
-                        <p id="modal-description">Proje detayları buraya gelecek...</p>
-                        <div id="modal-extra-info" class="modal-extra">
-                            </div>
+                        <h2 id="modal-title"></h2>
+                        <p id="modal-desc"></p>
+                        <p id="modal-extra" style="margin-top:20px; opacity:0.6; padding-top:10px; border-top:1px solid rgba(255,255,255,0.1);"></p>
                     </div>
                 </div>
             </div>
@@ -538,16 +438,13 @@
     </main>
 
     <div class="fox-container">
-        <div class="speech-bubble" data-key="duck_msg">Kodluyorum... <br>Yip Yip! 🦊</div>
+        <div class="speech-bubble">Coding... <br>Yip Yip! 🦊</div>
         <svg class="fox-svg" viewBox="0 0 100 100">
             <path d="M15,60 Q20,30 45,50 Q40,70 20,75 Z" fill="#cd5c5c" /> 
             <path d="M15,60 Q18,45 25,55 Z" fill="#fff" opacity="0.8" /> <path d="M35,75 Q50,85 75,75 L70,55 Q50,55 35,75" fill="#e67e22" />
-            
             <path d="M60,40 L85,40 L72.5,65 Z" fill="#e67e22" />
-            
             <path d="M60,40 L65,20 L70,40" fill="#d35400" />
             <path d="M85,40 L80,20 L75,40" fill="#d35400" />
-            
             <circle cx="68" cy="48" r="2" fill="#2d3436" />
             <circle cx="77" cy="48" r="2" fill="#2d3436" />
             <circle cx="72.5" cy="62" r="2.5" fill="#2d3436" />
@@ -555,86 +452,63 @@
     </div>
 
     <script>
-        function checkPass() {
-            const pass = document.getElementById('blog-pass').value;
-            if(pass === "1234") {
-                document.getElementById('blog-lock').style.display = 'none';
-                document.getElementById('blog-content').style.display = 'block';
-            } else {
-                const err = document.getElementById('error-msg');
-                err.style.display = 'block';
-                document.getElementById('blog-pass').style.border = '1px solid #ff6b6b';
-            }
-        }
-
-        const langData = {
-            tr: {
-                nav_home: "Ana Sayfa", nav_game: "Oyun Geliştirme", nav_cyber: "Siber Güvenlik", nav_cv: "Özgeçmiş", nav_blog: "Blog",
-                home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
-                home_desc: "Matematik Mühendisliği öğrencisi, Oyun Geliştirici ve Siber Güvenlik meraklısı. Sanatın estetiğini mühendisliğin disipliniyle birleştiriyorum. 'Kyuubi' adıyla dijital dünyada iz bırakıyorum.",
-                game_title: "Oyun Geliştirme", game_desc: "Unity ve Unreal Engine ile geliştirdiğim projeler.",
-                project_1: "200+ Varlık, Low-poly optimizasyon.", project_2: "3D Çevre tasarımı ve asset üretimi.",
-                cyber_title: "Siber Güvenlik", cyber_desc: "CTF Çözümleri ve Pentest Raporları.",
-                cyber_detail: "Exploitation, Reverse Engineering ve Log Analizi üzerine çalışmalar.",
-                cv_title: "Özgeçmiş", cv_download: "PDF Olarak İndir",
-                blog_locked: "Bu Bölüm Korumalıdır", blog_title: "Neden Kendi Oyun Motorumu Yazıyorum?",
-                blog_desc: "Hazır motorlar harika, ama tekerleği yeniden icat etmek bazen en iyi öğrenme yoludur...",
-                duck_msg: "Kodluyorum... <br>Yip Yip! 🦊"
-            },
-            en: {
-                nav_home: "Home", nav_game: "Game Dev", nav_cyber: "Cyber Security", nav_cv: "Resume", nav_blog: "Blog",
-                home_title: "Simge Temel <br> <span class='highlight'>Creative Tech.</span>",
-                home_desc: "Mathematical Engineering student, Game Developer, and Cyber Security enthusiast. Blending artistic aesthetics with engineering discipline. Making a mark in the digital world as 'Kyuubi'.",
-                game_title: "Game Development", game_desc: "Projects developed with Unity and Unreal Engine.",
-                project_1: "200+ Assets, Low-poly optimization.", project_2: "3D Environment design and asset production.",
-                cyber_title: "Cyber Security", cyber_desc: "CTF Solutions and Pentest Reports.",
-                cyber_detail: "Studies on Exploitation, Reverse Engineering and Log Analysis.",
-                cv_title: "Resume", cv_download: "Download as PDF",
-                blog_locked: "Restricted Access", blog_title: "Why Am I Writing My Own Game Engine?",
-                blog_desc: "Pre-made engines are great, but reinventing the wheel is sometimes the best way to learn...",
-                duck_msg: "Still coding... <br>Yip Yip! 🦊"
-            }
-        };
-
-        let currentLang = 'tr';
-        function toggleLanguage() {
-            currentLang = currentLang === 'tr' ? 'en' : 'tr';
-            updateContent();
-        }
-        function updateContent() {
-            document.querySelectorAll('[data-key]').forEach(el => {
-                const key = el.getAttribute('data-key');
-                if (langData[currentLang][key]) el.innerHTML = langData[currentLang][key];
-            });
-        }
+        // Sayfa Geçişi
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
-            const links = document.querySelectorAll('.nav-links a');
-            links.forEach(link => {
-                if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
+            // Menüdeki aktif class'ı güncelle
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                 if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
             });
         }
+
+        // Tema
         document.getElementById('theme-toggle').addEventListener('change', () => {
             document.body.classList.toggle('light-theme');
         });
-        
+
+        // Parallax
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
             mX = (window.innerWidth / 2 - e.pageX) / 45;
             mY = (window.innerHeight / 2 - e.pageY) / 45;
         });
         function animate() {
-            const blob1 = document.getElementById('blob1');
-            const blob2 = document.getElementById('blob2');
-            if(blob1 && blob2) {
-                blob1.style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
-                blob2.style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
+            const b1 = document.getElementById('blob1');
+            const b2 = document.getElementById('blob2');
+            if(b1 && b2) {
+                b1.style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
+                b2.style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
             }
             requestAnimationFrame(animate);
         }
         animate();
+
+        // Blog Şifre
+        function checkPass() {
+            if(document.getElementById('blog-pass').value === "1234") {
+                document.getElementById('blog-lock').style.display = 'none';
+                document.getElementById('blog-content').style.display = 'block';
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // Modal Logic
+        function openModal(title, img, desc, extra) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-extra').innerText = extra;
+            document.getElementById('project-modal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('project-modal').style.display = 'none';
+        }
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('project-modal')) closeModal();
+        }
     </script>
 </body>
 </html>
