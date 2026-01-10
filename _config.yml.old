@@ -1,0 +1,52 @@
+# SİTE AYARLARI
+title: Kyuubi'nin Yeri
+description: Kişisel web sitem ve notlarım.
+url: "https://kyuubi0.github.io"
+baseurl: ""  # Burası kesinlikle boş kalmalı
+
+# TEMA AYARI (SİHİRLİ SATIR BU)
+remote_theme: just-the-docs/just-the-docs
+
+# GÖRÜNÜM
+color_scheme: nill  # Koyu mod (açık istersen nil yap)
+
+# NAVİGASYON VE ARAMA
+search_enabled: true
+heading_anchors: true  # Başlıklara link verme
+back_to_top: true
+back_to_top_text: "Yukarı Çık"
+
+# ALT BİLGİ (FOOTER)
+footer_content: "Copyright &copy; 2024 Kyuubi. Tüm hakları saklıdır."
+
+# LİNKLER
+aux_links:
+  "TryHackMe":
+    - "https://tryhackme.com/p/kullaniciadin"
+  "LinkedIn":
+    - "https://www.linkedin.com/in/simge-temel/"
+  "ArtStation":
+    - "https://www.artstation.com/uftsimge"
+  "GitHub":
+    - "https://github.com/kyuubi0"
+  "Itch.io":
+    - "https://uftsimge.itch.io"
+
+# GEREKLİ EKLENTİLER
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+
+# SİSTEM AYARLARI (DOKUNMA)
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false

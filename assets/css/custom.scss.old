@@ -25,7 +25,9 @@ $dark-secondary: #8e44ad;        // Hover (üzerine gelince) rengi
 // ==========================================
 // 2. TEMAYI YÜKLE (MOTORU ÇALIŞTIR)
 // ==========================================
-@import "just-the-docs";
+@import "just-the-docs/modules";
+@import "just-the-docs/layout";
+@import "just-the-docs/components";
 
 // ==========================================
 // 3. ÖZEL MÜDAHALELER (İNCE AYARLAR)
