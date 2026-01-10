@@ -7,83 +7,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
+            /* KOYU MOD - Siyah & Neon Mor */
             --bg: #000000;
-            --text: #ffffff;
-            --accent: #bb86fc; /* Parlak Neon Mor */
+            --text: #eeeeee;
+            --accent: #bb86fc; 
             --sidebar-bg: #0d0d0d;
             --sidebar-w: 260px;
         }
 
         body.light-theme {
-            --bg: #ffffff;
-            --text: #121212;
-            --accent: #f39c12; /* Altın Sarısı */
-            --sidebar-bg: #f8f8f8;
+            /* AÇIK MOD - Yumuşak Beyaz & Altın */
+            --bg: #fdfcf8; /* Göz yormayan fildişi beyazı */
+            --text: #2c2c2c;
+            --accent: #d4af37; /* Gerçek Altın Sarısı */
+            --sidebar-bg: #f4f1e8;
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: 'Segoe UI', sans-serif; display: flex; overflow: hidden;
-            transition: background 0.4s ease;
+            font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; overflow: hidden;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* PARALLAX LAYER - Arka Plan Noktaları */
+        /* PARALLAX LAYER */
         #parallax-dots {
-            position: fixed; top: -10%; left: -10%; width: 120%; height: 120%;
-            background-image: radial-gradient(var(--accent) 1.5px, transparent 1.5px);
-            background-size: 50px 50px;
-            opacity: 0.25; z-index: -1;
+            position: fixed; top: -15%; left: -15%; width: 130%; height: 130%;
+            /* Noktalar her iki modda da kendi rengini alır */
+            background-image: radial-gradient(var(--accent) 1.8px, transparent 1.8px);
+            background-size: 60px 60px;
+            opacity: 0.3; z-index: -1;
             pointer-events: none;
             will-change: transform;
-            transform: translateZ(0); /* Donanım ivmesi için */
         }
 
-        /* SIDEBAR - Ortalama ve Boşluk Ayarları */
+        /* SIDEBAR */
         .sidebar {
             width: var(--sidebar-w); height: 100vh; background: var(--sidebar-bg);
             border-right: 1px solid var(--accent); position: fixed;
-            display: flex; flex-direction: column; align-items: center; /* Yatayda ortala */
-            padding: 40px 0; /* Üstten ve alttan boşluk */
+            display: flex; flex-direction: column; align-items: center;
+            padding: 40px 0; transition: background 0.5s ease, border 0.5s ease;
         }
 
         .sidebar-header {
-            width: 80%; /* İçerik genişliği */
-            display: flex; align-items: center; justify-content: space-between;
+            width: 80%; display: flex; align-items: center; justify-content: space-between;
             margin-bottom: 50px;
         }
 
-        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); }
+        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); transition: 0.5s; }
 
-        .nav-links { 
-            list-style: none; padding: 0; margin: 0; 
-            width: 80%; /* Linkleri sidebar içinde ortalı tutar */
-        }
-        
+        .nav-links { list-style: none; padding: 0; margin: 0; width: 80%; }
         .nav-links li { margin-bottom: 25px; }
-        
         .nav-links a { 
             color: var(--text); text-decoration: none; font-size: 1.1rem; 
             display: flex; align-items: center; transition: 0.3s; 
         }
 
-        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; }
-        .nav-links a:hover { color: var(--accent); transform: translateX(5px); }
+        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; transition: 0.5s; }
+        .nav-links a:hover { color: var(--accent); transform: translateX(8px); }
 
-        /* TOP NAV - İkonlar Sağ Üstte */
+        /* TOP NAV */
         .top-nav { position: fixed; top: 0; right: 0; padding: 30px 40px; z-index: 100; }
         .social-links { display: flex; gap: 20px; }
         .social-links a { color: var(--text); font-size: 1.5rem; transition: 0.3s; }
-        .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
+        .social-links a:hover { color: var(--accent); transform: scale(1.2); }
 
-        /* CONTENT - Yazıları Ortalama */
+        /* CONTENT */
         .content {
             margin-left: var(--sidebar-w); width: 100%;
             display: flex; justify-content: center; align-items: center; min-height: 100vh;
         }
         .container {
-            max-width: 700px; padding: 0 60px; /* Yazıların kenarlardan uzaklığı */
-            text-align: left; /* Yazılar kendi içinde sola yaslı */
+            max-width: 750px; padding: 0 60px; text-align: left;
         }
+
+        .container h1 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); transition: 0.5s; }
+        .container p { font-size: 1.2rem; line-height: 1.6; }
 
         /* SWITCH TASARIMI */
         .theme-switch { position: relative; width: 44px; height: 22px; }
@@ -96,7 +94,7 @@
             position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
             background-color: white; transition: .4s; border-radius: 50%;
         }
-        input:checked + .slider { background-color: var(--accent); }
+        input:checked + .slider { background-color: #d4af37; } /* Switch açıldığında altın rengi */
         input:checked + .slider:before { transform: translateX(22px); }
     </style>
 </head>
@@ -134,7 +132,7 @@
     <main class="content">
         <div class="container">
             <h1>Merhaba, Ben Kyuubi! 👋</h1>
-            <p>Kendi sistemime hoş geldiniz. Burada projelerimi ve notlarımı paylaşıyorum.</p>
+            <p>Kişisel sistemime hoş geldiniz. Burada siber güvenlik notlarımı, oyun geliştirme süreçlerimi ve diğer tüm projelerimi bulabilirsiniz.</p>
         </div>
     </main>
 
@@ -145,14 +143,22 @@
             document.body.classList.toggle('light-theme');
         });
 
-        // PARALLAX EFECT - GERÇEK ZAMANLI HAREKET
+        // GELİŞMİŞ PARALLAX EFECT
         document.addEventListener("mousemove", (e) => {
             const dots = document.getElementById("parallax-dots");
-            // Hareketi hissetmek için çarpanı 20 yaptım (ne kadar küçükse o kadar çok hareket eder)
-            const x = (window.innerWidth / 2 - e.pageX) / 20;
-            const y = (window.innerHeight / 2 - e.pageY) / 20;
             
-            dots.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            // Mouse pozisyonunu al ve merkeze göre oranla
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            // 25 çarpanı hareketi daha "premium" ve akıcı yapar
+            const moveX = (centerX - mouseX) / 25;
+            const moveY = (centerY - mouseY) / 25;
+            
+            dots.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
         });
     </script>
 </body>
