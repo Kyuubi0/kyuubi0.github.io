@@ -8,28 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg: #12100e;            
-            --text: #d4c7b0;          
-            --accent-1: #a67c52;      
-            --accent-2: #e6b31e;      
-            --sidebar-bg: #1a1714;    
-            --grid-color: rgba(166, 124, 82, 0.06);
+            /* 🌑 ELİT GECE MODU (Obsidian & Platinum) */
+            --bg: #0a0b10;            /* Çok derin gece siyahı */
+            --text: #e0e0e0;          /* Platin beyazı */
+            --accent-1: #6366f1;      /* İris Mavisi (Elit Vurgu) */
+            --accent-2: #c4b5fd;      /* Yumuşak Lavanta/Gümüş */
+            --sidebar-bg: #0f111a;    /* Hafif daha açık obsidian */
+            --grid-color: rgba(99, 102, 241, 0.04);
             --font-head: 'Space Grotesk', sans-serif;
             --font-main: 'Outfit', sans-serif;
         }
 
         body.light-theme {
-            --bg: #f5f2e9; 
-            --text: #2d241e;
-            --accent-1: #8d6e63; 
-            --accent-2: #b08d57; 
-            --sidebar-bg: #ede9d9;
-            --grid-color: rgba(141, 110, 99, 0.08);
+            /* ☀️ GÜNDÜZ MODU (Klasik Saf Tasarım) */
+            --bg: #f8f9fa; 
+            --text: #1a1a1a;
+            --accent-1: #4f46e5; 
+            --accent-2: #818cf8; 
+            --sidebar-bg: #ffffff;
+            --grid-color: rgba(0, 0, 0, 0.03);
         }
 
         body {
             margin: 0; padding: 0; background: var(--bg); color: var(--text);
-            font-family: var(--font-main); transition: 0.6s ease;
+            font-family: var(--font-main); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; height: 100vh; overflow: hidden;
         }
 
@@ -37,82 +39,85 @@
             content: ""; position: fixed; inset: 0;
             background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), 
                               linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-            background-size: 40px 40px; z-index: -2; pointer-events: none;
+            background-size: 50px 50px; z-index: -2; pointer-events: none;
         }
 
         #aura-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
         .aura-blob {
-            position: absolute; border-radius: 50%; filter: blur(120px);
-            opacity: 0.15; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: absolute; border-radius: 50%; filter: blur(140px);
+            opacity: 0.1; transition: transform 0.8s ease-out;
         }
 
         /* SIDEBAR */
         .sidebar {
-            width: 280px; height: 100vh; background: var(--sidebar-bg);
-            border-right: 1px solid rgba(166, 124, 82, 0.1);
-            position: fixed; display: flex; flex-direction: column; padding: 60px 0; z-index: 1000;
+            width: 260px; height: 100vh; background: var(--sidebar-bg);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed; display: flex; flex-direction: column; padding: 50px 0; z-index: 1000;
         }
 
-        .sidebar-header { padding: 0 40px; margin-bottom: 30px; }
-        .sidebar-header h2 { font-family: var(--font-head); font-weight: 700; color: var(--accent-2); margin: 0; }
+        .sidebar-header { padding: 0 35px; margin-bottom: 30px; }
+        .sidebar-header h2 { font-family: var(--font-head); font-weight: 700; color: var(--text); letter-spacing: -1px; margin: 0; font-size: 1.2rem; }
 
-        .theme-switch-wrapper { padding: 0 40px; margin-bottom: 30px; display: flex; align-items: center; gap: 10px; opacity: 0.6; font-size: 0.7rem; }
-        .theme-switch { position: relative; width: 30px; height: 16px; cursor: pointer; }
+        .theme-switch-wrapper { padding: 0 35px; margin-bottom: 35px; display: flex; align-items: center; gap: 12px; opacity: 0.5; font-size: 0.65rem; letter-spacing: 1px; }
+        .theme-switch { position: relative; width: 32px; height: 16px; cursor: pointer; }
         .theme-switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; inset: 0; background: #333; border-radius: 20px; transition: .4s; }
-        .slider:before { position: absolute; content: ""; height: 10px; width: 10px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: .4s; }
+        .slider { position: absolute; inset: 0; background: #2d2d2d; border-radius: 20px; transition: .3s; }
+        .slider:before { position: absolute; content: ""; height: 10px; width: 10px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: .3s; }
         input:checked + .slider { background: var(--accent-1); }
-        input:checked + .slider:before { transform: translateX(14px); }
+        input:checked + .slider:before { transform: translateX(16px); }
 
-        .nav-links { list-style: none; padding: 0 20px; }
+        .nav-links { list-style: none; padding: 0 15px; }
         .nav-links a { 
-            color: var(--text); text-decoration: none; font-size: 0.85rem;
-            display: flex; align-items: center; padding: 14px 20px; 
-            border-radius: 8px; transition: 0.3s; opacity: 0.5; cursor: pointer;
+            color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 400;
+            display: flex; align-items: center; padding: 12px 20px; 
+            border-radius: 10px; transition: 0.3s; opacity: 0.4; cursor: pointer;
         }
-        .nav-links a:hover, .nav-links a.active { opacity: 1; background: rgba(166, 124, 82, 0.1); color: var(--accent-2); }
-        .nav-links i { margin-right: 15px; width: 20px; text-align: center; }
+        .nav-links a:hover, .nav-links a.active { opacity: 1; background: rgba(99, 102, 241, 0.08); color: var(--accent-2); }
+        .nav-links i { margin-right: 12px; width: 18px; font-size: 0.9rem; }
 
         /* CONTENT */
-        .content { margin-left: 280px; width: calc(100% - 280px); height: 100vh; overflow-y: auto; }
-        .page { display: none; padding: 100px 80px; animation: entry 0.8s ease forwards; max-width: 800px; }
+        .content { margin-left: 260px; width: calc(100% - 260px); height: 100vh; overflow-y: auto; scroll-behavior: smooth; }
+        .page { display: none; padding: 120px 10%; animation: pageIn 0.6s ease-out forwards; max-width: 900px; }
         .page.active { display: block; }
-        @keyframes entry { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        h1 { font-family: var(--font-head); font-size: clamp(3rem, 8vw, 5rem); font-weight: 700; line-height: 0.9; margin-bottom: 25px; letter-spacing: -3px; }
+        h1 { font-family: var(--font-head); font-size: clamp(3rem, 7vw, 5rem); font-weight: 700; line-height: 1; margin-bottom: 30px; letter-spacing: -2px; }
+        p { font-size: 1.1rem; line-height: 1.8; opacity: 0.7; font-weight: 300; }
 
-        /* 🦊 RUNNING FOX & SPEECH BUBBLE */
-        .fox-container { position: fixed; bottom: 40px; left: 320px; width: 200px; height: 60px; pointer-events: none; z-index: 2000; 
-            animation: foxSprint 12s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+        /* 🦊 ELİT KOŞAN TİLKİ */
+        .fox-container { position: fixed; bottom: 40px; left: 280px; width: 180px; height: 60px; pointer-events: none; z-index: 2000; 
+            animation: foxSprint 15s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
-        
-        .fox-svg { width: 60px; fill: var(--accent-1); filter: drop-shadow(0 0 5px var(--accent-1)); }
-        
+        .fox-svg { width: 50px; fill: var(--accent-1); opacity: 0.8; filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3)); }
         .speech-bubble {
-            position: absolute; top: -40px; left: 50px; background: var(--sidebar-bg);
-            color: var(--accent-2); padding: 5px 12px; border-radius: 12px;
-            font-size: 0.75rem; white-space: nowrap; border: 1px solid var(--accent-1);
-            font-family: var(--font-head); opacity: 0.9;
+            position: absolute; top: -35px; left: 40px; background: var(--sidebar-bg);
+            color: var(--accent-2); padding: 6px 15px; border-radius: 20px;
+            font-size: 0.7rem; white-space: nowrap; border: 1px solid rgba(255,255,255,0.05);
+            font-family: var(--font-head); box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         @keyframes foxSprint {
-            0% { left: 300px; transform: scaleX(1); }
-            50% { left: calc(100% - 150px); transform: scaleX(-1); }
-            100% { left: 300px; transform: scaleX(1); }
+            0% { left: 280px; transform: scaleX(1); }
+            50% { left: calc(100% - 200px); transform: scaleX(-1); }
+            100% { left: 280px; transform: scaleX(1); }
         }
 
         /* 🔒 BLOG LOCK */
-        .lock-container { text-align: center; padding: 40px; border: 1px dashed var(--accent-1); border-radius: 12px; }
-        .lock-container input { background: transparent; border: 1px solid var(--accent-1); color: var(--text); padding: 10px; border-radius: 5px; margin-top: 15px; text-align: center; }
+        .lock-container { text-align: center; padding: 60px 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; background: rgba(255,255,255,0.02); }
+        .lock-container input { 
+            background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--text); 
+            padding: 12px 20px; border-radius: 30px; margin-top: 20px; outline: none; text-align: center; transition: 0.3s;
+        }
+        .lock-container input:focus { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
         .blog-content { display: none; }
 
-        .top-nav { position: fixed; top: 0; right: 0; padding: 45px 60px; z-index: 100; }
-        .social-links { display: flex; gap: 30px; }
-        .social-links a { color: var(--text); font-size: 0.75rem; text-decoration: none; opacity: 0.4; transition: 0.3s; text-transform: uppercase; letter-spacing: 1.5px; }
-        .social-links a:hover { opacity: 1; color: var(--accent-2); }
+        .top-nav { position: fixed; top: 0; right: 0; padding: 40px 60px; z-index: 100; }
+        .social-links { display: flex; gap: 35px; }
+        .social-links a { color: var(--text); font-size: 0.7rem; text-decoration: none; opacity: 0.3; transition: 0.3s; letter-spacing: 2px; font-weight: 500; }
+        .social-links a:hover { opacity: 1; color: var(--accent-1); }
 
         @media (max-width: 900px) {
-            .sidebar { width: 100%; height: auto; position: relative; padding: 20px 0; }
+            .sidebar { width: 100%; height: auto; position: relative; padding: 20px 0; border-right: none; }
             .content { margin-left: 0; width: 100%; }
             body { flex-direction: column; overflow-y: auto; }
             .fox-container { display: none; }
@@ -122,70 +127,70 @@
 <body class="dark-theme">
 
     <div id="aura-container">
-        <div class="aura-blob" id="blob1" style="width: 700px; height: 700px; top: -100px; right: -100px; background: var(--accent-1);"></div>
-        <div class="aura-blob" id="blob2" style="width: 500px; height: 500px; bottom: -100px; left: 100px; background: var(--accent-2);"></div>
+        <div class="aura-blob" id="blob1" style="width: 600px; height: 600px; top: -100px; right: -50px; background: var(--accent-1);"></div>
+        <div class="aura-blob" id="blob2" style="width: 400px; height: 400px; bottom: -50px; left: 50px; background: var(--accent-2);"></div>
     </div>
 
     <nav class="sidebar">
-        <div class="sidebar-header"><h2>uftsimge_log</h2></div>
+        <div class="sidebar-header"><h2>UFTSIMGE_LOG</h2></div>
         <div class="theme-switch-wrapper">
-            <span>DARK</span>
+            <span>OBSIDIAN</span>
             <label class="theme-switch"><input type="checkbox" id="theme-toggle"><span class="slider"></span></label>
-            <span>LIGHT</span>
+            <span>PURE</span>
         </div>
         <ul class="nav-links">
-            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-house"></i> Ana Sayfa</a></li>
-            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-gamepad"></i> Game Dev</a></li>
-            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-shield-halved"></i> Siber Güvenlik</a></li>
-            <li><a onclick="showPage('cv')"><i class="fa-solid fa-user-tie"></i> Özgeçmiş</a></li>
-            <li><a onclick="showPage('blog')"><i class="fa-solid fa-terminal"></i> Blog</a></li>
+            <li><a onclick="showPage('home')" class="active"><i class="fa-solid fa-compass"></i> ANA SAYFA</a></li>
+            <li><a onclick="showPage('game-dev')"><i class="fa-solid fa-layer-group"></i> GAME DEV</a></li>
+            <li><a onclick="showPage('cyber')"><i class="fa-solid fa-terminal"></i> SECURITY</a></li>
+            <li><a onclick="showPage('cv')"><i class="fa-solid fa-file-invoice"></i> RESUME</a></li>
+            <li><a onclick="showPage('blog')"><i class="fa-solid fa-fingerprint"></i> BLOG</a></li>
         </ul>
     </nav>
 
     <header class="top-nav">
         <div class="social-links">
-            <a href="https://github.com/Kyuubi0" target="_blank">GitHub</a>
-            <a href="https://tryhackme.com/p/uftsimge" target="_blank">THM</a>
-            <a href="https://www.linkedin.com/in/simge-temel/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/Kyuubi0" target="_blank">GITHUB</a>
+            <a href="https://tryhackme.com/p/uftsimge" target="_blank">TRYHACKME</a>
+            <a href="https://www.linkedin.com/in/simge-temel/" target="_blank">LINKEDIN</a>
         </div>
     </header>
     
     <main class="content">
         <div id="home" class="page active">
-            <h1>Create <br> Or <span style="color: var(--accent-2);">Delete.</span></h1>
-            <p>Bir sanatçının gözüyle kod yazmak, bir mühendisin titizliğiyle sanat yapmak.</p>
+            <h1>Create <br> Or <span style="color: var(--accent-1);">Delete.</span></h1>
+            <p>Mühendislik disiplini ve kreatif vizyonun dijital kesişimi.</p>
         </div>
 
         <div id="game-dev" class="page">
-            <h1>Game <span style="color: var(--accent-1);">Design.</span></h1>
-            <p>Geliştirme aşamasında...</p>
+            <h1>Game <span style="color: var(--accent-1);">Architecture.</span></h1>
+            <p>Projeler geliştirilme aşamasında...</p>
         </div>
 
         <div id="cyber" class="page">
-            <h1>Cyber <span style="color: var(--accent-2);">Security.</span></h1>
+            <h1>Security <span style="color: var(--accent-2);">Research.</span></h1>
             <p>Analizler ve raporlar çok yakında.</p>
         </div>
 
         <div id="cv" class="page">
-            <h1>Resume.</h1>
-            <p>Professional background.</p>
+            <h1>Expertise.</h1>
+            <p>Professional background and technical stack.</p>
         </div>
 
         <div id="blog" class="page">
-            <h1>Encrypted <span style="color: var(--accent-1);">Journal.</span></h1>
+            <h1>Locked <span style="color: var(--accent-1);">Vault.</span></h1>
             <div id="blog-lock" class="lock-container">
-                <i class="fa-solid fa-lock" style="font-size: 2rem; color: var(--accent-1);"></i>
-                <p>Anahtarı girin.</p>
-                <input type="password" id="blog-pass" placeholder="Password..." oninput="checkPass(this.value)">
+                <i class="fa-solid fa-shield-halved" style="font-size: 1.5rem; color: var(--accent-1); opacity: 0.5;"></i>
+                <p style="font-size: 0.9rem; margin-top: 15px;">Erişim için kimlik doğrulaması gerekiyor.</p>
+                <input type="password" id="blog-pass" placeholder="Enter key..." oninput="checkPass(this.value)">
             </div>
             <div id="blog-real-content" class="blog-content">
-                <p>🔓 Blog erişimi açıldı. Yazılar yükleniyor...</p>
+                <p>🔓 Veri akışı sağlandı. Hoş geldin.</p>
             </div>
         </div>
     </main>
 
     <div class="fox-container">
-        <div class="speech-bubble">Site hala geliştiriliyor! 🛠️</div>
+        <div class="speech-bubble">Dev mod: On 🛠️</div>
         <svg class="fox-svg" viewBox="0 0 512 512">
             <path d="M485 145c-20-25-50-35-80-35-15 0-30 3-43 10L256 180l-106-60c-13-7-28-10-43-10-30 0-60 10-80 35-18 22-25 50-22 78 5 45 35 82 78 95l145 120c15 12 37 12 52 0l145-120c43-13 73-50 78-95 3-28-4-56-22-78zM256 400L135 300c-30-10-50-35-54-65-2-20 3-40 15-55 12-15 30-22 49-22 10 0 20 2 30 7l81 45 81-45c10-5 20-7 30-7 19 0 37 7 49 22 12 15 17 35 15 55-4 30-24 55-54 65L256 400z"/>
         </svg>
@@ -198,6 +203,7 @@
             document.getElementById(pageId).classList.add('active');
             const btn = document.querySelector(`a[onclick="showPage('${pageId}')"]`);
             if(btn) btn.classList.add('active');
+            document.querySelector('.content').scrollTop = 0;
         }
 
         function checkPass(val) {
@@ -211,12 +217,15 @@
             document.body.classList.toggle('light-theme');
         });
 
+        // Aura Hareketi
         let mX = 0, mY = 0;
         document.addEventListener("mousemove", (e) => {
-            mX = (window.innerWidth / 2 - e.pageX) / 45;
-            mY = (window.innerHeight / 2 - e.pageY) / 45;
-            document.getElementById('blob1').style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
-            document.getElementById('blob2').style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
+            mX = (window.innerWidth / 2 - e.pageX) / 50;
+            mY = (window.innerHeight / 2 - e.pageY) / 50;
+            const b1 = document.getElementById('blob1');
+            const b2 = document.getElementById('blob2');
+            if(b1) b1.style.transform = `translate3d(${mX}px, ${mY}px, 0)`;
+            if(b2) b2.style.transform = `translate3d(${-mX}px, ${-mY}px, 0)`;
         });
     </script>
 </body>
