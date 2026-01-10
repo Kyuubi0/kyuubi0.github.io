@@ -1,47 +1,39 @@
 ---
 ---
+/* En üstteki bu tireler hayati önem taşıyor, silme! */
 
-// TEMA RENKLERİ VE DAR MENÜ
-:root {
-  --nav-width: 220px !important;
-  --nav-width-md: 220px !important;
-}
+// DEĞİŞKENLERİ EZELİM
+$nav-width: 220px;
+$nav-width-md: 220px;
 
-// 🟣 KOYU MOD (Siyah & Mor)
+// KOYU MOD ZORLAMASI
 @media (prefers-color-scheme: dark) {
-  :root {
-    --body-background-color: #000000 !important;
-    --header-bg-color: #000000 !important;
-    --link-color: #9b59b6 !important;
-    --nav-bg-color: #000000 !important;
+  html, body, .side-bar, .site-header {
+    background-color: #000000 !important;
+    background: #000000 !important;
+  }
+  a, .btn, .nav-list-link {
+    color: #9b59b6 !important; // Mor
   }
 }
 
-// 🟡 AÇIK MOD (Beyaz & Altın Sarısı)
+// AÇIK MOD ZORLAMASI
 @media (prefers-color-scheme: light) {
-  :root {
-    --body-background-color: #ffffff !important;
-    --header-bg-color: #ffffff !important;
-    --link-color: #FFD700 !important; // Altın Sarısı
-    --nav-bg-color: #ffffff !important;
+  html, body, .side-bar, .site-header {
+    background-color: #ffffff !important;
+  }
+  a, .btn, .nav-list-link {
+    color: #FFD700 !important; // Altın
   }
 }
 
-// --- PARALAKS DESEN ALTYAPISI ---
-body {
-  background-attachment: fixed;
-  transition: background-position 0.1s ease-out;
-}
-
-// Noktalı arka plan deseni (Paralaks burada çalışacak)
+// PARALAKS İÇİN HAFİF DESEN
 body::before {
   content: "";
   position: fixed;
-  top: -50px; left: -50px; width: calc(100% + 100px); height: calc(100% + 100px);
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(circle, #888 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.1;
   z-index: -1;
-  pointer-events: none;
-  background-image: radial-gradient(var(--link-color) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.15;
-  transform: translate(var(--move-x, 0), var(--move-y, 0));
 }

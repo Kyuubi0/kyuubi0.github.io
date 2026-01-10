@@ -8,7 +8,6 @@ baseurl: ""
 # CSS ve SASS ayarları
 sass:
   style: compressed
-  cache_control: "no-cache"
 
 # LİNKLER
 aux_links:
