@@ -5,9 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyuubi'nin Yeri</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --accent: #bb86fc; /* Parlak Neon Mor */
+            --sidebar-bg: #0d0d0d;
+            --sidebar-w: 260px;
+        }
+
+        body.light-theme {
+            --bg: #ffffff;
+            --text: #121212;
+            --accent: #f39c12; /* Altın Sarısı */
+            --sidebar-bg: #f8f8f8;
+        }
+
+        body {
+            margin: 0; padding: 0; background: var(--bg); color: var(--text);
+            font-family: 'Segoe UI', sans-serif; display: flex; overflow: hidden;
+            transition: background 0.4s ease;
+        }
+
+        /* PARALLAX LAYER - Arka Plan Noktaları */
+        #parallax-dots {
+            position: fixed; top: -10%; left: -10%; width: 120%; height: 120%;
+            background-image: radial-gradient(var(--accent) 1.5px, transparent 1.5px);
+            background-size: 50px 50px;
+            opacity: 0.25; z-index: -1;
+            pointer-events: none;
+            will-change: transform;
+            transform: translateZ(0); /* Donanım ivmesi için */
+        }
+
+        /* SIDEBAR - Ortalama ve Boşluk Ayarları */
+        .sidebar {
+            width: var(--sidebar-w); height: 100vh; background: var(--sidebar-bg);
+            border-right: 1px solid var(--accent); position: fixed;
+            display: flex; flex-direction: column; align-items: center; /* Yatayda ortala */
+            padding: 40px 0; /* Üstten ve alttan boşluk */
+        }
+
+        .sidebar-header {
+            width: 80%; /* İçerik genişliği */
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .sidebar-header h2 { margin: 0; font-size: 1.6rem; color: var(--accent); }
+
+        .nav-links { 
+            list-style: none; padding: 0; margin: 0; 
+            width: 80%; /* Linkleri sidebar içinde ortalı tutar */
+        }
+        
+        .nav-links li { margin-bottom: 25px; }
+        
+        .nav-links a { 
+            color: var(--text); text-decoration: none; font-size: 1.1rem; 
+            display: flex; align-items: center; transition: 0.3s; 
+        }
+
+        .nav-links a i { margin-right: 15px; color: var(--accent); width: 25px; text-align: center; }
+        .nav-links a:hover { color: var(--accent); transform: translateX(5px); }
+
+        /* TOP NAV - İkonlar Sağ Üstte */
+        .top-nav { position: fixed; top: 0; right: 0; padding: 30px 40px; z-index: 100; }
+        .social-links { display: flex; gap: 20px; }
+        .social-links a { color: var(--text); font-size: 1.5rem; transition: 0.3s; }
+        .social-links a:hover { color: var(--accent); transform: translateY(-3px); }
+
+        /* CONTENT - Yazıları Ortalama */
+        .content {
+            margin-left: var(--sidebar-w); width: 100%;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+        }
+        .container {
+            max-width: 700px; padding: 0 60px; /* Yazıların kenarlardan uzaklığı */
+            text-align: left; /* Yazılar kendi içinde sola yaslı */
+        }
+
+        /* SWITCH TASARIMI */
+        .theme-switch { position: relative; width: 44px; height: 22px; }
+        .theme-switch input { opacity: 0; width: 0; height: 0; }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #333; transition: .4s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
+            background-color: white; transition: .4s; border-radius: 50%;
+        }
+        input:checked + .slider { background-color: var(--accent); }
+        input:checked + .slider:before { transform: translateX(22px); }
+    </style>
 </head>
-<body class="dark-theme"> <div id="parallax-bg"></div>
+<body class="dark-theme">
+
+    <div id="parallax-dots"></div>
 
     <nav class="sidebar">
         <div class="sidebar-header">
@@ -43,6 +138,22 @@
         </div>
     </main>
 
-    <script src="./script.js"></script>
+    <script>
+        // TEMA DEĞİŞTİRME
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('light-theme');
+        });
+
+        // PARALLAX EFECT - GERÇEK ZAMANLI HAREKET
+        document.addEventListener("mousemove", (e) => {
+            const dots = document.getElementById("parallax-dots");
+            // Hareketi hissetmek için çarpanı 20 yaptım (ne kadar küçükse o kadar çok hareket eder)
+            const x = (window.innerWidth / 2 - e.pageX) / 20;
+            const y = (window.innerHeight / 2 - e.pageY) / 20;
+            
+            dots.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        });
+    </script>
 </body>
 </html>
