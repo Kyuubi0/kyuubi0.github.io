@@ -85,13 +85,22 @@
         h1 { font-family: var(--font-head); font-size: 5rem; font-weight: 700; line-height: 0.9; margin: 0 0 20px 0; letter-spacing: -3px; }
         h2 { font-family: var(--font-head); color: var(--accent-2); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 30px; }
 
-        /* --- BUTTON STYLES --- */
+        /* --- CV PAGE STYLES --- */
+        .cv-container {
+            display: flex; flex-direction: column; position: relative; padding-bottom: 60px;
+        }
+        .cv-section-title {
+            color: var(--accent-1); font-size: 0.9rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;
+        }
+        .download-btn-container {
+            display: flex; justify-content: flex-end; margin-top: 30px;
+        }
         .download-btn {
             display: inline-flex; align-items: center; gap: 10px;
-            padding: 12px 25px; background: var(--accent-2); color: #000;
+            padding: 12px 30px; background: var(--accent-2); color: #000;
             text-decoration: none; border-radius: 8px; font-weight: bold;
-            font-family: var(--font-head); margin-bottom: 30px;
-            transition: 0.3s; box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+            font-family: var(--font-head); transition: 0.3s; 
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
         }
         .download-btn:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(0, 242, 255, 0.5); }
 
@@ -267,51 +276,95 @@
             </div>
         </div>
 
-        <div id="cv" class="page">
+        <div id="cv" class="page cv-container">
             <h2 data-key="cv_title">Özgeçmiş</h2>
             
-            <a href="Simge_Temel_CV.pdf" download class="download-btn">
-                <i class="fa-solid fa-file-pdf"></i> <span data-key="cv_download">PDF Olarak İndir</span>
-            </a>
-
-            <ul style="list-style: none; padding: 0; margin-top: 10px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+            <div class="cv-section-title">Experience</div>
+            <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
                 
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-2); border-radius: 50%;"></div>
-                    <span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;" data-key="cv_date1">09/2023 - Günümüz</span>
+                    [span_0](start_span)<span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">June 2025 - Present[span_0](end_span)</span>
                     <h3 style="margin: 5px 0;">IT Intern - Federal Mogul Powertrain</h3>
-                    <p style="opacity: 0.8; font-size: 0.95rem;" data-key="cv_desc1">
-                        IT Support, PC kurulumu ve SAP ABAP Geliştirme (ALV raporları, SE16N sorguları).
+                    <p style="opacity: 0.8; font-size: 0.95rem;">
+                        [span_1](start_span)Hands-on IT support, PC setup, SAP ABAP Development (ALV reports, SE16N, MM03)[span_1](end_span). <br>
+                        [span_2](start_span)Focus on endpoint protection and vulnerability assessment[span_2](end_span).
                     </p>
                 </li>
 
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.5; border-radius: 50%;"></div>
-                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;" data-key="cv_date2">04/2024 - 05/2025</span>
+                    [span_3](start_span)<span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">April 2024 - May 2025[span_3](end_span)</span>
                     <h3 style="margin: 5px 0;">Art Director / Tech Artist - Mystopia</h3>
-                    <p style="opacity: 0.8; font-size: 0.95rem;" data-key="cv_desc2">
-                        200+ asset tasarımı, performans optimizasyonu, VFX ve shader geliştirme.
+                    <p style="opacity: 0.8; font-size: 0.95rem;">
+                        Concept art for 200+ assets, thematic consistency. [span_4](start_span)Modeled and optimized 150+ 3D assets for low-end systems[span_4](end_span). <br>
+                        VFX and shaders development. [span_5](start_span)Contributed to 60,000+ players on Opera GX[span_5](end_span).
                     </p>
                 </li>
 
                 <li style="margin-bottom: 40px; position: relative;">
                     <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.5; border-radius: 50%;"></div>
-                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;" data-key="cv_date3">04/2023 - 09/2023</span>
+                    [span_6](start_span)<span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">April 2023 - September 2023[span_6](end_span)</span>
                     <h3 style="margin: 5px 0;">3D Artist Intern - Funverse Games</h3>
-                    <p style="opacity: 0.8; font-size: 0.95rem;" data-key="cv_desc3">
-                        Hit & Boom projesi için çevre tasarımı (Environment Art), sculpting ve materyal oluşturma.
-                    </p>
-                </li>
-
-                 <li style="margin-bottom: 40px; position: relative;">
-                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-1); border-radius: 50%;"></div>
-                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Yıldız Teknik Üniversitesi</span>
-                    <h3 style="margin: 5px 0;" data-key="cv_edu">Matematik Mühendisliği</h3>
-                    <p style="opacity: 0.8; font-size: 0.95rem;" data-key="cv_edu_desc">
-                        4. Sınıf Öğrencisi.
+                    <p style="opacity: 0.8; font-size: 0.95rem;">
+                        [span_7](start_span)Created 100+ 3D environment assets (rocks, crystals, buildings) for MOBA game Hit & Boom[span_7](end_span). <br>
+                        [span_8](start_span)Applied sculpting, retopology, UV unwrapping, and Substance 3D Painter[span_8](end_span).
                     </p>
                 </li>
             </ul>
+
+            <div class="cv-section-title">Education</div>
+            <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                 <li style="margin-bottom: 20px; position: relative;">
+                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-1); border-radius: 50%;"></div>
+                    <span style="opacity: 0.6; font-weight: bold; font-size: 0.9rem;">Yıldız Technical University</span>
+                    <h3 style="margin: 5px 0;">Mathematical Engineering</h3>
+                    [span_9](start_span)<p style="opacity: 0.8; font-size: 0.95rem;">Bachelor's Degree - 4th Year[span_9](end_span).</p>
+                </li>
+                <li style="margin-bottom: 20px; position: relative;">
+                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); opacity: 0.3; border-radius: 50%;"></div>
+                    [span_10](start_span)<span style="opacity: 0.5; font-weight: bold; font-size: 0.9rem;">Sep 2022 - Sep 2023[span_10](end_span)</span>
+                    <h3 style="margin: 5px 0; opacity: 0.7;">Mechanical Engineering</h3>
+                    [span_11](start_span)<p style="opacity: 0.6; font-size: 0.95rem;">Bachelor's Degree (Transferred)[span_11](end_span).</p>
+                </li>
+            </ul>
+
+            <div class="cv-section-title">Organizations</div>
+             <ul style="list-style: none; padding: 0; margin-bottom: 40px; border-left: 2px solid rgba(255,255,255,0.1); padding-left: 20px;">
+                <li style="margin-bottom: 20px; position: relative;">
+                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--accent-2); border-radius: 50%;"></div>
+                    [span_12](start_span)<span style="color: var(--accent-2); font-weight: bold; font-size: 0.9rem;">SKYSEC Member - YTU SKYLAB[span_12](end_span)</span>
+                    <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">
+                        [span_13](start_span)Cybersecurity bootcamp, TryHackMe challenges, CTF competitions (exploitation, log analysis)[span_13](end_span).
+                    </p>
+                </li>
+                <li style="margin-bottom: 20px; position: relative;">
+                    <div style="position: absolute; left: -26px; top: 5px; width: 10px; height: 10px; background: var(--text); border-radius: 50%;"></div>
+                    [span_14](start_span)<span style="color: var(--text); font-weight: bold; font-size: 0.9rem;">Board Member - YTU DOGDOK[span_14](end_span)</span>
+                    <p style="opacity: 0.8; font-size: 0.95rem; margin-top: 5px;">
+                        [span_15](start_span)Social media management, event organization (Digital Gaming Days 2024), Blender training support[span_15](end_span).
+                    </p>
+                </li>
+            </ul>
+
+            [span_16](start_span)<div class="cv-section-title">Technical Skills[span_16](end_span)</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;">
+                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">C# (Unity)</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">C / C++</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">ABAP</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">Python</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem;">Matlab</span>
+                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Burp Suite</span>
+                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Wireshark</span>
+                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Nmap</span>
+                <span style="background: rgba(121, 40, 202, 0.2); padding: 5px 10px; border-radius: 5px; font-size: 0.85rem; color: var(--accent-1);">Metasploit</span>
+            </div>
+
+            <div class="download-btn-container">
+                <a href="Simge_Temel_CV.pdf" download class="download-btn">
+                    <i class="fa-solid fa-file-pdf"></i> <span data-key="cv_download">PDF Olarak İndir</span>
+                </a>
+            </div>
         </div>
 
         <div id="blog" class="page">
@@ -372,10 +425,7 @@
                 project_1: "200+ Varlık, Low-poly optimizasyon.", project_2: "3D Çevre tasarımı ve asset üretimi.",
                 cyber_title: "Siber Güvenlik", cyber_desc: "CTF Çözümleri ve Pentest Raporları.",
                 cyber_detail: "Exploitation, Reverse Engineering ve Log Analizi üzerine çalışmalar.",
-                cv_title: "Özgeçmiş", cv_download: "PDF Olarak İndir", cv_edu: "Matematik Mühendisliği", cv_edu_desc: "4. Sınıf Öğrencisi.",
-                cv_date1: "09/2023 - Günümüz", cv_desc1: "IT Support, PC kurulumu ve SAP ABAP Geliştirme (ALV raporları, SE16N sorguları).",
-                cv_date2: "04/2024 - 05/2025", cv_desc2: "200+ asset tasarımı, performans optimizasyonu, VFX ve shader geliştirme.",
-                cv_date3: "04/2023 - 09/2023", cv_desc3: "Hit & Boom projesi için çevre tasarımı (Environment Art), sculpting ve materyal oluşturma.",
+                cv_title: "Özgeçmiş", cv_download: "PDF Olarak İndir",
                 blog_locked: "Bu Bölüm Korumalıdır", blog_title: "Neden Kendi Oyun Motorumu Yazıyorum?",
                 blog_desc: "Hazır motorlar harika, ama tekerleği yeniden icat etmek bazen en iyi öğrenme yoludur...",
                 duck_msg: "Henüz kodluyorum... <br>Quack! 🚧"
@@ -388,10 +438,7 @@
                 project_1: "200+ Assets, Low-poly optimization.", project_2: "3D Environment design and asset production.",
                 cyber_title: "Cyber Security", cyber_desc: "CTF Solutions and Pentest Reports.",
                 cyber_detail: "Studies on Exploitation, Reverse Engineering and Log Analysis.",
-                cv_title: "Resume", cv_download: "Download as PDF", cv_edu: "Mathematical Engineering", cv_edu_desc: "4th Year Student.",
-                cv_date1: "09/2023 - Present", cv_desc1: "IT Support, PC setup, and SAP ABAP Development (ALV reports, SE16N queries).",
-                cv_date2: "04/2024 - 05/2025", cv_desc2: "Designed 200+ assets, performance optimization, VFX, and shader development.",
-                cv_date3: "04/2023 - 09/2023", cv_desc3: "Environment Art for 'Hit & Boom', sculpting, and material creation.",
+                cv_title: "Resume", cv_download: "Download as PDF",
                 blog_locked: "Restricted Access", blog_title: "Why Am I Writing My Own Game Engine?",
                 blog_desc: "Pre-made engines are great, but reinventing the wheel is sometimes the best way to learn...",
                 duck_msg: "Still coding... <br>Quack! 🚧"
@@ -440,3 +487,4 @@
     </script>
 </body>
 </html>
+
