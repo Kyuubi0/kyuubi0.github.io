@@ -348,6 +348,20 @@
             .social-links span { display: none; }
             .fox-container { display: none; }
         }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+        .skill-tag:hover {
+            border-color: var(--accent-1);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body class="dark-theme">
@@ -563,216 +577,145 @@
 
         <div id="cyber" class="page">
             <h1 style="font-size: 3.5rem; margin-bottom: 10px;">Red <span class="highlight">&</span> Blue.</h1>
-            <p style="opacity: 0.8; margin-bottom: 40px; font-size: 1.1rem;">Penetration testing, CTF progress, and security research.</p>
+            <p style="opacity: 0.8; margin-bottom: 40px; font-size: 1.1rem;">Penetration testing, Threat Intelligence, and Security Engineering.</p>
 
             <div class="glass-card" style="margin-bottom: 30px; padding: 0 !important; overflow: hidden; display: flex; flex-direction: row; flex-wrap: wrap;">
 
                 <div style="flex: 1; min-width: 300px; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; padding: 20px;">
-                    <img src="https://tryhackme-badges.s3.amazonaws.com/uftsimge.png?v=3" alt="THM Badge" style="width: 100%; max-width: 350px; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+                    <img src="https://tryhackme-badges.s3.amazonaws.com/uftsimge.png" alt="THM Badge" style="width: 100%; max-width: 350px; border-radius: 8px; box-shadow: 0 0 20px rgba(0,0,0,0.5);" loading="lazy">
                 </div>
 
                 <div style="flex: 1.5; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
                     <h3 style="color: var(--accent-1); font-size: 1.8rem; margin: 0 0 5px 0;">TryHackMe Profile</h3>
                     <p style="opacity: 0.7; margin-bottom: 25px;">Live Progress & Rankings</p>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px;">
-
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                        <i class="fa-solid fa-door-open" style="color: var(--accent-2); font-size: 1.5rem; margin-bottom: 10px;"></i>
-                        <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">151</div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">Rooms Solved</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                            <i class="fa-solid fa-door-open" style="color: var(--accent-2); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">151</div>
+                            <div style="font-size: 0.8rem; opacity: 0.6;">Rooms Solved</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                            <i class="fa-solid fa-globe" style="color: var(--accent-1); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Top 2%</div>
+                            <div style="font-size: 0.8rem; opacity: 0.6;">Global Rank</div>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                            <i class="fa-solid fa-fire" style="color: #ff6b6b; font-size: 1.5rem; margin-bottom: 10px;"></i>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">71</div>
+                            <div style="font-size: 0.8rem; opacity: 0.6;">Longest Streak</div>
+                        </div>
                     </div>
-
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                        <i class="fa-solid fa-globe" style="color: var(--accent-1); font-size: 1.5rem; margin-bottom: 10px;"></i>
-                        <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">Top 2%</div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">Global Rank</div>
-                    </div>
-
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
-                        <i class="fa-solid fa-fire" style="color: #ff6b6b; font-size: 1.5rem; margin-bottom: 10px;"></i>
-                        <div style="font-size: 1.5rem; font-weight: bold; color: #fff;">71</div>
-                        <div style="font-size: 0.8rem; opacity: 0.6;">My Longest Streak</div>
-                    </div>
-
-            </div>
                 </div>
             </div>
 
-            <h2 class="section-title"><i class="fa-solid fa-award"></i> Achievement Badges</h2>
-            <div class="glass-card" style="margin-bottom: 30px; padding: 30px !important; display: flex; flex-direction: row; gap: 30px; flex-wrap: wrap; justify-content: center; align-items: flex-start;">
+            <h2 class="section-title"><i class="fa-solid fa-microscope"></i> Active Research & Development</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; margin-bottom: 50px;">
 
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/linux.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/5968/5968282.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">cat linux.txt</p>
+                <div class="glass-card" style="padding: 25px; border-left: 4px solid var(--accent-1);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <i class="fa-solid fa-server" style="font-size: 1.8rem; color: var(--accent-1);"></i>
+                        <h3 style="margin: 0;">SIEM Log Analysis Tool</h3>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 0.9rem; line-height: 1.6;">
+                        Developing a custom SIEM application to parse, normalize, and visualize system logs. Focusing on anomaly detection and automated security monitoring.
+                    </p>
+
+                    <div style="margin-top: 15px;">
+                        <span style="font-size: 0.7rem; background: rgba(157, 142, 196, 0.2); padding: 4px 8px; border-radius: 4px; color: var(--accent-1);">In Development</span>
+                    </div>
                 </div>
 
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/hashcracker.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/270/270880.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Hash Cracker</p>
+                <div class="glass-card" style="padding: 25px; border-left: 4px solid var(--accent-2);">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <i class="fa-solid fa-user-secret" style="font-size: 1.8rem; color: var(--accent-2);"></i>
+                        <h3 style="margin: 0;">OSINT & Threat Intel</h3>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 0.9rem; line-height: 1.6;">
+                        Exploring Open Source Intelligence methodologies. Gathering actionable insights from public data and tracking threat actor patterns.
+                    </p>
+                    <div style="margin-top: 15px;">
+                        <span style="font-size: 0.7rem; background: rgba(252, 205, 173, 0.2); padding: 4px 8px; border-radius: 4px; color: var(--accent-2);">Active Research</span>
+                    </div>
                 </div>
+            </div>
+        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Technical Arsenal</h2>
 
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/webbed.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Webbed</p>
-                </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch; margin-bottom: 50px;">
 
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/introtooffensivesecurity.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Pentesting Principles</p>
+            <div class="glass-card" style="display: flex; flex-direction: column; padding: 25px !important;">
+                <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    <i class="fa-solid fa-code" style="color: var(--accent-1);"></i> Development
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="skill-tag">C / C#</span>
+                    <span class="skill-tag">Dart (Mid)</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">ABAP</span>
+                    <span class="skill-tag">Matlab</span>
+                    <span class="skill-tag">Unity</span>
+                    <span class="skill-tag">Git / GitHub</span>
+                    <span class="skill-tag">Visual Studio</span>
                 </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/introtosecurityengineering.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Introduction to Security Engineering</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/securityawareness.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Security Awareness</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/owasptop10.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">OWASP Top 10</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/streak3.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">3 Day Streak</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/streak7.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">7 Day Streak</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/streak30.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">30 Day Streak</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/introtodevsecops.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">The Course Awakens</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/ohsint.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">OhSINT</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/mrrobot.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Mr. Robot</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/networkfundamentals.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Networking Nerd</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/howthewebworks.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">World Wide Web</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/cyberready.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2040/2040504.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Cyber Ready</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/metasploit.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Metasploitable</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/blue.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Blue</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/swordapprentice.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Sword Apprentice</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/shieldapprentice.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Shield Apprentice</p>
-                </div>
-                                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/hack2win.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Raffle Royalty</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/league-silver.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Silver League</p>
-                </div>
-
-                <div style="text-align: center; width: 100px;">
-                    <img src="https://tryhackme.com/img/badges/league-bronze.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/9632/9632616.png'" style="width: 70px; height: 70px; margin-bottom: 10px; opacity: 0.8;">
-                    <p style="font-size: 0.8rem; opacity: 0.6;">Bronze League</p>
-                </div>
-
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div class="glass-card" style="display: flex; flex-direction: column; padding: 25px !important;">
+                <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--accent-2);"></i> Security Tools
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="skill-tag">Nmap</span>
+                    <span class="skill-tag">Burp Suite</span>
+                    <span class="skill-tag">Wireshark</span>
+                    <span class="skill-tag">Metasploit</span>
+                    <span class="skill-tag">Ghidra</span>
+                    <span class="skill-tag">Hashcat</span>
+                    <span class="skill-tag">John the Ripper</span>
+                    <span class="skill-tag">Gobuster</span>
+                    <span class="skill-tag">ExifTool</span>
+                    <span class="skill-tag">Hydra</span>
+                </div>
+            </div>
 
+            <div class="glass-card" style="display: flex; flex-direction: column; padding: 25px !important;">
+                <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 1.1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">
+                    <i class="fa-solid fa-briefcase" style="color: #54a0ff;"></i> ERP & Workflow
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <span class="skill-tag">SAP ERP (MM)</span>
+                    <span class="skill-tag">SAP GUI</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Windows</span>
+                    <span class="skill-tag">Asana</span>
+                    <span class="skill-tag">ClickUp</span>
+                    <span class="skill-tag">Notion</span>
+                    <span class="skill-tag">Trello</span>
+                </div>
+            </div>
+
+        </div> <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certificates</h2>
+        <div class="project-grid">
+            <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
+                <div style="background: var(--accent-1); min-width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-shield-cat" style="color: white; font-size: 1.5rem;"></i>
+                </div>
                 <div>
-                    <h2 class="section-title" style="margin-top: 0;"><i class="fa-solid fa-toolbox"></i> Arsenal</h2>
-                    <div class="glass-card" style="padding: 25px !important; display: block;"> <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-brands fa-linux" style="color: var(--accent-1);"></i> Kali Linux
-                            </span>
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-solid fa-bug" style="color: var(--accent-2);"></i> Burp Suite
-                            </span>
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-brands fa-python" style="color: #3776ab;"></i> Python
-                            </span>
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-solid fa-network-wired" style="color: var(--text);"></i> Wireshark
-                            </span>
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-solid fa-terminal" style="color: var(--accent-1);"></i> Bash
-                            </span>
-                            <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 6px; font-weight: 500;">
-                                <i class="fa-solid fa-database" style="color: var(--accent-2);"></i> SQLMap
-                            </span>
-                        </div>
-                    </div>
+                    <h4 style="margin: 0; font-size: 1.1rem;">Cyber Security 101</h4>
+                    <span style="font-size: 0.8rem; opacity: 0.6;">Tryhackme</span>
                 </div>
-
+            </div>
+            <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px;">
+                <div style="background: #333; min-width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-graduation-cap" style="color: white; font-size: 1.5rem;"></i>
+                </div>
                 <div>
-                    <h2 class="section-title" style="margin-top: 0;"><i class="fa-solid fa-certificate"></i> Certificates</h2>
-                    <div style="display: flex; flex-direction: column; gap: 20px;">
-                        
-                        <div class="glass-card" onclick="openModal('SKYSEC Bootcamp', 'sertifika_resmi.jpg', 'Completed comprehensive training.', 'Status: Completed', '#')" style="padding: 20px; display: flex; align-items: center; gap: 15px; cursor: pointer; flex-direction: row;">
-                            <div style="background: var(--accent-1); min-width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem;">
-                                <i class="fa-solid fa-shield-cat"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin: 0; font-size: 1.1rem;">SKYSEC Bootcamp</h4>
-                                <span style="font-size: 0.8rem; opacity: 0.6;">Red Team Ops</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card" style="padding: 20px; display: flex; align-items: center; gap: 15px; opacity: 0.7; flex-direction: row;">
-                            <div style="background: #fff; min-width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #000; font-size: 1.5rem;">
-                                <i class="fa-brands fa-google"></i>
-                            </div>
-                            <div>
-                                <h4 style="margin: 0; font-size: 1.1rem;">Google Cybersecurity</h4>
-                                <span style="font-size: 0.8rem; opacity: 0.6;">In Progress...</span>
-                            </div>
-                        </div>
-
-                    </div>
+                    <h4 style="margin: 0; font-size: 1.1rem;">Pre Security</h4>
+                    <span style="font-size: 0.8rem; opacity: 0.6;">Tryhackme</span>
                 </div>
             </div>
         </div>
+        </div>
+
         <div id="cv" class="page">
             <h2>Resume</h2>
             <div style="width: 100%; height: 75vh; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden;">
